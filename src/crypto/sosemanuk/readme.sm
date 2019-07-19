@@ -1,0 +1,41 @@
+This archive contains Pascal source for the Sosemanuk stream cipher.
+
+Sosemanuk by C. Berbain et al. is a stream cipher that is included in
+the final eSTREAM Portfolio.
+
+The key length is variable between 128 and 256 bits, and IVs up to 128
+bit are supported (although my code uses 128 bit IVs). A reduced variant
+of the Serpent block cipher is used for key and IV setup. The core key
+stream is generated in 80 byte blocks using (among others) an LFSR
+(Linear Feedback Shift Register) with ten 32 bit values and a FSM
+(Finite State Machine) with 64 bits.
+
+In the following table my Pascal implementations (program t_sosewe, 1.8
+GHz P4 with Win98) are compared with the reference C code (rows GCC and
+VC6) from the eSTREAM archive. Times and speeds for processing 800 MB (1
+Mio 800 byte blocks) are measured for key stream generation (columns k)
+and encryption (columns e). The speed does not depend on the key length.
+
+   +---------------+-------+----------+--------+----------+
+   |      Compiler | k [s] | k [MB/s] |  e [s] | e [MB/s] |
+   +---------------+-------+----------+--------+----------+
+   | GCC 4.3.2 -O3 | 7.253 |    110.3 | 10.220 |     78.3 |
+   |   VC6 SP4 /O2 | 7.520 |    106.4 | 10.930 |     73.2 |
+   +---------------+-------+----------+--------+----------+
+   |      Delphi 3 | 3.022 |    264.7 |  6.868 |    116.5 |
+   |      Delphi 6 | 3.013 |    265.5 |  6.897 |    116.0 |
+   |     Delphi 10 | 3.634 |    220.1 |  7.565 |    105.7 |
+   |   VPC 2.1.279 | 4.613 |    173.4 |  8.356 |     95.7 |
+   | FPC 2.2.4 -O3 | 6.284 |    127.3 | 11.543 |     69.3 |
+   |      BP7 Real | 5.490 |    145.7 |  7.679 |    104.2 |
+   +---------------+-------+----------+--------+----------+
+
+My source is based on sosemanukfast.java from the eSTREAM submission for
+the 32 bit code and 16 bit key stream generator; for 16 bit key/IV setup
+a modification of my Serpent code is used.
+
+Last changes (Nov. 2017)
+- Adjustments for FPC/ARM and Delphi Tokyo
+
+http://wolfgang-ehrhardt.de
+

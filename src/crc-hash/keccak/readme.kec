@@ -1,0 +1,41 @@
+On Oct. 2, 2012 NIST announced Keccak, designed by Guido Bertoni, Joan
+Daemen, Michael Peeters, and Gilles Van Assche, as the winner of the
+SHA-3 Cryptographic Hash Algorithm Competition.
+
+This archive contains my preliminary Pascal/Delphi Keccak implementation
+using the SHA-3 NIST API: arbitrary length bit sequences are allowed for
+the messages to be hashed, the supported digest lengths are 224, 256,
+384, 512 bits, and arbitrary length byte output.
+
+The HMAC routines use the block length values proposed by David Ireland
+and are verified against his test vectors, but note that HMAC-Keccak is
+even more preliminary than SHA-3/Keccak!
+
+Right now, there are two basic code variants of Keccak-f[1600]: The first
+with 32-bit interleaving and rotate instructions coded inline in 32+ bit
+PurePascal or inline functions for 16-bit compilers; the second uses
+64-bit data types and rotations. However, the 64-bit code is faster than
+32-bit only if compiled for a 64-bit CPU and executed on a 64-bit OS!
+Here the Cycles/Byte and MB/s values, measured on Win7/64 with Intel
+Core i3-2350M(2.3GHz):
+
+             FPC260/64-Bit   FPC260/32-Bit    D17 / 64-Bit   D17 / 32-Bit
+Name         Cyc/B   MB/s     Cyc/B   MB/s    Cyc/B   MB/s   Cyc/B   MB/s
+Keccak-224    30.3  75.74      71.9  31.91     22.5 102.03    60.8  37.76
+Keccak-256    32.5  70.68      75.5  30.41     23.7  96.65    64.2  35.77
+Keccak-384    41.8  54.84      95.2  24.11     31.0  73.96    82.3  27.87
+Keccak-512    59.7  38.46     132.5  17.32     44.7  51.35   116.9  19.62
+
+** Remark: Keccak is NOT integrated in the Hash unit, because the
+** formal SHA-3 algorithm (and the associated HMAC) is not yet specified.
+
+The routines in this archive can be compiled with most current Pascal
+(TP 5/5.5/6, BP 7, VP 2.1, FPC 1.0/2.0/2.2/2.4/2.6) and Delphi versions
+(tested with V1 up to V7/9/10/12/17).
+
+For compilation of t_speedk.pas you need the HRTimer sources from the
+util_<yyyy-mm-dd>.zip, some tests need KAT files from the Keccak site.
+
+W.Ehrhardt, Jan. 2013
+http://wolfgang-ehrhardt.de
+

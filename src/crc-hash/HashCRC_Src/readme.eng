@@ -1,0 +1,75 @@
+General
+=======
+Name   : CRC/Hash calculator V1.17
+Author : Wolfgang Ehrhardt
+License: based on "The zlib/libpng License", c.f. copying_we.txt
+Home   : http://home.netsurf.de/wolfgang.ehrhardt
+
+
+Description
+===========
+This plugin for FAR Manager calculates CRCs and Hash message digests of
+files in the active file panel. Supported are CRC16/24/32/64, Adler32,
+eDonkey, MD4, MD5, RIPEMD160, SHA1, SHA224/256/384/512, Whirlpool.
+
+Version 1.17 fixes a SHA512/384 bug for file sizes above 512MB
+
+
+Installation
+============
+Copy the HashCRC folder into Far\Plugins and restart FAR
+
+
+Updating
+========
+Quit all FAR instances and overwrite the old plugin files with the files
+of the new version. If there are any difficulties, please read the file
+Plugins.Install.txt or InstallPlugins.txt from the FAR documentation.
+
+
+Known Problems
+==============
+Starting with V1.6 and the support of SHA384/SHA512, old FAR versions
+(1.70 Beta3 and below) will truncate the result display if all sums are
+calculated (there can be a maximum of 13 items in the message box).
+
+
+Acknowledgements
+================
+- Dmitry Yerokhin for Russian translations of the .hlp and .lng files
+- Giovanni Drusian for the MD5-PE feature and help during implementation
+- Sergey Golachev for reporting the 4GB issue
+
+
+Compiling
+=========
+For recompilation you need the plugin source HashCRC117_Src.zip
+and the CRC/Hash sources from crc_hash_<yyyy-mm-dd>.zip. The
+distributed plugin dll is built with Delphi 3.
+
+
+Versions
+========
+ 1.17  Oct.2007  Fix SHA512/384 bug for file sizes above 512MB
+ 1.16  Mar.2007  MD4 and eDonkey/eMule; new config dialog layout
+ 1.15  Feb.2007  Fix for 4GB issue caused by Delphi eof bug
+ 1.14  Jan.2007  Fix Whirlpool bug for file sizes above 512MB
+ 1.13  May 2006  Special MD5 processing for PE files
+                 Option: Expand file names
+ 1.12  Apr.2006  CRC24 added, plugin size reduced
+ 1.11  Feb.2006  RIPEMD-160
+ 1.10  Dec.2005  Whirlpool
+ 1.9   Sep.2005  Multi file mode
+ 1.8   Jan.2005  [Clipboard] and [File] buttons
+ 1.7.1 Jan.2005  Service release, fixes SHA512/SHA384 bugs
+ 1.7   Apr.2004  Config options: Base64, HEX uppercase, Strict LSB.
+                 D3 base routines are >20% faster than V1.6.
+ 1.6   Jan.2004  SHA224/384/512, no N/A for unchecked values,
+                 Avg. speedup about 40% compared to V1.5
+ 1.5   Nov.2003  Speedup with new basic routines (about 25%)
+ 1.4   Sep.2003  Adler32 and CRC64
+ 1.3   Apr.2003  Uses english .lng file
+ 1.2   Mar.2003  Split SHA256 output to avoid truncation
+                 Calculation can be cancelled with Esc
+ 1.1   Apr.2002  Percent display works for file sizes > 20 MB
+ 1.0   Mar.2002  Initial version

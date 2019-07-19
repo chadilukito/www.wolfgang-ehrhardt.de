@@ -1,0 +1,57 @@
+This archive contains Pascal source for the Poly1305 one-time authenticator.
+
+http://wolfgang-ehrhardt.de
+
+-----------------------------------------------------------------------
+Last changes (Nov. 2017)
+- Adjustments for FPC/ARM and Delphi Tokyo
+
+---------------------------------------------------------------------------
+Poly1305-AES (designed by D. J. Bernstein) is "a state-of-the-art
+message-authentication code" suitable for a wide variety of applications;
+the key material is created using AES-128 and a nonce.
+
+The general Poly1305 algorithm is a one-time authenticator which takes a
+32-byte one-time key plus a message and produces a 16-byte tag. This tag is
+used to authenticate the message. Regardless of how the key is generated, it
+is partitioned into two parts, called "r" and "s". The pair (r,s) should be
+unique, and must be unpredictable for each invocation (that is why it was
+originally obtained by encrypting a nonce), while "r" may be constant.
+
+My Pascal code in this archive is a straight-forward translation of two
+variations of Andrew Moon's well-known poly1305-donna code (from Github,
+distributed under MIT license or public domain):
+
+  * poly_32x32 uses 32 x 32 -> 64 bit multiplication and is default for
+    compilers with u/int64 data types (D4+, FPC),
+  * poly_16x16 with 16 x 16 -> 32 bit multiplication for all other compilers
+    without int64.
+  * During development I also translated poly_8x8: it is available as a
+    separate file, but not actually used (slower for all tested
+    CPUs/compilers).
+
+Poly1305 is standardized in RFC 7539 ("ChaCha20 and Poly1305 for IETF
+Protocols"), which also contains additional test vectors.
+
+In the following table the speed is measured on two system with the program
+t_pbench (Win 98 with Pentium 4 1.7Ghz and Win 7/64 with Core i3-2350M). The
+times in s are for processing 5120 messages with 16 KB, i.e. 80MB. BP7 uses
+real 16 bit code, FPC and D18 used 64 bit-code on Win 7, all others are 32
+bit code. D6 or newer use the $define poly_32x32.
+
+
+  +---------------+-----------+-----------+
+  |      Compiler | P4 1.7GHz |  i3-2350M |
+  |            OS |    Win 98 | Win7 / 64 |
+  +----------------+----------+-----------+
+  |      BP7 Real |    139.62 |         - |
+  |   VPC 2.1.279 |     10.74 |      2.76 |
+  |      Delphi 3 |      7.11 |      2.31 |
+  +---------------+-----------+-----------+
+  |      Delphi 6 |      4.91 |      1.17 |
+  |     Delphi 10 |      4.89 |      1.17 |
+  |     Delphi 18 |      4.89 |      0.25 |
+  | FPC 2.6.4 -O3 |      2.31 |      0.36 |
+  | FPC 3.0.0 -O4 |      2.25 |      0.28 |
+  +---------------+----------+------------+
+

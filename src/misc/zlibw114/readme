@@ -1,0 +1,45 @@
+zlibw114 is my (WE) Pascal port of the zlib library V1.1.4
+
+It is based on the V1.1.2 Pascal port PASZLIB 1.0 from Jacques Nomssi
+Nzali, see readme.txt for his introduction/documentation.
+
+It includes official patches/changes up to V1.1.4 and some results from
+email communication with Marc Adler.
+
+Further changes are in gzio/minigzip, inffixed.inc, minizip, zDeflate
+(made code for $ifdef FASTEST usable), zlibh (z_assign as a workaround
+for a nasty D6/7/9 bug), ZUtil, example (made test_sync code etc. work).
+
+Other features: 1) zlibex unit with custom deflate and inflate routines
+(incl. test program), it is used in the FZCA demo program.  2) Pascal
+port of the zpipe sample program. 3) Code improvements: make BUILDFIXED
+and assert work, bug fix in gzerror, etc.
+
+
+The library can be compiled with BP7 (DOS/Win/DPMI), Delphi 1-7/9-10/12/17-18,
+Virtual Pascal V2.1 and Free Pascal 1/2/3.x. (The example programs minizip 
+and miniunz will not compile under D1, FPC 1.0, or BP7-Win and Delphis with 
+unit_scope.)
+
+The unit structure is slightly changed compared to paszlib:
+ZLIB   (functions),
+ZLIBH  (types/consts),
+GZIO   (gz functions)
+should be the only units USED by applications of zlib.
+
+See manifest for archive layout.
+
+Please note:
+  * The code base V1.1.4 is very old and there are newer and better versions of
+    zlib. Therefore the zlib units included in newer Delphi and FPC version
+    should be used whenever possible.
+  * My zlib routines should only be applied to files with sizes less that 2 GB
+    (32 bit counters; Delphi eof bug and/or 32 bit filesize function).
+
+
+---------------------------------------------------------------------------
+
+Last changes: Maintenance adjustments for Delphi 17+ and FPC 3.x
+
+W.Ehrhardt, Sep. 2015
+http://wolfgang-ehrhardt.de

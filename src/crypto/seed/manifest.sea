@@ -1,0 +1,35 @@
+!bdll.bat            Compile batch file for sea_dll
+#ca.bat              Generic compile batch file for all console compilers
+#ca_dll.bat          T_SEA_WS with sea_dll compile batch file for win32 compilers
+$d25.zip             dproj files for Delphi 25 (Tokyo Starter)
+$log_sea.zip         Archive with log files of final tests done before release
+btypes.pas           Common basic type definitions
+copying_we.txt       License
+legal.txt            Legal notice (cryptography, software patents)
+ltc_seed.zip         Archive with LTC TV generation source
+manifest.sea         This file
+mem_util.pas         Utilities for hex dump and memory compare
+readme.sea           Info about this archive
+sea_base.pas         SEED basic routines
+sea_cbc.pas          SEED CBC functions
+sea_cfb.pas          SEED CFB128 functions
+sea_ctr.pas          SEED CTR mode functions
+sea_dll.dpr          Project file for sea_dll
+sea_dll.res          RES     file for sea_dll
+sea_eax.pas          SEED EAX mode functions
+sea_ecb.pas          SEED ECB functions
+sea_intf.pas         Interface unit for sea_dll
+sea_intv.pas         Interface unit for sea_dll (VirtualPascal version)
+sea_ofb.pas          SEED OFB functions
+sea_omac.pas         SEED OMAC1/2 routines
+sea_seek.inc         Include file for CTR_Seek functions
+std.inc              Standard definitions and options
+t_sea_cs.pas         Test prog for CTR_Seek functions
+t_sea_ws.pas         Test prog for SEED modes (CBC, CFB, CTR, ECB, OFB, OMAC, EAX)
+t_sea_xl.pas         Test prog for SEED modes, ILen > $FFFF for 32 bit
+t_seomac.pas         Test prog for SEED-OMAC
+t_se_bas.pas         Test program for basic SEED functions
+t_se_cyc.pas         Test program encrypt/decrypt/keyinit cycle count
+t_se_eax.pas         Test prog for SEED-EAX
+_comparm             Compile and run test programs on Raspberry Pi / 3
+

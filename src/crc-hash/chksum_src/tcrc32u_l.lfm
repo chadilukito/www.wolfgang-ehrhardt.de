@@ -1,0 +1,387 @@
+object Form1: TForm1
+  Left = 286
+  Height = 272
+  Top = 190
+  Width = 680
+  Caption = 'LazCRC32'
+  ClientHeight = 272
+  ClientWidth = 680
+  Color = clBtnFace
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'MS Sans Serif'
+  OnCreate = FormCreate
+  OnShow = FormShow
+  Position = poDefaultPosOnly
+  LCLVersion = '1.8.4.0'
+  Scaled = False
+  object Lab_InvHex: TLabel
+    Left = 432
+    Height = 16
+    Top = 12
+    Width = 225
+    Alignment = taRightJustify
+    AutoSize = False
+    Caption = 'InvHex'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clRed
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    ParentColor = False
+    ParentFont = False
+  end
+  object Lab_Hdr: TLabel
+    Left = 16
+    Height = 16
+    Top = 8
+    Width = 376
+    Caption = 'LazCRC32    Calculate CRCs with common 32 bit algorithms'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clGreen
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Lab_Foot: TLabel
+    Left = 14
+    Height = 16
+    Top = 232
+    Width = 467
+    Caption = '(c)  2010-2018  W.Ehrhardt  --  See unit crcm_cat for references for the algorithms'
+    ParentColor = False
+  end
+  object Edit1: TEdit
+    Left = 128
+    Height = 24
+    Top = 32
+    Width = 529
+    MaxLength = 1000
+    OnChange = Edit1Change
+    TabOrder = 0
+  end
+  object CB_Format: TComboBox
+    Left = 16
+    Height = 24
+    Hint = 'Selext input mode'
+    Top = 32
+    Width = 76
+    ItemHeight = 16
+    Items.Strings = (
+      'HEX'
+      'String'
+    )
+    OnChange = CB_FormatChange
+    ParentShowHint = False
+    ShowHint = True
+    Style = csDropDownList
+    TabOrder = 1
+  end
+  object GroupBox1: TGroupBox
+    Left = 16
+    Height = 144
+    Top = 65
+    Width = 641
+    Caption = 'CRC-32'
+    ClientHeight = 123
+    ClientWidth = 637
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    ParentFont = False
+    TabOrder = 2
+    object LN1: TLabel
+      Left = 22
+      Height = 20
+      Top = 10
+      Width = 160
+      Alignment = taRightJustify
+      AutoSize = False
+      Caption = 'LN1'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Arial'
+      ParentColor = False
+      ParentFont = False
+    end
+    object LN2: TLabel
+      Left = 22
+      Height = 20
+      Top = 30
+      Width = 160
+      Alignment = taRightJustify
+      AutoSize = False
+      Caption = 'LN2'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Arial'
+      ParentColor = False
+      ParentFont = False
+    end
+    object LN3: TLabel
+      Left = 22
+      Height = 20
+      Top = 50
+      Width = 160
+      Alignment = taRightJustify
+      AutoSize = False
+      Caption = 'LN3'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Arial'
+      ParentColor = False
+      ParentFont = False
+    end
+    object LN4: TLabel
+      Left = 22
+      Height = 20
+      Top = 70
+      Width = 160
+      Alignment = taRightJustify
+      AutoSize = False
+      Caption = 'LN4'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Arial'
+      ParentColor = False
+      ParentFont = False
+    end
+    object LN5: TLabel
+      Left = 22
+      Height = 20
+      Top = 90
+      Width = 160
+      Alignment = taRightJustify
+      AutoSize = False
+      Caption = 'LN5'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Arial'
+      ParentColor = False
+      ParentFont = False
+    end
+    object LN6: TLabel
+      Left = 318
+      Height = 20
+      Top = 10
+      Width = 160
+      Alignment = taRightJustify
+      AutoSize = False
+      Caption = 'LN6'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Arial'
+      ParentColor = False
+      ParentFont = False
+    end
+    object LN7: TLabel
+      Left = 318
+      Height = 20
+      Top = 30
+      Width = 160
+      Alignment = taRightJustify
+      AutoSize = False
+      Caption = 'LN7'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Arial'
+      ParentColor = False
+      ParentFont = False
+    end
+    object LN8: TLabel
+      Left = 318
+      Height = 20
+      Top = 50
+      Width = 160
+      Alignment = taRightJustify
+      AutoSize = False
+      Caption = 'LN8'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Arial'
+      ParentColor = False
+      ParentFont = False
+    end
+    object LN9: TLabel
+      Left = 318
+      Height = 20
+      Top = 70
+      Width = 160
+      Alignment = taRightJustify
+      AutoSize = False
+      Caption = 'LN9'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Arial'
+      ParentColor = False
+      ParentFont = False
+    end
+    object LV1: TLabel
+      Left = 198
+      Height = 20
+      Top = 8
+      Width = 100
+      AutoSize = False
+      Caption = '$FFFFFFFF'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clNavy
+      Font.Height = -17
+      Font.Name = 'Courier New'
+      ParentColor = False
+      ParentFont = False
+    end
+    object LV2: TLabel
+      Left = 198
+      Height = 20
+      Top = 28
+      Width = 100
+      AutoSize = False
+      Caption = 'LV2'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clNavy
+      Font.Height = -17
+      Font.Name = 'Courier New'
+      ParentColor = False
+      ParentFont = False
+    end
+    object LV3: TLabel
+      Left = 198
+      Height = 20
+      Top = 48
+      Width = 100
+      AutoSize = False
+      Caption = 'LV3'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clNavy
+      Font.Height = -17
+      Font.Name = 'Courier New'
+      ParentColor = False
+      ParentFont = False
+    end
+    object LV4: TLabel
+      Left = 198
+      Height = 20
+      Top = 68
+      Width = 100
+      AutoSize = False
+      Caption = 'LV4'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clNavy
+      Font.Height = -17
+      Font.Name = 'Courier New'
+      ParentColor = False
+      ParentFont = False
+    end
+    object LV5: TLabel
+      Left = 198
+      Height = 20
+      Top = 88
+      Width = 100
+      AutoSize = False
+      Caption = 'LV5'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clNavy
+      Font.Height = -17
+      Font.Name = 'Courier New'
+      ParentColor = False
+      ParentFont = False
+    end
+    object LV6: TLabel
+      Left = 498
+      Height = 20
+      Top = 8
+      Width = 100
+      AutoSize = False
+      Caption = 'LV6'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clNavy
+      Font.Height = -17
+      Font.Name = 'Courier New'
+      ParentColor = False
+      ParentFont = False
+    end
+    object LV7: TLabel
+      Left = 498
+      Height = 20
+      Top = 28
+      Width = 100
+      AutoSize = False
+      Caption = 'LV7'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clNavy
+      Font.Height = -17
+      Font.Name = 'Courier New'
+      ParentColor = False
+      ParentFont = False
+    end
+    object LV8: TLabel
+      Left = 498
+      Height = 20
+      Top = 48
+      Width = 100
+      AutoSize = False
+      Caption = 'LV8'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clNavy
+      Font.Height = -17
+      Font.Name = 'Courier New'
+      ParentColor = False
+      ParentFont = False
+    end
+    object LV9: TLabel
+      Left = 498
+      Height = 20
+      Top = 68
+      Width = 100
+      AutoSize = False
+      Caption = 'LV9'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clNavy
+      Font.Height = -17
+      Font.Name = 'Courier New'
+      ParentColor = False
+      ParentFont = False
+    end
+    object LN10: TLabel
+      Left = 318
+      Height = 20
+      Top = 90
+      Width = 160
+      Alignment = taRightJustify
+      AutoSize = False
+      Caption = 'LN10'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Arial'
+      ParentColor = False
+      ParentFont = False
+    end
+    object LV10: TLabel
+      Left = 498
+      Height = 20
+      Top = 88
+      Width = 100
+      AutoSize = False
+      Caption = 'LV10'
+      Color = clBtnFace
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clNavy
+      Font.Height = -17
+      Font.Name = 'Courier New'
+      ParentColor = False
+      ParentFont = False
+      Transparent = False
+    end
+  end
+end

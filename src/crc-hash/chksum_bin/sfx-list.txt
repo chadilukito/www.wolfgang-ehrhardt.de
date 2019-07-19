@@ -1,0 +1,29 @@
+
+7-Zip 9.20  Copyright (c) 1999-2010 Igor Pavlov  2010-11-18
+
+Listing archive: Install_CRC_Demofiles.exe
+
+--
+Path = Install_CRC_Demofiles.exe
+Type = 7z
+Method = LZMA BCJ2
+Solid = +
+Blocks = 2
+Physical Size = 282289
+Headers Size = 389
+Offset = 75776
+
+   Date      Time    Attr         Size   Name
+------------------- ----- ------------   ------------------------
+2017-11-28 17:12:38 ....A         2310   readme.bin
+2017-04-19 10:55:36 .....         2112   copying_we.txt
+2012-03-09 19:22:40 .....         1703   legal.txt
+2017-05-17 20:54:58 .....          199   8new.srp
+2009-10-11 14:26:56 .....          273   demo.srp
+2017-11-28 15:57:02 ....A       179712   cch.exe
+2017-11-28 15:56:56 ....A       391168   gch.exe
+2017-11-28 17:18:48 ....A       310272   srp16.exe
+2017-11-28 17:18:42 ....A       228864   tcrc16.exe
+2017-11-28 17:18:46 ....A       216576   tcrc32.exe
+------------------- ----- ------------   ------------------------
+                               1333189   10 files, 0 folders

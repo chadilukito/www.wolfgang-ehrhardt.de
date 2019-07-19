@@ -1,0 +1,79 @@
+#!/bin/bash -e
+
+# Be sure to have LF as EOL
+# and to chmod a+x
+
+LOG=bf_arm.log
+
+echo Results for FPC/ARM \(Raspberry Pi 3/B\) > $LOG
+uname -a                                     >> $LOG
+echo -e -n FPC version \\x20  >> $LOG
+fpc -iW                       >> $LOG
+echo ======================================  >> $LOG
+
+SRC=t_bf_ws
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC test >> $LOG
+
+SRC=t_bf_xl
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_bf_csk
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_bmodes
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_bfomac
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_bf_eax
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_bfbas1
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_bcrypt
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+
+
+
+
+
+
+
+
+
+

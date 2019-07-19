@@ -1,0 +1,34 @@
+!bdll.bat            Compile batch file for XT_DLL
+#ca.bat              Generic compile batch file for all console compilers
+#ca_dll.bat          T_XT_WS with XT_DLL compile batch file for win32 compilers
+$d25.zip             dproj files for Delphi 25 (Tokyo Starter)
+$log_xt.zip          Archive with log files of final tests done before release
+btypes.pas           Common basic type definitions
+copying_we.txt       License
+legal.txt            Legal notice (cryptography, software patents)
+manifest.xt          This file
+mem_util.pas         Utilities for hex dump and memory compare
+readme.xt            Info about this archive
+std.inc              Standard definitions and options
+tv_xtea.dat          Test vector file
+t_xtbas1.pas         Test prog for XTEA basic routines
+t_xtbas2.pas         Test prog for XTEA basic routines uses tv_xtea.dat
+t_xtmode.pas         Test prog for XTEA chaining modes
+t_xtspd.pas          Test prog to encr/decr speed (Cyc/Block, MB/s)
+t_xt_csk.pas         Test prog for CTR_Seek functions
+t_xt_ws.pas          Speed test prog for XT modes (CBC, CFB, CTR, ECB, OFB)
+t_xt_xl.pas          Test prog for XTEA modes, ILen > $FFFF for 32 bit
+wxt_ltc.zip          C sources for LTC test vectors
+xt_base.pas          XTEA basic routines
+xt_cbc.pas           XTEA CBC functions
+xt_cfb.pas           XTEA CFB64 functions
+xt_ctr.pas           XTEA CTR mode functions
+xt_dll.dpr           Project file for XT_DLL
+xt_dll.res           RES     file for XT_DLL
+xt_ecb.pas           XTEA ECB functions
+xt_intf.pas          Interface unit for XT_DLL
+xt_intv.pas          Interface unit for XT_DLL (VirtualPascal version)
+xt_ofb.pas           XTEA OFB functions
+xt_seek.inc          Include file for CTR_Seek functions
+_comparm             Compile and run test programs on Raspberry Pi / 3
+

@@ -1,0 +1,39 @@
+!bdll.bat            Compile batch file for cam_dll
+#ca.bat              Generic compile batch file for all console compilers
+#ca_dll.bat          T_CAM_WS with cam_dll compile batch file for win32 compilers
+$d25.zip             dproj files for Delphi 25 (Tokyo Starter)
+$log_cam.zip         Archive with log files of final tests done before release
+btypes.pas           Common basic type definitions
+cam_base.pas         Camellia basic routines
+cam_cbc.pas          Camellia CBC functions
+cam_ccm.pas          Camellia CCM functions
+cam_cfb.pas          Camellia CFB128 functions
+cam_cprf.pas         Camellia CMAC Pseudo-Random Function-128
+cam_ctr.pas          Camellia CTR mode functions
+cam_dll.dpr          Project  file for cam_dll
+cam_dll.res          RES      file for cam_dll
+cam_eax.pas          Camellia EAX mode functions
+cam_ecb.pas          Camellia ECB functions
+cam_intf.pas         Interface unit for cam_dll
+cam_intv.pas         Interface unit for cam_dll (VirtualPascal version)
+cam_ofb.pas          Camellia OFB functions
+cam_omac.pas         Camellia OMAC1/2 routines
+cam_seek.inc         Include file for CTR_Seek functions
+copying_we.txt       License
+legal.txt            Legal notice (cryptography, software patents)
+manifest.cam         This file
+mem_util.pas         Utilities for hex dump and memory compare
+readme.cam           Info about this archive
+std.inc              Standard definitions and options
+t_cam_as.pas         Test prog for "Associativity of CFB,OFB,CTR"
+t_cam_cs.pas         Test prog for CTR_Seek functions
+t_cam_ws.pas         Test prog for Camellia modes (CBC, CFB, CTR, ECB, OFB, OMAC, EAX)
+t_cam_xl.pas         Test prog for Camellia modes, ILen > $FFFF for 32 bit
+t_caomac.pas         Test prog for Camellia-OMAC
+t_ca_bas.pas         Test program for basic Camellia functions
+t_ca_ccm.pas         Test prog for Camellia-CCM
+t_ca_cyc.pas         Test program encrypt/decrypt/keyinit cycle count
+t_ca_eax.pas         Test prog for Camellia-EAX
+t_cprf.pas           Test prog for cam_cprf
+_comparm             Compile and run test programs on Raspberry Pi / 3
+

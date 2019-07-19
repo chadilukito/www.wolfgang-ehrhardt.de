@@ -1,0 +1,33 @@
+This archive contains Pascal/Delphi sources for the Anubis block cipher
+(tweaked version).
+
+Anubis (designed by Vincent Rijmen and Paulo Barreto) is a 128-bit block
+cipher that uses keys of length 128 to 320 bits in steps of 32 bits.
+Anubis was a NESSIE submission which was not included in the final
+portfolio. My Pascal source implements the so called "tweaked" version
+with a recursive structured S-box.
+
+There is code for a DLL and the following modes of operation are
+supported: CBC, CFB128, CTR, ECB, OFB, OMAC, and EAX. All modes allow
+plain and cipher text lengths that need not be multiples of the block
+length (for ECB and CBC cipher text stealing is used for the short
+block). CTR mode can use 4 built-in incrementing functions or a user
+supplied one, and provides seek functions for random access reads.
+
+Please note:
+
+- With BASM16 the tables T0 (..T5) in ANU_Base.pas and the used context
+should be dword aligned to get optimal speed. If the conditional symbol
+ANU_A4 is defined a dummy 16 bit integer is placed before T0, use the
+function ANU_T0Ofs to get the ofs(T0) mod 15.
+
+- Since my implementation uses only one round key array it is essential
+that the correct key setup is done for encryption and decryption. The
+block modes units check for correct setup and return error codes. The
+procedures ANU_Encrypt and ANU_Decrypt in ANU_Base.pas normally do no
+such checks! If the symbol debug is defined, RTE 210 is generated if the
+check fails. So be careful if you call these routines directly.
+
+Last changes (Nov. 2017)
+- Adjustments for FPC/ARM and Delphi Tokyo
+

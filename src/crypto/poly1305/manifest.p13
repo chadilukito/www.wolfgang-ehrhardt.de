@@ -1,0 +1,15 @@
+#ca.bat                Generic compile batch file for all console compilers
+$d25.zip               dproj files for Delphi 25 (Tokyo Starter)
+$log_poly1305.zip      Archive with log files of final tests done before release
+btypes.pas             Common basic type definitions}
+copying_we.txt         WE's license
+legal.txt              Legal notice (cryptography, software patents)
+manifest.p13           This file
+poly1305.pas           Poly1305 one-time authenticator unit
+poly_8x8.inc           Poly1305 implementation using 8 x 8 -> 16 bit multiplication and 32 bit addition
+readme.p13             Description of the Poly1305 archive
+std.inc                Standard definitions and options
+t_p1305.pas            Test program for Poly1305 (selftest, tests from RFC 7539)
+t_pbench.pas           Test program to compare speed for different compilers/systems
+_comparm               Compile and run test programs on Raspberry Pi / 3
+

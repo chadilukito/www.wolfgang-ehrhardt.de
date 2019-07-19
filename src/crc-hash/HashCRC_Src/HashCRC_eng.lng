@@ -1,0 +1,88 @@
+.Language=English,English
+
+//_MenuString,
+"Hash/CRC Calculation"
+
+//_Titel
+"Hash/CRC"
+
+//_Percent_Done
+"% done"
+
+//_MB_done
+" MB done"
+
+//_Calc_in_Progress
+" Calculation in progress ..."
+
+//_Invalid_Input
+"Invalid input or I/O error"
+
+//_HashCRC_config
+"Hash/CRC config"
+
+//_OK
+"OK"
+
+//_Cancel
+"Cancel"
+
+//_Ask_CancelCalc
+"Cancel calculation?"
+
+//_Calculation_cancelled
+"Calculation cancelled."
+
+//_HexUppercase
+"Uppercase HEX"
+
+//_StrictLSB
+"Strict LSB HEX"
+
+//_Btn_OK
+"&OK"
+
+//_Btn_ClipBoard,
+"&Clipboard"
+
+//_Btn_File,
+"&File"
+
+//_File_done,
+"Results written to file"
+
+//_File_error,
+"IO error"
+
+//_Clipboard_done,
+"Results copied to clipboard"
+
+//_Clipboard_error
+"Clipboard copy error"
+
+//_Ask_Overwrite
+"File exists! Overwrite?"
+
+//_Too_many_items
+"Too many items to display!"
+
+//_Enter_file_name
+"Enter filename"
+
+//_Filename_for_list_of_Hash_CRC_results
+"Filename for results of Hash/CRC calculation"
+
+//_List_Errors
+"List errors"
+
+//_MD5_File, used for results, max 9 chars
+"MD5"
+
+//_MD5_Image, used for results, max 9 chars
+"MD5-Img"
+
+//_MD5_PE, used for config
+"MD5-PE"
+
+//_Expand_FName
+"Expand file name"

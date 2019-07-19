@@ -1,0 +1,88 @@
+.Language=Russian,Russian
+
+//_MenuString,
+"Вычисление хэш-сумм и CRC"
+
+//_Titel
+"Хэш/CRC"
+
+//_Percent_Done
+"% готово"
+
+//_MB_done
+" Мб обработано"
+
+//_Calc_in_Progress
+" Вычисление..."
+
+//_Invalid_Input
+"Недопустимый ввод или ошибка ввода/вывода"
+
+//_HashCRC_config
+"Хэш/CRC - Настройка"
+
+//_OK
+"OK"
+
+//_Cancel
+"Отмена"
+
+//_Ask_CancelCalc
+"Отменить вычисление?"
+
+//_Calculation_cancelled
+"Вычисление отменено."
+
+//_HexUppercase
+"HEX прописными буквами"
+
+//_StrictLSB
+"HEX строго с младшего разряда"
+
+//_Btn_OK
+"&OK"
+
+//_Btn_ClipBoard,
+"&Буфер обмена"
+
+//_Btn_File,
+"&Файл"
+
+//_File_done,
+"Результаты сохранены в файле .chf"
+
+//_File_error,
+"Ошибка ввода/вывода"
+
+//_Clipboard_done,
+"Результаты скопированы в буфер обмена"
+
+//_Clipboard_error
+"Ошибка копирования в буфер обмена"
+
+//_Ask_Overwrite
+"Файл уже существует! Перезаписать?"
+
+//_Too_many_items
+"Слишком много элементов для отображения!"
+
+//_Enter_file_name
+"Введите имя файла"
+
+//_Filename_for_list_of_Hash_CRC_results
+"Имя файла для результатов вычисления Hash/CRC"
+
+//_List_Errors
+"Выводить ошибки"
+
+//_MD5_File, used for results, max 9 chars
+"MD5"
+
+//_MD5_Image, used for results, max 9 chars
+"MD5-Img"
+
+//_MD5_PE, used for config
+"MD5-PE"
+
+//_Expand_FName
+"Расширенные имена файлов"

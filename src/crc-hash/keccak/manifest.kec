@@ -1,0 +1,25 @@
+#ca.bat            Generic compile batch file for all console compilers
+$log_kec.zip       Archive with log files of some final test done before release
+btypes.pas         Common basic type definitions
+copying_we.txt     WE's license
+hmackecc.pas       HMAC (hash message authentication) unit for Keccak
+keccak_n.pas       Basic Keccak functions using NIST API
+kperm_16.inc       KeccakF[1600] state permutation for 16 bit compilers
+kperm_32.inc       KeccakF[1600] state permutation for 32 bit compilers
+kperm_64.inc       KeccakF[1600] state permutation for 64 bit types/compilers
+legal.txt          Legal notice (cryptography, software patents)
+manifest.kec       This file
+readme.kec         Info about this archive
+std.inc            Standard definitions and options
+t_hmack1.pas       HMAC-Keccak known answer tests
+t_kecc1.pas        First test program with byte size messages
+t_kecc2.pas        Keccak test program with message length 2111 bits
+t_kecc3.pas        Hash 1GB of data with Keccak-512
+t_kecc4.pas        Testing NIST API for Keccak-512 with ShortMsgKAT_512.txt
+t_kecc5.pas        Testing NIST API for Keccak-512 with LongMsgKAT_512.txt
+t_kecc6.pas        Test program 1000000 'a' for Keccak 224/256/384/512
+t_kecc7.pas        Monte Carlo known answer test
+t_speedk.pas       Speed test Cyc/B and MB/s for Keccak
+
+base2n.pas         Base 2**N conversion (1 <= N <= 6)
+mem_util.pas       Utility procedures for Hex/Base64 and memory compare

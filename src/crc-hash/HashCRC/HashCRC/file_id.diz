@@ -1,0 +1,13 @@
+CRC/Hash calculator V1.17 plugin for FAR 1.70+
+(c) 2002-2007 W.Ehrhardt
+
+This FAR Manager plugin calculates CRCs and Hash message digests of
+files in the active file panel.
+
+Installation: Copy the HashCRC folder to the Far\Plugins directory.
+
+Removing/Updating: Please read the file Plugins.Install.txt from 
+the FAR documentation.
+
+Source code: http://home.netsurf.de/wolfgang.ehrhardt
+

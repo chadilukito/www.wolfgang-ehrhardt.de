@@ -1,0 +1,27 @@
+#ca.bat              Generic compile batch file for all console compilers
+$d25.zip             dproj files for Delphi 25 (Tokyo Starter)
+$log_sm.zip          Archive with log files of final tests done before release
+btypes.pas           Common basic type definitions
+copying_we.txt       License
+legal.txt            Legal notice (cryptography, software patents)
+manifest.sm          This file
+mem_util.pas         Utility procedures for Hex/Base64 and memory compare
+readme.sm            Archive info
+sm16inca.pas         Sosemanuk include file for BASM16
+sm16incp.pas         Sosemanuk include file for non-basm BIT16
+sm32inc.pas          Sosemanuk include file for BIT32
+sosemanu.pas         Sosemanuk stream cipher unit
+soserefwe.zip        C code for speed comparisons
+std.inc              Standard definitions and options
+t_alpha.pas          Calculate mulAlpha and divAlpha tables for Sosemanuk
+t_sm_cyc.pas         Cycle counter test program for Sosemanuk stream cipher
+t_sm_st.pas          Simple selftest program
+t_sm_tv1.pas         Test program for test vector set 1 and diagnostics
+t_sosewe.pas         Test program for speed comparisons
+_comparm             Compile and run test programs on Raspberry Pi / 3
+
+hrtimer.pas          High resolution timer routines with comp data type
+tsc.pas              Access to Time Stamp Counter (RDTSC)
+_tsc.asm             RDTSC helper routines for 16 bit
+_tsc.obj             Compiled _tsc.asm
+

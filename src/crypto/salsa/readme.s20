@@ -1,0 +1,73 @@
+This archive contains Pascal source for the Salsa20 stream cipher
+(including and XSalsa20 and ChaCha)
+
+Last changes
+- Adjustments for FPC/ARM and Delphi Tokyo
+
+W.Ehrhardt, Nov. 2017
+http://wolfgang-ehrhardt.de
+
+---------------------------------------------------------------------------
+Salsa20 by D.J. Bernstein is a stream cipher that is included in the final
+eSTREAM Portfolio.
+
+The core of Salsa20 is a hash function with 64 bytes input and 64 bytes
+output, the input blocks consist of 128 or 256 bits of key material, the
+nonce or IV, and block numbers. The hashed output is used as a pseudo random
+key stream or is xored with the plain text to produce the cipher text.
+
+The original ECRYPT Salsa20 specification demands 20 rounds (or 10 double
+rounds) for the hash function, but D.J. Bernstein himself has formally
+proposed two variants with 8 and 12 rounds; the portfolio version has 128
+bit keys and 12 rounds. My defaults are: 12 rounds for 128 bit keys and 20
+rounds for 256 bit keys.
+
+In the following table my implementations (program t_salwe, 1.8 GHz P4 with
+Win98) are compared with the reference C and ASM code from D.J. Bernstein.
+The times in s for processing 576 MB (1 Mio 576 byte blocks) are measured:
+the columns kx show the values for key stream generation with x rounds, and
+the ex columns have the corresponding encryption times (all with 128 bit
+keys). The reference C code for the key stream generation is suboptimal
+because it encrypts a zero stream.
+
+  +---------------+------+------+-------+------+------+-------+------+
+  |      Compiler |   k8 |  k12 |   k20 |   e8 |  e12 |   e20 | Rem. |
+  +---------------+------+------+-------+------+------+-------+------+
+  |    ASM P4 F12 |    - |    - |     - | 2.54 | 3.62 |  5.57 |  (1) |
+  | GCC 4.3.2 -O3 | 5.71 | 7.36 |  9.50 | 5.44 | 7.03 |  9.12 |  (2) |
+  |   VC6 SP4 /O2 | 6.65 | 8.29 | 11.59 | 6.37 | 8.07 | 11.37 |  (2) |
+  +---------------+------+------+-------+------+------+-------+------+
+  |      Delphi 3 | 3.57 | 4.93 |  7.93 | 6.16 | 7.53 | 10.23 |    - |
+  |      Delphi 6 | 3.57 | 4.94 |  7.94 | 6.25 | 7.62 | 10.32 |    - |
+  |     Delphi 10 | 3.57 | 4.93 |  7.94 | 6.12 | 7.48 | 10.21 |    - |
+  |   VPC 2.1.279 | 4.40 | 5.77 |  8.51 | 6.89 | 8.25 | 10.98 |    - |
+  | FPC 2.2.4 -O3 | 4.57 | 5.93 |  8.66 | 7.92 | 9.33 | 11.92 |    - |
+  |      BP7 Real | 4.85 | 6.19 |  8.88 | 5.34 | 6.68 |  9.37 |    - |
+  +---------------+------+------+-------+------+------+-------+------+
+
+(1) Calculated from D.J. Bernstein's cycles for 576 bytes
+(2) Modified reference C code with static rounds variable
+
+My source implementation uses BASM for the core hash function (TP5.X uses
+Pascal with some inline).
+
+Salsa20 is used as cryptographic random number generator in the salsar
+PRNG unit.
+
+
+---------------------------------------------------------------------------
+XSalsa20 uses 256 bit keys and 192 bit IVs, there is no separate key/IV
+setup, and packet processing functions have no user supplied context.
+
+
+---------------------------------------------------------------------------
+ChaCha is one of D.J. Bernstein's variant of Salsa with improved diffusion
+per round (and conjectured increased resistance to cryptanalysis). My
+implementation allows 128/256 bit keys, ChaCha functions are exact
+counterparts of the Salsa functions, except that chacha_xkeysetup allows any
+even number of rounds > 0.
+
+Special thanks goes to EddyHawk for requesting the inclusion of ChaCha and his
+contributed functions, and to Martok for contributing optimized PurePascal
+source.
+

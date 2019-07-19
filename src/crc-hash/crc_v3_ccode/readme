@@ -1,0 +1,9 @@
+C source and header files extracted from Ross Williams' famous
+text "A PAINLESS GUIDE TO CRC ERROR DETECTION ALGORITHMS".
+
+They are Copyright (C) Ross Williams, 1993 and also
+fully public domain. The original text is available as
+<http://www.ross.net/crc/download/crc_v3.txt>
+
+Also included in the archive are three sample batch files.
+

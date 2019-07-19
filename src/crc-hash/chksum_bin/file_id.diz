@@ -1,0 +1,17 @@
+CRC/Hash demo applications    (c) 2003-2017 W.Ehrhardt
+
+To "install", just run the SFX archive Install_CRC_Demofiles.exe.
+
+The demo applications CCH and GCH calculate CRCs and Hash message
+digests of selected files.
+
+The GUI demo programs tcrc16 and tcr32 interactively calculate and
+display the results from all CRCM_CAT CRC16/CRC32 algorithms for hex
+and string input.
+
+The GUI demo SRP16 searches CRC16 Rocksoft parameters for given
+data / CRC sets with many options.
+
+Source code available.
+
+http://wolfgang-ehrhardt.de

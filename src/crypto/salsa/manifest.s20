@@ -1,0 +1,29 @@
+#ca.bat              Generic compile batch file for all console compilers
+$d25.zip             dproj files for Delphi 25 (Tokyo Starter)
+$log_s20.zip         Archive with log files of final tests done before release
+btypes.pas           Common basic type definitions
+copying_we.txt       License
+legal.txt            Legal notice (cryptography, software patents)
+manifest.s20         This file
+readme.s20           Archive info
+salsa20.pas          Salsa20 stream cipher unit
+salsarefwe.zip       C code for speed comparisons
+std.inc              Standard definitions and options
+t_cc_tv1.pas         Test program for ChaCha test vector set 1
+t_chacha.pas         Simple test for ChaCha stream cipher
+t_chacyc.pas         Cycle-Counter test program for ChaCha  stream cipher
+t_s20cyc.pas         Cycle counter test program for Salsa20 stream cipher
+t_s20tv1.pas         Test program for test vector set 1 and diagnostics
+t_s20_st.pas         Simple selftest program
+t_salwe.pas          Test program for speed comparisons
+t_xs20.pas           Test program for XSalsa20 known answer tests
+_comparm             Compile and run test programs on Raspberry Pi / 3
+
+hrtimer.pas          High resolution timer routines with comp data type
+mem_util.pas         Utility procedures for Hex/Base64 and memory compare
+tsc.pas              Access to Time Stamp Counter (RDTSC)
+_tsc.asm             RDTSC helper routines for 16 bit
+_tsc.obj             Compiled _tsc.asm
+
+
+

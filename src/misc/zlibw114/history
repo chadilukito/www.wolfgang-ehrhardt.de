@@ -1,0 +1,283 @@
+History of modifications by W.Ehrhardt to zlib/paszlib
+
+---------------------------------------------------------------------------
+unit Adler
+---------------------------------------------------------------------------
+  Feb 2002
+    - replaced inner while loop with for
+    - Source code reformating/reordering
+  Mar 2005
+    - Code cleanup for WWW upload
+
+
+---------------------------------------------------------------------------
+program example
+---------------------------------------------------------------------------
+  Feb 2002
+    - Source code reformating/reordering
+    - make code work under BP7/DPMI&Win, VPascal
+    - a) fixed buggy "var comprLen" in test_compress,
+      b) removed (un)comprLenL mess.
+      a+b) made test_sync work correctly
+  Mar 2005
+    - Code cleanup for WWW upload
+  May 2005
+    - Changed comprLen, uncomprLen from const to var (no need for $J+}
+  Jul 2009
+    - D12 fixes
+
+
+---------------------------------------------------------------------------
+unit gzIO
+---------------------------------------------------------------------------
+  Aug 2000
+    - ZLIB 113 changes
+  Feb 2002
+    - allow variable windowbits/memlevel in gzopen
+    - gzsetparams and gzeof in interface part
+    - DEF_WBITS instead of MAX_WBITS for inflate
+    - Source code reformating/reordering
+    - global {$I-} because bracketing IO functions leaves {I+} on
+    - check IOResult after writing .gz header
+    - make code work under BP7/DPMI&Win
+  Mar 2005
+    - Code cleanup for WWW upload
+  May 2005
+    - gzopen: typecast Long(stream.avail_in)
+    - do_flush: written: unsigned;
+    - gzerror: missing exit if s=nil
+  Aug 2008
+    - gzopen: assign with fpath
+  Jul 2009
+    - D12 fixes
+
+
+---------------------------------------------------------------------------
+unit InfBlock
+---------------------------------------------------------------------------
+  Aug 2000
+    - ZLIB 113 changes
+  Feb 2002
+    - Source code reformating/reordering
+  Mar 2002
+    - ZLIB 114 changes
+  Mar 2005
+    - Code cleanup for WWW upload
+  May 2005
+    - Trace: use #13#10 like C original
+
+
+---------------------------------------------------------------------------
+unit InfCodes;
+---------------------------------------------------------------------------
+  Aug 2000
+    - ZLIB 113 changes
+  Feb 2002
+    - Source code reformating/reordering
+  Mar 2002
+    - ZLIB 114 changes,
+    - Patches by Mark Adler (pers. comm.)
+  Mar 2005
+    - Code cleanup for WWW upload
+  May 2005
+    - Trace: use #13#10 like C original
+  Jul 2009
+    - D12 fixes
+
+
+---------------------------------------------------------------------------
+unit InfFast;
+---------------------------------------------------------------------------
+  Feb 2002
+    - Source code reformating/reordering
+  Mar 2002
+    - ZLIB 114 changes
+    - Patches by Mark Adler (pers. comm.)
+  Mar 2005
+    - Code cleanup for WWW upload
+  Apr 2005
+    - uses zutil if debug
+  May 2005
+    - Trace: use #13#10 like C original
+  Jul 2009
+    - D12 fixes
+
+
+---------------------------------------------------------------------------
+unit InfTrees
+---------------------------------------------------------------------------
+  Aug 2000
+    - ZLIB 113 changes
+    - Pascal version of inffixed.h: table for decoding fixed codes
+  Feb 2002
+    - Source code reformating/reordering
+  Mar 2002
+    - ZLIB 114 changes
+  Apr 2004
+    - D4Plus instead of Delphi5Up
+  Mar 2005
+    - Code cleanup for WWW upload
+  May 2005
+    - make BUILDFIXED work and verify equivalence to fixed tables
+
+
+---------------------------------------------------------------------------
+unit infutil
+---------------------------------------------------------------------------
+  Modifications by W.Ehrhardt:
+  Feb 2002
+    - Source code reformating/reordering
+    - Removed dead C macro code
+    - "_" for enum types (conflicts with case insensitive globals)
+  Mar 2005
+    - Code cleanup for WWW upload
+
+
+---------------------------------------------------------------------------
+program minigzip
+---------------------------------------------------------------------------
+  Feb 2002
+    - global {$i-}
+    - Reintroduced Z_OK
+    - Erase infile after -d
+    - option loop until ParamCount-1
+    - source code reformating/reordering
+  Mar 2005
+    - Code cleanup for WWW upload
+  Jul 2008
+    - Replace two ioerr := IOResult to avoid warnungs
+    - some typecasts for len
+  Jul 2009
+    - D12 fixes
+
+
+---------------------------------------------------------------------------
+unit trees
+---------------------------------------------------------------------------
+  Aug 2000
+    - ZLIB 113 changes
+  Feb 2002
+    - Source code reformating/reordering
+    - $ifdefs ORG_DEBUG, GEN_TREES_H, DUMP_BL_TREE,
+      FORCE_STORED, FORCE_STATIC removed
+    - Replaced printf fragments in trace call by IntToStr
+  Mar 2005
+    - Code cleanup for WWW upload
+  Apr 2005
+    - uses zutil if debug
+  May 2005
+    - Trace: use #13#10 like C original
+    - Debug: removed MAX_DIST in _tr_tally
+    - Debug: Long type cast in compress_block
+  Dec 2006
+    - Debug: fixed old paszlib bug in copy_block
+  Jul 2009
+    - D12 fixes
+
+
+---------------------------------------------------------------------------
+unit ZCrc32
+---------------------------------------------------------------------------
+  Feb 2002
+    - replaced inner while loop with for
+    - Source code reformating/reordering
+  Apr 2004
+    - D4Plus instead of Delphi5Up
+    - Warnings of for crc_table if D4+
+  Mar 2005
+    - StrictLong instead of D4Plus (FPC 1.9.x)
+    - Code cleanup for WWW upload
+
+
+---------------------------------------------------------------------------
+unit zDeflate
+---------------------------------------------------------------------------
+  Aug 2000
+    - ZLIB 113 changes
+  Feb 2002
+    - removed forward functions
+    - declared compress_funcs far
+    - removed function deflateInit_
+    - Source code reformating/reordering
+    - $ifdef ASMV removed
+    - made code for $ifdef FASTEST usable
+  Mar 2002
+    - ZLIB 114 changes
+  Jan 2003 @-Operator for FPC in configuration_table
+  Mar 2005
+    - {$ifdef UseFar}
+    - Code cleanup for WWW upload
+  May 2005
+    - ulg typecast in deflate_stored to avoid D4+ warnings
+    - Rangecheck off for assert in UNALIGNED_OK else branch
+  Jul 2009
+    - D12 fixes
+
+
+---------------------------------------------------------------------------
+unit zInflate
+---------------------------------------------------------------------------
+  Feb 2002
+    - Source code reformating/reordering
+  Mar 2005
+    - Code cleanup for WWW upload
+  May 2005
+    - Trace: use #13#10 like C original
+  Jul 2009
+    - D12 fixes
+
+
+---------------------------------------------------------------------------
+unit ZLib
+---------------------------------------------------------------------------
+  Aug 2000
+    - ZLIB 113 changes
+  Feb 2002
+    - Source code reformating/reordering
+  Mar 2005
+    - Code cleanup for WWW upload
+  Jul 2009
+    - D12 fixes
+
+
+---------------------------------------------------------------------------
+unit ZLibH
+---------------------------------------------------------------------------
+  Aug 2000
+    - ZLIB 113 changes
+  Feb 2002
+    - Source code reformating/reordering
+    - make code work under BP7/DPMI&Win
+  Mar 2002
+    - ZLIB 114 changes
+  Apr 2004
+    - procedure z_assign(var f: file; p: PChar): workaround for Delphi6/7 bug
+  Mar 2005
+    - Code cleanup for WWW upload
+  May 2005
+    - Assert moved from zlibh (ease of use if no system.assert)
+  Jul 2008
+    - update uInt/uLong for FPC2
+  Jul 2009
+    - D12 fixes
+
+
+---------------------------------------------------------------------------
+unit ZUtil
+---------------------------------------------------------------------------
+  Feb 2002
+    - moved type declarations to ZLibH
+    - Source code reformating/reordering
+    - "const" strings in debug function
+    - make code work under BP7/DPMI&Win
+    - removed $ifdef CALLDOS
+    - constant C_NL used in Trace calls for leading newline
+  Mar 2005
+    - Code cleanup for WWW upload
+  May 2005
+    - Trace: no writeln
+    - Assert moved to zlibh
+  Sep 2008
+    - Avoid write for WIN32 GUI debug code (use OutputDebugString/MessageBox)
+  Jul 2009
+    - D12 fixes

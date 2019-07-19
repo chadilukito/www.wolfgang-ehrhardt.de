@@ -1,0 +1,65 @@
+This archive contains Pascal source files demonstrating the CRC and hash
+units. All files can be used and distributed under the zlib license (see
+copying_we.txt).
+
+The command line demo tool CCH.EXE can be compiled with all current Pascal
+(TP 5/5.5/6.0, BP 7.0, VP 2.1, FPC 1/2/3.x) and Delphi versions (tested with
+1-7/9-10/12/17-18/D25S).
+
+GCH.EXE is a simple Win32 GUI demo application for Delphi
+2..7/9/10/12/17-18/D25S.
+
+The GUI demo programs tcrc16 and tcrc32 interactively calculate and
+display the results from all CRCM_CAT CRC16/CRC32 algorithms for hex and
+string input.
+
+The GUI demo SRP16 searches CRC16 Rocksoft parameters for given data / CRC
+sets with many options. The core routine processes Poly/Init ranges with
+all additional combinations of refin/refout and xorout=$0000/$FFFF.
+
+lazcrc16, lazcrc32, lazgch, lazsrp16 are the corresponding Lazarus GUI tools;
+they can be compiled with laz_make.bat.
+
+For recompilation you need the sources from crc_hash_<yyyy-mm-dd>.zip.
+
+News:
+
+2003-10-12: English comments, optimizations, overall speedup about 25%
+2003-11-03: Some VP improvements
+2003-12-01: Speedup: 25% Delphi32 .. 42% BP7, SHA384/512, GCH INI file
+2004-01-04: Small speedup, SHA224, GCH: Base64 display format
+2004-09-04: Delphi 7, GCH: Remove font.charset property for D2,
+            CCH: BP7 Win/DPMI
+2005-01-04: Bug fix SHA512/384
+2005-06-03: CCH: Options (Base64 etc), ShareDenyNone for BIT32
+2005-12-03: GCH: Hex Upcase checkbox, CCH: no confusing NOSHAxxx-defines
+2005-12-23: Whirlpool in GCH/CCH
+2006-02-11: RIPEMD-160 in GCH/CCH
+2006-04-11: CCH: CRC24; GCH: CRC24, try blocks for load/save ini,
+            new layout, print button, URL label
+2007-01-22: Bug fix Whirlpool for file sizes above 512 MB
+2007-02-12: Work around for Delphi eof bug for file sizes above 4 GB
+2007-03-04: MD4, eDonkey/eMule; GCH: stop/export buttons, status bar
+2007-10-04: Bug fix SHA512/384 for file sizes above 512MB
+            CCH: Run self tests with -t
+2008-11-22: GCH: Replaced string with ansistring
+            CCH: BTypes, str255, BString
+2009-07-24: Delphi 2009 (D12) adjustments, t_crc16 demo
+2009-09-10: t_crc32 demo program
+2009-10-12: srp16 demo program
+2010-03-20: More Rocksoft model parameter sets
+2010-12-17: CRC-16/Sick, some minor changes
+2012-03-22: SHA-512/224 and SHA-512/256
+2012-12-26: CCH: D17 and 64-bit adjustments
+2014-01-05: New CRC model parameters in unit crcm_cat
+2015-08-22: SHA-3 algorithms
+2017-06-03: Blake2s, more Rocksoft model parameter sets
+2017-11-13: Blake2b, GCH and CCH compiled with Delphi 6 and FPC 3.0.0
+2017-11-24: CCH: Blake2b for VER5X
+2018-06-15: Lazarus demos
+
+
+---------------------------------------------------------------------------
+W.Ehrhardt, June 2018
+http://wolfgang-ehrhardt.de
+

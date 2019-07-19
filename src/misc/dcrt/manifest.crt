@@ -1,0 +1,10 @@
+c1c.bat            Batch file to build CRT for BCB versions
+c1d.bat            Batch file to build CRT for Delphi versions
+crt.pas            BP7 compatible CRT unit for Win32/64 Delphi
+crtdemo.dproj      dproj file for Delphi 25 (Tokyo Starter)
+crtdemo.pas        Borland's BP7 CRT Unit Demo (slightly modified)
+make_crt.bat       Batch to build CRT for Delphi 2-7,9,10,12,17, BCB 3-4
+manifest.crt       This file
+readme.crt         Package description, what's new
+rk.dpr             Test readkey scan codes and line editing keys
+

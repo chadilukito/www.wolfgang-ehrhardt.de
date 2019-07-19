@@ -1,0 +1,40 @@
+This archive contains Pascal/Delphi sources for the Camellia cipher.
+
+------------------------------------------------------------------------
+NOTE: Although NTT has published open source code of Camellia, the users
+of this unit should read my legal.txt and NTT's Intellectual Property
+Information page <http://info.isl.ntt.co.jp/crypt/eng/info/chiteki.html>
+------------------------------------------------------------------------
+
+The Feistel block cipher Camellia has been developed by NTT (Nippon
+Telegraph and Telephone) and Mitsubishi. It uses 128-bit input/output
+data blocks and 128, 192, or 256 bit keys. Camellia is a recommended
+block cipher of the NESSIE portfolio, included in ISO/IEC 18033-3 and
+also described in RFC 3713.
+
+There is code for a DLL and the following modes of operation are
+supported: CBC, CFB128, CTR, ECB, OFB, OMAC, CCM, GCM, and EAX. All modes
+allow plain and cipher text lengths that need not be multiples of the
+block length (for ECB and CBC cipher text stealing is used for the short
+block). CTR mode can use 4 built-in incrementing functions or a user
+supplied one, and provides seek functions for random access reads.
+Please note that although my code supports EAX, this mode is not tested
+against public test vectors.
+
+All modes of operation (except OMAC/CCM/EAX) support a reset function
+that re-initializes the chaining variables without the recalculation of
+the round keys.
+
+Additionally there is the variable-length key CMAC PRF-128.
+
+Please note: If you compile 32 bit code under an old 386 CPU you must
+$undef USE_BSWAP in cam_base.pas!
+
+
+---------------------------------------------------------------------------
+Last changes:
+- Galois/Counter Mode of Operation (GCM)
+- FPC/ARM and Delphi Tokyo adjustments
+
+W.Ehrhardt, Nov. 2017
+http://wolfgang-ehrhardt.de

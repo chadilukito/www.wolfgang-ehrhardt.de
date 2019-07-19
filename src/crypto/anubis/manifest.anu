@@ -1,0 +1,38 @@
+!bdll.bat            Compile batch file for anu_dll
+#ca.bat              Generic compile batch file for all console compilers
+#ca_dll.bat          T_ANU_WS with anu_dll compile batch file for win32 compilers
+$d25.zip             dproj files for Delphi 25 (Tokyo Starter)
+$log_anu.zip         Archive with log files of final tests done before release
+anu_base.pas         Anubis basic routines
+anu_cbc.pas          Anubis CBC functions
+anu_cfb.pas          Anubis CFB128 functions
+anu_ctr.pas          Anubis CTR mode functions
+anu_dll.dpr          Project  file for anu_dll
+anu_dll.res          RES      file for anu_dll
+anu_eax.pas          Anubis EAX mode functions
+anu_ecb.pas          Anubis ECB functions
+anu_intf.pas         Interface unit for anu_dll
+anu_intv.pas         Interface unit for anu_dll (VirtualPascal version)
+anu_ofb.pas          Anubis OFB functions
+anu_omac.pas         Anubis OMAC1/2 routines
+anu_seek.inc         Include file for CTR_Seek functions
+btypes.pas           Common basic type definitions
+copying_we.txt       License
+legal.txt            Legal notice (cryptography, software patents)
+ltc_anubis.zip       LibTomCrypt C source for calculating T_ANU_WS test vectors
+manifest.anu         This file
+mem_util.pas         Utilities for hex dump and memory compare
+readme.anu           Info about this archive
+std.inc              Standard definitions and options
+t_anomac.pas         Test prog for Anubis-OMAC
+t_anu_as.pas         Test prog for "Associativity of CFB,OFB,CTR"
+t_anu_cs.pas         Test prog for CTR_Seek functions
+t_anu_ks.pas         Check test vectors for Anubis key sizes 128..320 bit
+t_anu_ws.pas         Test prog for Anubis modes (CBC, CFB, CTR, ECB, OFB, OMAC, EAX)
+t_anu_xl.pas         Test prog for Anubis modes, ILen > $FFFF for 32 bit
+t_an_bs1.pas         Test prog for basic Anubis functions
+t_an_cyc.pas         Test prog encrypt/decrypt/keyinit cycle count
+t_an_eax.pas         Test prog for Anubis-EAX
+t_nessie.pas         Test prog for reproducing the Nessie Anubis test vectors
+_comparm             Compile and run test programs on Raspberry Pi / 3
+

@@ -1,0 +1,34 @@
+#!/bin/bash -e
+
+# Be sure to have LF as EOL
+# and to chmod a+x
+
+LOG=salsa_arm.log
+
+echo Results for FPC/ARM \(Raspberry Pi 3/B\) > $LOG
+uname -a                                     >> $LOG
+echo -e -n FPC version \\x20  >> $LOG
+fpc -iW                       >> $LOG
+echo ======================================  >> $LOG
+
+SRC=t_chacha
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC test >> $LOG
+
+SRC=t_s20_st
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_xs20
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+

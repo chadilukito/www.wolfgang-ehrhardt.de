@@ -1,0 +1,665 @@
+object Form1: TForm1
+  Left = 296
+  Height = 580
+  Top = 133
+  Width = 672
+  Caption = 'LazSRP16'
+  ClientHeight = 580
+  ClientWidth = 672
+  Color = clBtnFace
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'MS Sans Serif'
+  OnCreate = FormCreate
+  Position = poScreenCenter
+  LCLVersion = '1.8.4.0'
+  Scaled = False
+  object Panel1: TPanel
+    Left = 0
+    Height = 196
+    Top = 0
+    Width = 672
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 196
+    ClientWidth = 672
+    TabOrder = 0
+    object Lab_Hdr: TLabel
+      Left = 6
+      Height = 16
+      Top = 6
+      Width = 489
+      AutoSize = False
+      Caption = '(HDR)'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clGreen
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object Label1: TLabel
+      Left = 6
+      Height = 16
+      Top = 34
+      Width = 40
+      Caption = 'Data 1'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 6
+      Height = 16
+      Top = 66
+      Width = 40
+      Caption = 'Data 2'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object Lab_minpoly: TLabel
+      Left = 6
+      Height = 16
+      Top = 130
+      Width = 68
+      AutoSize = False
+      Caption = 'Min. poly'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object Lab_maxpoly: TLabel
+      Left = 182
+      Height = 16
+      Top = 130
+      Width = 68
+      AutoSize = False
+      Caption = 'Max. poly'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object Lab_mininit: TLabel
+      Left = 6
+      Height = 16
+      Top = 164
+      Width = 68
+      AutoSize = False
+      Caption = 'Min. init '
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object Lab_maxinit: TLabel
+      Left = 182
+      Height = 16
+      Top = 164
+      Width = 68
+      AutoSize = False
+      Caption = 'Max. init'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object SB_New: TSpeedButton
+      Left = 494
+      Height = 26
+      Hint = 'Clear parameters'
+      Top = 126
+      Width = 26
+      Glyph.Data = {
+        76010000424D7601000000000000760000002800000020000000100000000100
+        04000000000000010000130B0000130B00001000000000000000000000000000
+        800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF0033333333B333
+        333B33FF33337F3333F73BB3777BB7777BB3377FFFF77FFFF77333B000000000
+        0B3333777777777777333330FFFFFFFF07333337F33333337F333330FFFFFFFF
+        07333337F33333337F333330FFFFFFFF07333337F33333337F333330FFFFFFFF
+        07333FF7F33333337FFFBBB0FFFFFFFF0BB37777F3333333777F3BB0FFFFFFFF
+        0BBB3777F3333FFF77773330FFFF000003333337F333777773333330FFFF0FF0
+        33333337F3337F37F3333330FFFF0F0B33333337F3337F77FF333330FFFF003B
+        B3333337FFFF77377FF333B000000333BB33337777777F3377FF3BB3333BB333
+        3BB33773333773333773B333333B3333333B7333333733333337
+      }
+      NumGlyphs = 2
+      OnClick = SB_NewClick
+      ShowHint = True
+      ParentShowHint = False
+    end
+    object SB_Load: TSpeedButton
+      Left = 527
+      Height = 26
+      Hint = 'Load parameters from SRP file'
+      Top = 126
+      Width = 26
+      Glyph.Data = {
+        76010000424D7601000000000000760000002800000020000000100000000100
+        04000000000000010000130B0000130B00001000000000000000000000000000
+        800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF0033333333B333
+        333B33FF33337F3333F73BB3777BB7777BB3377FFFF77FFFF77333B000000000
+        0B3333777777777777333330FFFFFFFF07333337F33333337F333330FFFFFFFF
+        07333337F3FF3FFF7F333330F00F000F07333337F77377737F333330FFFFFFFF
+        07333FF7F3FFFF3F7FFFBBB0F0000F0F0BB37777F7777373777F3BB0FFFFFFFF
+        0BBB3777F3FF3FFF77773330F00F000003333337F773777773333330FFFF0FF0
+        33333337F3FF7F37F3333330F08F0F0B33333337F7737F77FF333330FFFF003B
+        B3333337FFFF77377FF333B000000333BB33337777777F3377FF3BB3333BB333
+        3BB33773333773333773B333333B3333333B7333333733333337
+      }
+      Layout = blGlyphRight
+      NumGlyphs = 2
+      OnClick = SB_LoadClick
+      ShowHint = True
+      ParentShowHint = False
+    end
+    object SB_Save: TSpeedButton
+      Left = 594
+      Height = 26
+      Hint = 'Save parameters to SRP file'
+      Top = 126
+      Width = 26
+      Glyph.Data = {
+        76010000424D7601000000000000760000002800000020000000100000000100
+        04000000000000010000130B0000130B00001000000000000000000000000000
+        800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333330070
+        7700333333337777777733333333008088003333333377F73377333333330088
+        88003333333377FFFF7733333333000000003FFFFFFF77777777000000000000
+        000077777777777777770FFFFFFF0FFFFFF07F3333337F3333370FFFFFFF0FFF
+        FFF07F3FF3FF7FFFFFF70F00F0080CCC9CC07F773773777777770FFFFFFFF039
+        99337F3FFFF3F7F777F30F0000F0F09999937F7777373777777F0FFFFFFFF999
+        99997F3FF3FFF77777770F00F000003999337F773777773777F30FFFF0FF0339
+        99337F3FF7F3733777F30F08F0F0337999337F7737F73F7777330FFFF0039999
+        93337FFFF7737777733300000033333333337777773333333333
+      }
+      NumGlyphs = 2
+      OnClick = SB_SaveClick
+      ShowHint = True
+      ParentShowHint = False
+    end
+    object SB_CheckKnown: TSpeedButton
+      Left = 366
+      Height = 28
+      Hint = 'Check known algorithms'
+      Top = 158
+      Width = 28
+      Glyph.Data = {
+        76010000424D7601000000000000760000002800000020000000100000000100
+        04000000000000010000130B0000130B00001000000000000000000000000000
+        800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+        333333333333333333FF33333333333330003FF3FFFFF3333777003000003333
+        300077F777773F333777E00BFBFB033333337773333F7F33333FE0BFBF000333
+        330077F3337773F33377E0FBFBFBF033330077F3333FF7FFF377E0BFBF000000
+        333377F3337777773F3FE0FBFBFBFBFB039977F33FFFFFFF7377E0BF00000000
+        339977FF777777773377000BFB03333333337773FF733333333F333000333333
+        3300333777333333337733333333333333003333333333333377333333333333
+        333333333333333333FF33333333333330003333333333333777333333333333
+        3000333333333333377733333333333333333333333333333333
+      }
+      NumGlyphs = 2
+      OnClick = SB_CheckKnownClick
+      ShowHint = True
+      ParentShowHint = False
+    end
+    object SB_RemSpaces: TSpeedButton
+      Left = 628
+      Height = 26
+      Hint = 'Remove spaces from Hex data, add $ to Hex CRC'
+      Top = 126
+      Width = 26
+      Glyph.Data = {
+        76010000424D7601000000000000760000002800000020000000100000000100
+        04000000000000010000120B0000120B00001000000000000000000000000000
+        800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00500005000555
+        555557777F777555F55500000000555055557777777755F75555005500055055
+        555577F5777F57555555005550055555555577FF577F5FF55555500550050055
+        5555577FF77577FF555555005050110555555577F757777FF555555505099910
+        555555FF75777777FF555005550999910555577F5F77777775F5500505509990
+        3055577F75F77777575F55005055090B030555775755777575755555555550B0
+        B03055555F555757575755550555550B0B335555755555757555555555555550
+        BBB35555F55555575F555550555555550BBB55575555555575F5555555555555
+        50BB555555555555575F555555555555550B5555555555555575
+      }
+      NumGlyphs = 2
+      OnClick = SB_RemSpacesClick
+      ShowHint = True
+      ParentShowHint = False
+    end
+    object Label3: TLabel
+      Left = 6
+      Height = 16
+      Top = 98
+      Width = 40
+      Caption = 'Data 3'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object Label4: TLabel
+      Left = 358
+      Height = 16
+      Top = 130
+      Width = 38
+      Alignment = taRightJustify
+      AutoSize = False
+      Caption = 'Poly'
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object SB_Swap: TSpeedButton
+      Left = 560
+      Height = 26
+      Hint = 'Swap data 1 and 2 entries'
+      Top = 126
+      Width = 26
+      Glyph.Data = {
+        DE010000424DDE01000000000000760000002800000024000000120000000100
+        0400000000006801000000000000000000001000000000000000000000000000
+        80000080000000808000800000008000800080800000C0C0C000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333444444
+        33333333333F8888883F33330000324334222222443333388F3833333388F333
+        000032244222222222433338F8833FFFFF338F3300003222222AAAAA22243338
+        F333F88888F338F30000322222A33333A2224338F33F8333338F338F00003222
+        223333333A224338F33833333338F38F00003222222333333A444338FFFF8F33
+        3338888300003AAAAAAA33333333333888888833333333330000333333333333
+        333333333333333333FFFFFF000033333333333344444433FFFF333333888888
+        00003A444333333A22222438888F333338F3333800003A2243333333A2222438
+        F38F333333833338000033A224333334422224338338FFFFF8833338000033A2
+        22444442222224338F3388888333FF380000333A2222222222AA243338FF3333
+        33FF88F800003333AA222222AA33A3333388FFFFFF8833830000333333AAAAAA
+        3333333333338888883333330000333333333333333333333333333333333333
+        0000
+      }
+      NumGlyphs = 2
+      OnClick = SB_SwapClick
+      ShowHint = True
+      ParentShowHint = False
+    end
+    object SB_Info: TSpeedButton
+      Left = 628
+      Height = 28
+      Hint = 'Show some help'
+      Top = 158
+      Width = 26
+      Glyph.Data = {
+        42010000424D4201000000000000760000002800000011000000110000000100
+        040000000000CC00000000000000000000001000000010000000000000000000
+        BF0000BF000000BFBF00BF000000BF00BF00BFBF0000C0C0C000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00777777777777
+        7777700000007777777777777777700000007777777444777777700000007777
+        7774447777777000000077777777777777777000000077777774487777777000
+        0000777777744877777770000000777777774477777770000000777777777448
+        7777700000007777744778448777700000007777448777444777700000007777
+        4487774447777000000077777447784487777000000077777744444877777000
+        0000777777777777777770000000777777777777777770000000777777777777
+        777770000000
+      }
+      OnClick = SB_InfoClick
+      ShowHint = True
+      ParentShowHint = False
+    end
+    object ECStr1: TEdit
+      Left = 198
+      Height = 24
+      Hint = 'Enter first data set (required)'
+      Top = 30
+      Width = 454
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Courier New'
+      OnChange = ECStr1Change
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 2
+    end
+    object CB_Format1: TComboBox
+      Left = 122
+      Height = 24
+      Hint = 'Selext input mode'
+      Top = 30
+      Width = 66
+      ItemHeight = 16
+      Items.Strings = (
+        'HEX'
+        'String'
+      )
+      OnChange = CB_Format1Change
+      ParentShowHint = False
+      ShowHint = True
+      Style = csDropDownList
+      TabOrder = 1
+    end
+    object CB_Format2: TComboBox
+      Left = 122
+      Height = 24
+      Hint = 'Selext input mode'
+      Top = 62
+      Width = 66
+      ItemHeight = 16
+      Items.Strings = (
+        'HEX'
+        'String'
+      )
+      OnChange = CB_Format2Change
+      ParentShowHint = False
+      ShowHint = True
+      Style = csDropDownList
+      TabOrder = 4
+    end
+    object ECStr2: TEdit
+      Left = 198
+      Height = 24
+      Hint = 'Enter second data set if available'
+      Top = 62
+      Width = 454
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Courier New'
+      OnChange = ECStr2Change
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 5
+    end
+    object EPolyMin: TEdit
+      Left = 78
+      Height = 24
+      Top = 126
+      Width = 72
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Courier New'
+      ParentFont = False
+      TabOrder = 6
+    end
+    object EPolyMax: TEdit
+      Left = 258
+      Height = 24
+      Top = 126
+      Width = 72
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Courier New'
+      ParentFont = False
+      TabOrder = 7
+    end
+    object EInitMin: TEdit
+      Left = 78
+      Height = 24
+      Top = 160
+      Width = 72
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Courier New'
+      ParentFont = False
+      TabOrder = 8
+    end
+    object EInitMax: TEdit
+      Left = 258
+      Height = 24
+      Top = 160
+      Width = 73
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Courier New'
+      ParentFont = False
+      TabOrder = 9
+    end
+    object ECRC1: TEdit
+      Left = 54
+      Height = 24
+      Hint = 'First CRC'
+      Top = 30
+      Width = 56
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Courier New'
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 0
+    end
+    object ECRC2: TEdit
+      Left = 54
+      Height = 24
+      Hint = 'Second CRC'
+      Top = 62
+      Width = 56
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Courier New'
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 3
+    end
+    object Button_Start: TBitBtn
+      Left = 404
+      Height = 28
+      Top = 158
+      Width = 106
+      Caption = 'Search!'
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      Glyph.Data = {
+        76010000424D7601000000000000760000002800000020000000100000000100
+        04000000000000010000120B0000120B00001000000000000000000000000000
+        800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00337000000000
+        73333337777777773F333308888888880333337F3F3F3FFF7F33330808089998
+        0333337F737377737F333308888888880333337F3F3F3F3F7F33330808080808
+        0333337F737373737F333308888888880333337F3F3F3F3F7F33330808080808
+        0333337F737373737F333308888888880333337F3F3F3F3F7F33330808080808
+        0333337F737373737F333308888888880333337F3FFFFFFF7F33330800000008
+        0333337F7777777F7F333308000E0E080333337F7FFFFF7F7F33330800000008
+        0333337F777777737F333308888888880333337F333333337F33330888888888
+        03333373FFFFFFFF733333700000000073333337777777773333
+      }
+      NumGlyphs = 2
+      OnClick = Button_StartClick
+      ParentFont = False
+      TabOrder = 11
+    end
+    object Button_Stop: TBitBtn
+      Left = 519
+      Height = 28
+      Top = 158
+      Width = 100
+      Caption = 'Stop'
+      Enabled = False
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      Glyph.Data = {
+        76010000424D7601000000000000760000002800000020000000100000000100
+        04000000000000010000130B0000130B00001000000000000000000000000000
+        800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+        3333333333FFFFF3333333333999993333333333F77777FFF333333999999999
+        33333337777FF377FF3333993370739993333377FF373F377FF3399993000339
+        993337777F777F3377F3393999707333993337F77737333337FF993399933333
+        399377F3777FF333377F993339903333399377F33737FF33377F993333707333
+        399377F333377FF3377F993333101933399377F333777FFF377F993333000993
+        399377FF3377737FF7733993330009993933373FF3777377F7F3399933000399
+        99333773FF777F777733339993707339933333773FF7FFF77333333999999999
+        3333333777333777333333333999993333333333377777333333
+      }
+      NumGlyphs = 2
+      OnClick = Button_StopClick
+      ParentFont = False
+      TabOrder = 12
+    end
+    object CB_Verified: TCheckBox
+      Left = 516
+      Height = 20
+      Hint = 'List parameter sets only if two data sets match'
+      Top = 6
+      Width = 133
+      Alignment = taLeftJustify
+      Caption = 'List if double match'
+      Checked = True
+      ParentShowHint = False
+      ShowHint = True
+      State = cbChecked
+      TabOrder = 10
+    end
+    object ECRC3: TEdit
+      Left = 53
+      Height = 24
+      Hint = 'Third CRC'
+      Top = 94
+      Width = 56
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Courier New'
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 13
+    end
+    object CB_Format3: TComboBox
+      Left = 121
+      Height = 24
+      Top = 94
+      Width = 66
+      ItemHeight = 16
+      Items.Strings = (
+        'HEX'
+        'String'
+      )
+      OnChange = CB_Format3Change
+      TabOrder = 14
+    end
+    object ECStr3: TEdit
+      Left = 198
+      Height = 24
+      Hint = 'Enter third data set if available'
+      Top = 94
+      Width = 454
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Courier New'
+      OnChange = ECStr3Change
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 15
+    end
+    object CB_Poly: TComboBox
+      Left = 402
+      Height = 24
+      Top = 126
+      Width = 73
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Courier New'
+      ItemHeight = 16
+      Items.Strings = (
+        ''
+        '$1021'
+        '$8005'
+        '$3D65'
+        '$8408'
+        '$002D'
+        '$0589'
+        '$8BB7'
+      )
+      OnChange = CB_PolyChange
+      ParentFont = False
+      TabOrder = 16
+    end
+  end
+  object ResMemo: TMemo
+    Left = 0
+    Height = 384
+    Top = 196
+    Width = 672
+    Align = alClient
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Courier New'
+    ParentFont = False
+    PopupMenu = PopupMenu1
+    ScrollBars = ssVertical
+    TabOrder = 1
+  end
+  object OpenDialog1: TOpenDialog
+    Title = ' Load parameters'
+    Filter = 'SRP Sesssion Files (*.srp)|*.SRP|All files (*.*)|*.*'
+    FilterIndex = 0
+    left = 488
+    top = 296
+  end
+  object SaveDialog1: TSaveDialog
+    Title = ' Save parameters'
+    DefaultExt = '.BSF'
+    Filter = 'SRP Session Files (*.srp)|*.SRP'
+    Options = [ofOverwritePrompt, ofHideReadOnly, ofPathMustExist]
+    left = 568
+    top = 296
+  end
+  object PopupMenu1: TPopupMenu
+    left = 288
+    top = 360
+    object RE_Clear: TMenuItem
+      Caption = '&Clear'
+      OnClick = RE_ClearClick
+    end
+    object RE_Insert: TMenuItem
+      Caption = '&Insert data'
+      OnClick = RE_InsertClick
+    end
+  end
+end

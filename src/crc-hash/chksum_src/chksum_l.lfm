@@ -1,0 +1,672 @@
+object CS_Main: TCS_Main
+  Left = 369
+  Height = 679
+  Top = 155
+  Width = 751
+  Caption = 'File check sum calculator'
+  ClientHeight = 679
+  ClientWidth = 751
+  Color = clBtnFace
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'MS Sans Serif'
+  OnClose = FormClose
+  OnShow = FormShow
+  Position = poScreenCenter
+  LCLVersion = '1.8.4.0'
+  Scaled = False
+  object Panel1: TPanel
+    Left = 0
+    Height = 628
+    Top = 31
+    Width = 112
+    Align = alLeft
+    BevelOuter = bvLowered
+    ClientHeight = 628
+    ClientWidth = 112
+    TabOrder = 0
+    object SB_UncheckAll: TSpeedButton
+      Left = 4
+      Height = 23
+      Hint = 'Quickly uncheck all check sums'
+      Top = 104
+      Width = 96
+      Caption = 'Uncheck'
+      Flat = True
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      Glyph.Data = {
+        CA010000424DCA01000000000000760000002800000023000000110000000100
+        0400000000005401000000000000000000001000000010000000000000000000
+        80000080000000808000800000008000800080800000C0C0C000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333888888
+        3333333333338888883333300000333338111111833333333338333333833330
+        0000333381999999183333333383FFFFFF383330000033381988883811833333
+        383F888838338330000033918111118199183333F383333383FF383000003391
+        8999981939183333F38FFFF83F3F3830000038918333819189183338F3833383
+        F38F38338383919183381999191833F3F383383FFF3F38333F38919183819939
+        191833F3F38383FF3F3F38318888919188199339191833F3F3883FF33F3F3833
+        3333918911993339818333F38F33FF333F83833333FF918391888888193333F3
+        83F38888883F33300000918819111111983333F3883F333333F8333000003911
+        939999998333333F33F3FFFFFF833330000033918888881933333333F3888888
+        3F3333300000333911111193333333333F333333F33333300000333399999933
+        3333333333FFFFFF333333300000
+      }
+      Margin = 4
+      NumGlyphs = 2
+      Spacing = -1
+      OnClick = SB_UncheckAllClick
+      ShowHint = True
+      ParentFont = False
+      ParentShowHint = False
+    end
+    object SB_CheckAll: TSpeedButton
+      Left = 4
+      Height = 23
+      Hint = 'Quickly check all check sums'
+      Top = 81
+      Width = 96
+      Caption = 'Check'
+      Flat = True
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      Glyph.Data = {
+        F2010000424DF201000000000000760000002800000024000000130000000100
+        0400000000007C01000000000000000000001000000000000000000000000000
+        80000080000000808000800000008000800080800000C0C0C000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333334433333
+        3333333333388F3333333333000033334224333333333333338338F333333333
+        0000333422224333333333333833338F33333333000033422222243333333333
+        83333338F3333333000034222A22224333333338F33F33338F33333300003222
+        A2A2224333333338F383F3338F33333300003A2A222A222433333338F8333F33
+        38F33333000034A22222A22243333338833333F3338F333300004222A2222A22
+        2433338F338F333F3338F3330000222A3A2224A22243338F3838F338F3338F33
+        0000A2A333A2224A2224338F83338F338F3338F300003A33333A2224A2224338
+        333338F338F3338F000033333333A2224A2243333333338F338F338F00003333
+        33333A2224A2233333333338F338F83300003333333333A2224A333333333333
+        8F338F33000033333333333A222433333333333338F338F30000333333333333
+        A224333333333333338F38F300003333333333333A223333333333333338F8F3
+        000033333333333333A3333333333333333383330000
+      }
+      Margin = 4
+      NumGlyphs = 2
+      Spacing = -1
+      OnClick = SB_CheckAllClick
+      ShowHint = True
+      ParentFont = False
+      ParentShowHint = False
+    end
+    object CB_CRC16: TCheckBox
+      Left = 6
+      Height = 20
+      Top = 132
+      Width = 62
+      Caption = 'CRC16'
+      Checked = True
+      State = cbChecked
+      TabOrder = 2
+    end
+    object CB_CRC24: TCheckBox
+      Left = 6
+      Height = 20
+      Top = 150
+      Width = 62
+      Caption = 'CRC24'
+      Checked = True
+      State = cbChecked
+      TabOrder = 3
+    end
+    object CB_CRC32: TCheckBox
+      Left = 6
+      Height = 20
+      Top = 168
+      Width = 62
+      Caption = 'CRC32'
+      Checked = True
+      State = cbChecked
+      TabOrder = 4
+    end
+    object CB_Adler32: TCheckBox
+      Left = 6
+      Height = 20
+      Top = 186
+      Width = 66
+      Caption = 'Adler32'
+      Checked = True
+      State = cbChecked
+      TabOrder = 5
+    end
+    object CB_CRC64: TCheckBox
+      Left = 6
+      Height = 20
+      Top = 204
+      Width = 62
+      Caption = 'CRC64'
+      Checked = True
+      State = cbChecked
+      TabOrder = 6
+    end
+    object CB_ED2K: TCheckBox
+      Left = 6
+      Height = 20
+      Top = 222
+      Width = 75
+      Caption = 'eDonkey'
+      TabOrder = 15
+    end
+    object CB_MD4: TCheckBox
+      Left = 7
+      Height = 20
+      Top = 240
+      Width = 48
+      Caption = 'MD4'
+      TabOrder = 16
+    end
+    object CB_MD5: TCheckBox
+      Left = 6
+      Height = 20
+      Top = 258
+      Width = 48
+      Caption = 'MD5'
+      Checked = True
+      State = cbChecked
+      TabOrder = 7
+    end
+    object CB_RMD160: TCheckBox
+      Left = 6
+      Height = 20
+      Top = 276
+      Width = 93
+      Caption = 'RIPEMD160'
+      Checked = True
+      State = cbChecked
+      TabOrder = 8
+    end
+    object CB_SHA1: TCheckBox
+      Left = 6
+      Height = 20
+      Top = 294
+      Width = 55
+      Caption = 'SHA1'
+      Checked = True
+      State = cbChecked
+      TabOrder = 9
+    end
+    object CB_SHA224: TCheckBox
+      Left = 6
+      Height = 20
+      Top = 312
+      Width = 69
+      Caption = 'SHA224'
+      Checked = True
+      State = cbChecked
+      TabOrder = 10
+    end
+    object CB_SHA256: TCheckBox
+      Left = 6
+      Height = 20
+      Top = 330
+      Width = 69
+      Caption = 'SHA256'
+      Checked = True
+      State = cbChecked
+      TabOrder = 11
+    end
+    object CB_SHA384: TCheckBox
+      Left = 6
+      Height = 20
+      Top = 348
+      Width = 69
+      Caption = 'SHA384'
+      Checked = True
+      State = cbChecked
+      TabOrder = 12
+    end
+    object CB_SHA512: TCheckBox
+      Left = 6
+      Height = 20
+      Top = 366
+      Width = 69
+      Caption = 'SHA512'
+      Checked = True
+      State = cbChecked
+      TabOrder = 13
+    end
+    object CB_SHA5_224: TCheckBox
+      Left = 6
+      Height = 20
+      Top = 384
+      Width = 94
+      Caption = 'SHA512/224'
+      TabOrder = 17
+    end
+    object CB_SHA5_256: TCheckBox
+      Left = 7
+      Height = 20
+      Top = 402
+      Width = 94
+      Caption = 'SHA512/256'
+      TabOrder = 18
+    end
+    object CB_Whirl: TCheckBox
+      Left = 6
+      Height = 20
+      Top = 420
+      Width = 77
+      Caption = 'Whirlpool'
+      Checked = True
+      State = cbChecked
+      TabOrder = 14
+    end
+    object CB_SHA3_224: TCheckBox
+      Left = 6
+      Height = 20
+      Top = 438
+      Width = 80
+      Caption = 'SHA3-224'
+      Checked = True
+      State = cbChecked
+      TabOrder = 19
+    end
+    object CB_SHA3_256: TCheckBox
+      Left = 6
+      Height = 20
+      Top = 456
+      Width = 80
+      Caption = 'SHA3-256'
+      Checked = True
+      State = cbChecked
+      TabOrder = 20
+    end
+    object CB_SHA3_384: TCheckBox
+      Left = 6
+      Height = 20
+      Top = 474
+      Width = 80
+      Caption = 'SHA3-384'
+      Checked = True
+      State = cbChecked
+      TabOrder = 21
+    end
+    object CB_SHA3_512: TCheckBox
+      Left = 6
+      Height = 20
+      Top = 492
+      Width = 80
+      Caption = 'SHA3-512'
+      Checked = True
+      State = cbChecked
+      TabOrder = 22
+    end
+    object CB_Blaks224: TCheckBox
+      Left = 6
+      Height = 20
+      Top = 510
+      Width = 96
+      Caption = 'Blake2S-224'
+      Checked = True
+      State = cbChecked
+      TabOrder = 23
+    end
+    object CB_Blaks256: TCheckBox
+      Left = 6
+      Height = 20
+      Top = 528
+      Width = 96
+      Caption = 'Blake2S-256'
+      Checked = True
+      State = cbChecked
+      TabOrder = 24
+    end
+    object RG_Format: TRadioGroup
+      Left = 4
+      Height = 53
+      Hint = 'Select display format'
+      Top = 25
+      Width = 96
+      AutoFill = True
+      Caption = 'Format'
+      ChildSizing.LeftRightSpacing = 6
+      ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+      ChildSizing.EnlargeVertical = crsHomogenousChildResize
+      ChildSizing.ShrinkHorizontal = crsScaleChilds
+      ChildSizing.ShrinkVertical = crsScaleChilds
+      ChildSizing.Layout = cclLeftToRightThenTopToBottom
+      ChildSizing.ControlsPerLine = 1
+      ClientHeight = 32
+      ClientWidth = 92
+      ItemIndex = 0
+      Items.Strings = (
+        'Hex'
+        'Base64'
+      )
+      OnClick = RG_FormatExit
+      OnExit = RG_FormatExit
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 1
+    end
+    object CB_Upcase: TCheckBox
+      Left = 8
+      Height = 20
+      Hint = 'Display HEX in uppercase characters'
+      Top = 3
+      Width = 68
+      Caption = 'Upcase'
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 0
+    end
+    object CB_Blakb384: TCheckBox
+      Left = 5
+      Height = 20
+      Top = 546
+      Width = 96
+      Caption = 'Blake2B-284'
+      Checked = True
+      State = cbChecked
+      TabOrder = 25
+    end
+    object CB_Blakb512: TCheckBox
+      Left = 5
+      Height = 20
+      Top = 564
+      Width = 96
+      Caption = 'Blake2B-512'
+      Checked = True
+      State = cbChecked
+      TabOrder = 26
+    end
+  end
+  object Memo1: TMemo
+    Left = 112
+    Height = 628
+    Top = 31
+    Width = 639
+    Align = alClient
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Courier New'
+    ParentFont = False
+    ReadOnly = True
+    ScrollBars = ssBoth
+    TabOrder = 1
+    WordWrap = False
+  end
+  object Panel2: TPanel
+    Left = 0
+    Height = 31
+    Top = 0
+    Width = 751
+    Align = alTop
+    BevelOuter = bvLowered
+    ClientHeight = 31
+    ClientWidth = 751
+    TabOrder = 2
+    object SB_OpenFile: TSpeedButton
+      Left = 108
+      Height = 23
+      Hint = 'Select files and calculate'
+      Top = 3
+      Width = 88
+      Caption = 'Calc'
+      Flat = True
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      Glyph.Data = {
+        76010000424D7601000000000000760000002800000020000000100000000100
+        04000000000000010000120B0000120B00001000000000000000000000000000
+        800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00337000000000
+        73333337777777773F333308888888880333337F3F3F3FFF7F33330808089998
+        0333337F737377737F333308888888880333337F3F3F3F3F7F33330808080808
+        0333337F737373737F333308888888880333337F3F3F3F3F7F33330808080808
+        0333337F737373737F333308888888880333337F3F3F3F3F7F33330808080808
+        0333337F737373737F333308888888880333337F3FFFFFFF7F33330800000008
+        0333337F7777777F7F333308000E0E080333337F7FFFFF7F7F33330800000008
+        0333337F777777737F333308888888880333337F333333337F33330888888888
+        03333373FFFFFFFF733333700000000073333337777777773333
+      }
+      NumGlyphs = 2
+      OnClick = SB_OpenFileClick
+      ShowHint = True
+      ParentFont = False
+      ParentShowHint = False
+    end
+    object SB_Clear: TSpeedButton
+      Left = 284
+      Height = 23
+      Hint = 'Clear memo area'
+      Top = 3
+      Width = 88
+      Caption = 'Clear'
+      Flat = True
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      Glyph.Data = {
+        F6000000424DF600000000000000760000002800000010000000100000000100
+        0400000000008000000000000000000000001000000000000000000000000000
+        8000008000000080800080000000800080008080000080808000C0C0C0000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00888888888888
+        888888888888888888888800000000000888880FFFFFFFFF0888880FFFFFFFFF
+        0888880FFFFFFFFF0888880FFFFFFFFF0888880FFFFFFFFF0888880FFFFFFFFF
+        0888880FFFFFFFFF0888880FFFFFFFFF0888880FFFFFF0000888880FFFFFF0F0
+        8888880FFFFFF008888888000000008888888888888888888888
+      }
+      OnClick = SB_ClearClick
+      ShowHint = True
+      ParentFont = False
+      ParentShowHint = False
+    end
+    object SB_Info: TSpeedButton
+      Left = 636
+      Height = 23
+      Hint = 'Just click me!'
+      Top = 3
+      Width = 88
+      Caption = 'Info'
+      Flat = True
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      Glyph.Data = {
+        42010000424D4201000000000000760000002800000011000000110000000100
+        040000000000CC00000000000000000000001000000010000000000000000000
+        BF0000BF000000BFBF00BF000000BF00BF00BFBF0000C0C0C000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00777777777777
+        7777700000007777777777777777700000007777777444777777700000007777
+        7774447777777000000077777777777777777000000077777774487777777000
+        0000777777744877777770000000777777774477777770000000777777777448
+        7777700000007777744778448777700000007777448777444777700000007777
+        4487774447777000000077777447784487777000000077777744444877777000
+        0000777777777777777770000000777777777777777770000000777777777777
+        777770000000
+      }
+      OnClick = SB_InfoClick
+      ShowHint = True
+      ParentFont = False
+      ParentShowHint = False
+    end
+    object SB_Print: TSpeedButton
+      Left = 372
+      Height = 23
+      Hint = 'Print the calculated check sums'
+      Top = 3
+      Width = 88
+      Caption = 'Print'
+      Flat = True
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      Glyph.Data = {
+        4E010000424D4E01000000000000760000002800000012000000120000000100
+        040000000000D800000000000000000000001000000010000000000000000000
+        BF0000BF000000BFBF00BF000000BF00BF00BFBF0000C0C0C000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00DDDDDDDDDDDD
+        DDDDDD000000DDD00000000000DDDD000000DD0777777777070DDD000000D000
+        000000000070DD000000D0777777FFF77000DD000000D077777799977070DD00
+        0000D0000000000000770D000000D0777777777707070D000000DD0000000000
+        70700D000000DDD0FFFFFFFF07070D000000DDDD0FCCCCCF0000DD000000DDDD
+        0FFFFFFFF0DDDD000000DDDDD0FCCCCCF0DDDD000000DDDDD0FFFFFFFF0DDD00
+        0000DDDDDD000000000DDD000000DDDDDDDDDDDDDDDDDD000000DDDDDDDDDDDD
+        DDDDDD000000DDDDDDDDDDDDDDDDDD000000
+      }
+      OnClick = SB_PrintClick
+      ShowHint = True
+      ParentFont = False
+      ParentShowHint = False
+    end
+    object GCH_Label: TLabel
+      Cursor = crHandPoint
+      Left = 5
+      Height = 21
+      Top = 3
+      Width = 100
+      Alignment = taCenter
+      AutoSize = False
+      Caption = 'LazGCH'
+      Font.Color = clGreen
+      Font.Height = -17
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = GCH_LabelClick
+    end
+    object SB_Test: TSpeedButton
+      Left = 548
+      Height = 23
+      Hint = 'Self test of all check sum algorithms'
+      Top = 3
+      Width = 88
+      Caption = 'Test'
+      Flat = True
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      Glyph.Data = {
+        76010000424D7601000000000000760000002800000020000000100000000100
+        04000000000000010000130B0000130B00001000000000000000000000000000
+        800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+        3333333333FFFFF3333333333999993333333333F77777FFF333333999999999
+        3333333777333777FF33339993707399933333773337F3777FF3399933000339
+        9933377333777F3377F3399333707333993337733337333337FF993333333333
+        399377F33333F333377F993333303333399377F33337FF333373993333707333
+        333377F333777F333333993333101333333377F333777F3FFFFF993333000399
+        999377FF33777F77777F3993330003399993373FF3777F37777F399933000333
+        99933773FF777F3F777F339993707399999333773F373F77777F333999999999
+        3393333777333777337333333999993333333333377777333333
+      }
+      NumGlyphs = 2
+      OnClick = SB_TestClick
+      ShowHint = True
+      ParentFont = False
+      ParentShowHint = False
+    end
+    object SB_Stop: TSpeedButton
+      Left = 196
+      Height = 23
+      Hint = 'Stop a running calculation'
+      Top = 3
+      Width = 88
+      Caption = 'Stop'
+      Enabled = False
+      Flat = True
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      Glyph.Data = {
+        76010000424D7601000000000000760000002800000020000000100000000100
+        04000000000000010000130B0000130B00001000000000000000000000000000
+        800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+        3333333333FFFFF3333333333999993333333333F77777FFF333333999999999
+        3333333777333777FF3333993333339993333377FF3333377FF3399993333339
+        993337777FF3333377F3393999333333993337F777FF333337FF993399933333
+        399377F3777FF333377F993339993333399377F33777FF33377F993333999333
+        399377F333777FF3377F993333399933399377F3333777FF377F993333339993
+        399377FF3333777FF7733993333339993933373FF3333777F7F3399933333399
+        99333773FF3333777733339993333339933333773FFFFFF77333333999999999
+        3333333777333777333333333999993333333333377777333333
+      }
+      NumGlyphs = 2
+      OnClick = SB_StopClick
+      ShowHint = True
+      ParentFont = False
+      ParentShowHint = False
+    end
+    object SB_Export: TSpeedButton
+      Left = 460
+      Height = 23
+      Hint = 'Export as text file'
+      Top = 3
+      Width = 88
+      Caption = 'Export'
+      Flat = True
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      Glyph.Data = {
+        76010000424D7601000000000000760000002800000020000000100000000100
+        04000000000000010000130B0000130B00001000000000000000000000000000
+        800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333330070
+        7700333333337777777733333333008088003333333377F73377333333330088
+        88003333333377FFFF7733333333000000003FFFFFFF77777777000000000000
+        000077777777777777770FFFFFFF0FFFFFF07F3333337F3333370FFFFFFF0FFF
+        FFF07F3FF3FF7FFFFFF70F00F0080CCC9CC07F773773777777770FFFFFFFF039
+        99337F3FFFF3F7F777F30F0000F0F09999937F7777373777777F0FFFFFFFF999
+        99997F3FF3FFF77777770F00F000003999337F773777773777F30FFFF0FF0339
+        99337F3FF7F3733777F30F08F0F0337999337F7737F73F7777330FFFF0039999
+        93337FFFF7737777733300000033333333337777773333333333
+      }
+      NumGlyphs = 2
+      OnClick = SB_ExportClick
+      ShowHint = True
+      ParentFont = False
+      ParentShowHint = False
+    end
+  end
+  object StatusBar: TStatusBar
+    Left = 0
+    Height = 20
+    Top = 659
+    Width = 751
+    Panels = <>
+  end
+  object OpenDialog1: TOpenDialog
+    Title = ' Open file(s) for calculation - multi select allowed'
+    InitialDir = '.'
+    Options = [ofHideReadOnly, ofAllowMultiSelect]
+    left = 184
+    top = 56
+  end
+  object PrintDialog: TPrintDialog
+    left = 264
+    top = 64
+  end
+  object SaveDialog1: TSaveDialog
+    Title = 'Save as text file'
+    DefaultExt = '.txt'
+    Filter = 'Text files|*.txt'
+    Options = [ofOverwritePrompt, ofHideReadOnly, ofPathMustExist]
+    left = 224
+    top = 176
+  end
+end

@@ -1,0 +1,15 @@
+[SRP-Para]
+CRC1_Value=$5d38
+CRC2_Value=
+CRC3_Value=
+CRC1_Format=1
+CRC2_Format=0
+CRC3_Format=0
+CRC1_String=123456789
+CRC2_String=
+CRC3_String=
+Poly=
+PolyMin=
+PolyMax=
+InitMin=
+InitMax=

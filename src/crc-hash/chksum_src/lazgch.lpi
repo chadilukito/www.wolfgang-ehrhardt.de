@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectOptions>
+    <Version Value="10"/>
+    <PathDelim Value="\"/>
+    <General>
+      <Flags>
+        <MainUnitHasUsesSectionForAllUnits Value="False"/>
+        <MainUnitHasCreateFormStatements Value="False"/>
+        <MainUnitHasTitleStatement Value="False"/>
+        <MainUnitHasScaledStatement Value="False"/>
+      </Flags>
+      <SessionStorage Value="InProjectDir"/>
+      <MainUnit Value="0"/>
+      <Title Value="lazgch"/>
+      <UseAppBundle Value="False"/>
+      <ResourceType Value="res"/>
+      <Icon Value="0"/>
+    </General>
+    <BuildModes Count="1">
+      <Item1 Name="Default" Default="True"/>
+    </BuildModes>
+    <PublishOptions>
+      <Version Value="2"/>
+    </PublishOptions>
+    <RunParams>
+      <local>
+        <FormatVersion Value="1"/>
+      </local>
+    </RunParams>
+    <RequiredPackages Count="2">
+      <Item1>
+        <PackageName Value="Printer4Lazarus"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="LCL"/>
+      </Item2>
+    </RequiredPackages>
+    <Units Count="27">
+      <Unit0>
+        <Filename Value="lazgch.dpr"/>
+        <IsPartOfProject Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="chksum_l.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="CS_Main"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="adler32.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Adler32"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="blakb384.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Blakb384"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="blakb512.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Blakb512"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="blake2b.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="blaks224.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Blaks224"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="blaks256.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Blaks256"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="btypes.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="BTypes"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="crc16.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="CRC16"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="crc24.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="CRC24"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="crc32.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="CRC32"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="crc64.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="CRC64"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="ed2k.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ED2K"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="hash.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Hash"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="md4.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="MD4"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="md5.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="MD5"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="mem_util.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Mem_Util"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="rmd160.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="RMD160"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="sha1.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="SHA1"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="sha224.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="SHA224"/>
+      </Unit20>
+      <Unit21>
+        <Filename Value="sha256.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="SHA256"/>
+      </Unit21>
+      <Unit22>
+        <Filename Value="sha3_224.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="SHA3_224"/>
+      </Unit22>
+      <Unit23>
+        <Filename Value="sha3_256.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="SHA3_256"/>
+      </Unit23>
+      <Unit24>
+        <Filename Value="sha3_384.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="SHA3_384"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="sha3_512.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="SHA3_512"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="sha384.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="SHA384"/>
+      </Unit26>
+    </Units>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="11"/>
+    <PathDelim Value="\"/>
+    <SearchPaths>
+      <IncludeFiles Value="$(ProjOutDir)"/>
+      <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+    </SearchPaths>
+    <Parsing>
+      <SyntaxOptions>
+        <SyntaxMode Value="Delphi"/>
+      </SyntaxOptions>
+    </Parsing>
+    <Linking>
+      <Options>
+        <Win32>
+          <GraphicApplication Value="True"/>
+        </Win32>
+      </Options>
+    </Linking>
+    <Other>
+      <Verbosity>
+        <ShowNotes Value="False"/>
+        <ShowHints Value="False"/>
+      </Verbosity>
+      <CustomOptions Value="-dBorland -dVer150 -dDelphi7 -dCompiler6_Up -dPUREPASCAL"/>
+    </Other>
+  </CompilerOptions>
+  <Debugging>
+    <Exceptions Count="3">
+      <Item1>
+        <Name Value="EAbort"/>
+      </Item1>
+      <Item2>
+        <Name Value="ECodetoolError"/>
+      </Item2>
+      <Item3>
+        <Name Value="EFOpenError"/>
+      </Item3>
+    </Exceptions>
+  </Debugging>
+</CONFIG>

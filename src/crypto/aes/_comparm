@@ -1,0 +1,174 @@
+#!/bin/bash -e
+
+# Be sure to have LF as EOL
+# and to chmod a+x
+
+LOG=aes_arm.log
+
+echo Results for FPC/ARM \(Raspberry Pi 3/B\) > $LOG
+uname -a                                     >> $LOG
+echo -e -n FPC version \\x20  >> $LOG
+fpc -iW                       >> $LOG
+echo ======================================  >> $LOG
+
+SRC=t_aescbc
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_aescf8
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_aescfb
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_aescrp
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_aesctr
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_aesecb
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_aesofb
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_aes_as
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_aes_cs
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_aes_ws
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC test >> $LOG
+
+SRC=t_aes_ws
+fpc -dAES_ComprTab $SRC
+echo >> $LOG
+echo Result of $SRC with AES_ComprTab >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC test >> $LOG
+
+SRC=t_aes_xl
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_cbccts
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_cmac
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_cprf
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_eax2
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_ecbcts
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_fbmodi
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_omac
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_xts
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_aesccm
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_aesgcm
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_ppp
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+

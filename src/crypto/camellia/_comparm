@@ -1,0 +1,76 @@
+#!/bin/bash -e
+
+# Be sure to have LF as EOL
+# and to chmod a+x
+
+LOG=cam_arm.log
+
+echo Results for FPC/ARM \(Raspberry Pi 3/B\) > $LOG
+uname -a                                     >> $LOG
+echo -e -n FPC version \\x20  >> $LOG
+fpc -iW                       >> $LOG
+echo ======================================  >> $LOG
+
+SRC=t_ca_bas
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_ca_ccm
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_ca_cyc
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_cam_as
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_cam_ws
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC  test >> $LOG
+
+SRC=t_caomac
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_cam_cs
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_cam_xl
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+
+SRC=t_camgcm
+fpc $SRC
+echo >> $LOG
+echo Result of $SRC >> $LOG
+echo -------------------------------------- >> $LOG
+./$SRC >> $LOG
+

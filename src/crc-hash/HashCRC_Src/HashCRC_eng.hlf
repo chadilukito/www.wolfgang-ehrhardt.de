@@ -1,0 +1,241 @@
+.Language=English,English (English)
+.PluginContents=Hash and CRC calculation
+
+@Contents
+$ #Hash and CRC calculation#
+ This plugin calculates CRCs and Hash digests of the highlighted
+file(s) in the active file panel. If several files are selected the
+plugin works in ~multi file mode~@Multimode@; for PE files there is
+a ~special MD5~@MD5PE@ mode.
+
+ The output format is HEX (upper or lower case) or Base64. The values are
+normally displayed LSB first; CRC16/24/32, Adler32 are shown as MSB HEX
+strings (indicator M in the separator line, L otherwise) if #Strict LSB# is not
+configured. Base64 encoded CRC24 output always uses PGP compatible MSB first order.
+For Hash digests with more than 160 bits the output is split into multiple lines.
+
+ The results can be written to a #file# (name of the processed
+with an additional extension .chf) or copied to the #clipboard#.
+Use the FAR screen grabber (Alt-Ins) to copy partial results to
+the clipboard.
+
+     CRC16:  16 Bit CRC (polynomial $1021)
+     CRC24:  24 Bit CRC (RFC2440, OpenPGP)
+     CRC32:  32 Bit CRC (Zip and others)
+   Adler32:  32 Bit checksum (RFC 1950)
+     CRC64:  64 Bit CRC (ECMA-182 DLT1 format, PostgreSQL)
+   eDonkey: 128 Bit Hash (MD4 based, eMule and other P2P)
+       MD4: 128 Bit Hash (R.Rivest, RFC 1320)
+       MD5: 128 Bit Hash (R.Rivest, RFC 1321)
+ RIPEMD160: 160 Bit Hash (ISO/IEC 10118-3:2003, OpenPGP)
+      SHA1: 160 Bit Hash (FIPS PUB 180-1)
+    SHA<n>: 224/256/384/512 Bit Hash functions (FIPS PUB 180-2)
+ Whirlpool: 512 Bit Hash (Vers.3/2003-03-12, P.Barreto/V.Rijmen)
+
+ #(c) 2002-2007 W.Ehrhardt#
+
+ #D. Yerokhin# contributed the Russian translations of the .hlp and .lng files.
+
+ This software is ~open source~@License@, see the readme file
+for a download URL. Use the FAR menu ~plugin configuration~@Config@
+to select what to calculate and see ~known problems~@Problems@
+for a new restriction with V1.6+.
+
+ #Plugin version history#
+
+ 1.17  Oct.2007  Fix SHA512/384 bug for file sizes above 512MB
+ 1.16  Mar.2007  MD4, eDonkey, and eMule added
+                 New configuration dialog layout
+ 1.15  Feb.2007  Fix for 4GB issue caused by Delphi eof bug
+ 1.14  Jan.2007  Fix Whirlpool bug for file sizes above 512MB
+ 1.13  May 2006  Special MD5 processing for PE files
+                 Option: Expand file names
+ 1.12  Apr.2006  CRC24 added, plugin size reduced
+ 1.11  Feb.2006  RIPEMD-160
+ 1.10  Dec.2005  Whirlpool
+ 1.9   Sep.2005  Multi file mode
+ 1.8   Jan.2005  [Clipboard] and [File] buttons
+ 1.7.1 Jan.2005  Service release, fixes SHA512/SHA384 bugs
+ 1.7   Apr.2004  Config options: Base64, HEX uppercase, Strict LSB.
+                 D3 base routines are >20% faster than V1.6.
+ 1.6   Jan.2004  SHA224/384/512, no N/A for unchecked values,
+                 Avg. speedup about 40% compared to V1.5
+ 1.5   Nov.2003  Speedup with new basic routines (about 25%)
+ 1.4   Sep.2003  Adler32 and CRC64
+ 1.3   Apr.2003  Uses English .lng file
+ 1.2   Mar.2003  Split SHA256 output to avoid truncation
+                 Calculation can be cancelled with Esc
+ 1.1   Apr.2002  Percent display works for file sizes > 20 MB
+ 1.0   Mar.2002  Initial version
+
+@Problems
+$ #Known problems#
+ #Problem:# Starting with V1.6 and the support of SHA224 .. SHA512,
+FAR versions 1.70 beta 3 and below may not (completely) show all results
+in the message display if all sums are calculated (there can be a
+maximum of 13 items in the message box).
+
+ #Solution:# Do not use all sums at the same time, upgrade to FAR
+Version 1.704+, or download and change the source code.
+
+ #Note:# All versions of Hash/CRC were designed for FAR 1.70+,
+V1.7+ will not start on FAR older than 1.70 beta 3 build 591.
+ # #
+ # #
+
+ #Problem:# Result output lines are truncated for console modes with less than 66 columns.
+
+ #Solution:# None if you must use such a mode.
+
+ #Note:# Only the display is truncated, file and clipboard results are not affected.
+ # #
+
+ ~Back~@Contents@ to main page
+
+@Multimode
+$ #Multi file mode#
+ If the plugin is invoked with several files selected in the active panel
+the configured CRCs and Hash digests are calculated for all selected files
+and the results are written to a text file (default name #hashcrc.lst#, the
+file name can be edited in an input box).
+
+ No output is generated for files that cannot be opened with read access
+(directories, locked system files etc). This can be changed if the config
+option #List errors# is checked.
+
+ If #Strict LSB HEX# is checked a hint is written to the file if at least
+one of CRC16, CRC24, CRC32, or Adler32 are requested in HEX mode.
+
+#Example output:#
+
+(Strict LSB HEX)
+
+HashCRC_eng.hlf
+  CRC16: c411
+  CRC32: 1c72ac90
+    MD5: 72ec89dadf7e096ebcd4d541bf279923
+   SHA1: 01a9dff96994cbe486ea59a0d7e76272f60cea45
+
+HashCRC_rus.hlf
+  CRC16: 6343
+  CRC32: d4d09d68
+    MD5: 7c2a553201a0bea0e4aa670bc15eac1b
+   SHA1: 60c929eabd23202b1e13ebf5550758bf8750369a
+
+ ~Back~@Contents@ to main page
+
+@Config
+$ #Configuring Hash/CRC#
+
+ Check or uncheck which of the following Hash or CRC sums should
+be calculated and displayed in the results screen:
+
+   [x] CRC16      [ ] RIPEMD160
+   [ ] CRC24      [x] SHA1
+   [x] CRC32      [ ] SHA224
+   [ ] Adler32    [x] SHA256
+   [x] CRC64      [ ] SHA384
+   [ ] eDonkey    [x] SHA512
+   [ ] MD4        [x] Whirlpool
+   [x] MD5
+
+ The following boxes select the display format and options:
+
+   [ ] Base64
+   [x] Uppercase HEX
+   [ ] Strict LSB HEX
+   [x] List errors
+   [ ] MD5-PE
+   [ ] Expand file name
+
+ #Base64# switches between HEX and Base64 (RFC 3548) display, if
+#Strict LSB HEX# is not checked, CRC16/24/32, and Adler32 are shown as MSB HEX
+strings. If #List errors# is checked, files that produce IO errors are listed
+in the ~multi file mode~@Multimode@ result file with the error code.
+If #MD5-PE# is checked, there is a special MD5 processing for Portable
+Executable files (see ~MD5 and PE files~@MD5PE@). 
+See ~MD4, eDonkey, and eMule~@MD4_eDonkey_eMule@ for more information
+about eDonkey. If #Expand file name# is
+checked, the expanded file names with complete path are written to the result
+files or the clipboard (this feature is disabled for FAR V1.70 beta 3).
+
+ Press #OK# to accept, or #Cancel# to abort configuration.
+
+ ~Back~@Contents@ to main page
+
+@License
+$ #The zlib/libpng License#
+
+ This software is provided 'as-is', without any express or implied
+warranty. In no event will the authors be held liable for any damages
+arising from the use of this software.
+
+ Permission is granted to anyone to use this software for any purpose,
+including commercial applications, and to alter it and redistribute it
+freely, subject to the following restrictions:
+
+ 1. The origin of this software must not be misrepresented;
+    you must not claim that you wrote the original software.
+    If you use this software in a product, an acknowledgment
+    in the product documentation would be appreciated but is
+    not required.
+
+ 2. Altered source versions must be plainly marked as such,
+    and must not be misrepresented as being the original
+    software.
+
+ 3. This notice may not be removed or altered from any source
+    distribution.
+
+ ~Back~@Contents@ to main page
+
+@MD5PE
+$ #MD5 and PE files#
+
+ Under the following conditions two MD5 digests are generated for certain files:
+
+ 1. both MD5 and MD5-PE are enabled in ~plugin configuration~@Config@
+ 2. the hashed file is a PE (Portable Executable) file
+ 3. the image length is less than the file length
+
+ Here is an example output:
+ hashcrc.zip.exe
+  MD5-Img: ed4076aaac5833d1d2804124bf4afb7e
+      MD5: fbd13df41e4d162bc3b10954a2339caa
+
+ The second is the standard MD5 over the complete file, the first is
+the MD5 of the PE image. The technical definition of this image length
+is: Maximum of raw data offset + raw data size over all sections in the
+PE file. If the file length is greater than the image length, it is said
+that there is #overlay data#. Overlay data is sometimes used by malware
+trying to defeat anti virus software; the example shows that SFX archives
+are another class of PE files with overlays.
+
+ The two names #MD5-Img# for MD5(image) and #MD5# for MD5(file) can be
+changed in the .lng files.
+
+ Special thanks goes to #Giovanni Drusian# who suggested this new
+plugin feature and helped a lot during implementation and verification.
+
+ ~Back~@Contents@ to main page
+
+
+@MD4_eDonkey_eMule
+$ #MD4, eDonkey, and eMule#
+
+ The eDonkey hash is calculated as follows: Files are processed in
+chunks of 9728000 bytes; the last chunk may be smaller. For non-empty
+files smaller than a chunk the common eDonkey/eMule hash is the MD4 hash
+of the file.
+
+ For files bigger than a chunk the MD4 hashes of the chunks are
+calculated and accumulated sequentially in a meta MD4 hash, the eDonkey
+hash of the file is this meta hash.
+
+ For files whose size is a multiple of chunk size the eMule method
+includes a final MD4 of a 0 byte block into the meta hash.
+
+ #Summary:# For files with n*9728000 bytes eDonkey and eMule hashes are
+different and the plugin displays both digests.
+
+ ~Back~@Contents@ to main page

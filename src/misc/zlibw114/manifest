@@ -1,0 +1,37 @@
+#ca.bat            Generic compile batch file for all console compilers
+adler.pas          Compute the Adler-32 checksum of a data stream
+copying_we.txt     WE's license
+example.pas        Usage example of the zlib compression library
+gzio.pas           IO on .gz files
+history            History of WE modifications to zlib/paszlib
+infblock.pas       Interpret and process block types to last block
+infcodes.pas       Process literals and length/distance pairs
+inffast.pas        Process literals and length/distance pairs fast
+inffixed.inc       Table for decoding fixed codes
+inftrees.pas       Generate Huffman trees for efficient decoding
+infutil.pas        Types and macros/functions common to blocks and codes
+manifest           This file
+minigzip.pas       Simulate gzip using the zlib compression library
+readme             WE's infos
+readme.txt         Infos from Jacques Nomssi Nzali
+t_zlibex.pas       Test program for zlibex
+t_zpipe.pas        test program for zpipe unit
+trees.pas          Output deflated data using Huffman coding
+zconf.inc          Configuration types and conditional defines
+zcrc32.pas         Compute the CRC-32 of a data stream
+zdeflate.pas       Compress data using the deflation algorithm
+zinflate.pas       Zlib interface to inflate modules
+zlib.pas           Interface unit of the zlib compression library
+zlibex.pas         Customizable inflate and deflate zlib routines
+zlibh.pas          Types/consts of the zlib compression library
+zpipe.pas          Pascal port of Marc Adler's zpipe.c demo
+zutil.pas          Configuration dependent utility and debugging function
+
+MINIZIP directory
+build.bat          Build batch for minizip/miniunz with different compilers
+miniunz.pas        Mini unzip demo package
+minizip.pas        Mini zip demo package
+unzip.pas          Unzip IO on .zip files using zlib
+zip.pas            Zip IO on .zip files using zlib
+ziputils.pas       Common IO on .zip files using zlib
+

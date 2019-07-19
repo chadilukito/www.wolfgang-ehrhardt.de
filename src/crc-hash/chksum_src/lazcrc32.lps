@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="10"/>
+    <BuildModes Active="Default"/>
+    <Units Count="5">
+      <Unit0>
+        <Filename Value="lazcrc32.dpr"/>
+        <IsPartOfProject Value="True"/>
+        <TopLine Value="4"/>
+        <CursorPos X="12" Y="15"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="tcrc32u_l.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form1"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="213"/>
+        <CursorPos X="11" Y="229"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="base2n.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="20"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="btypes.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="20"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="crcm_cat.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="20"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit4>
+    </Units>
+    <JumpHistory Count="7" HistoryIndex="6">
+      <Position1>
+        <Filename Value="tcrc32u_l.pas"/>
+        <Caret Line="177" Column="42" TopLine="163"/>
+      </Position1>
+      <Position2>
+        <Filename Value="tcrc32u_l.pas"/>
+        <Caret Line="226" Column="23" TopLine="210"/>
+      </Position2>
+      <Position3>
+        <Filename Value="tcrc32u_l.pas"/>
+        <Caret Line="229" Column="11" TopLine="213"/>
+      </Position3>
+      <Position4>
+        <Filename Value="tcrc32u_l.pas"/>
+        <Caret Line="74" Column="10" TopLine="64"/>
+      </Position4>
+      <Position5>
+        <Filename Value="tcrc32u_l.pas"/>
+        <Caret Line="105" Column="20" TopLine="89"/>
+      </Position5>
+      <Position6>
+        <Filename Value="tcrc32u_l.pas"/>
+        <Caret Line="177" Column="24" TopLine="161"/>
+      </Position6>
+      <Position7>
+        <Filename Value="tcrc32u_l.pas"/>
+        <Caret Line="226" Column="23" TopLine="210"/>
+      </Position7>
+    </JumpHistory>
+  </ProjectSession>
+</CONFIG>
