@@ -1,0 +1,455 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD html 4.0 transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="author" content="Wolfgang Ehrhardt">
+  <meta name="keywords" content="CRC, Hash, HMAC, FAR-Plugin, Pascal, Delphi, Open source">
+  <title>W.Ehrhardt: CRC/Hash</title>
+</head>
+
+<body text="#000000" bgcolor="#F0FFFF" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" summary="" >
+<tr>
+<td ALIGN=LEFT> <font size=1>&copy; 2018 W.Ehrhardt </font></td>
+<td ALIGN=RIGHT><font size=1>Letzte &Auml;nderung 18. Juni 2018</font></td>
+</tr>
+</table>
+
+
+<table BORDER=0 CELLSPACING=4 CELLPADDING=4 WIDTH="100%" summary="" >
+<tr>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="index_de.html">Start</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="crchash_de.html">CRC/Hash</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="crypt_de.html">Krypto</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="misc_de.html">Sonstiges</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="info_de.html">Info</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="links_de.html">Links</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="crchash_en.html">English</a></b></td>
+</tr>
+</table>
+
+<br>
+<table BORDER=0 CELLPADDING=4 WIDTH="100%" SUMMARY="" >
+<tr>
+<td ALIGN=CENTER BGCOLOR="#77dddd"><b>CRC / HASH / HMAC</b></td>
+</tr>
+</table>
+
+<br>Hier gibt es einige Pascal/Delphi-Quell- und Bin&auml;rcodes f&uuml;r CRC-,
+Hash- und HMAC-Berechnungen. Alle Programme d&uuml;rfen unter dieser <a href=
+"info_de.html#License">Lizenz</a> weitergegeben und benutzt werden, die
+Originalvorlage der zlib/libpng-Lizenz findet man hier (<a href=
+"http://www.opensource.org/licenses/zlib-license.php">zlib-license</a>).
+<br><br>
+
+<b>Vor dem Herunterladen von Software von diesen Seiten bitte diesen
+<a href="info_de.html#LegalNotice">rechtlichen Hinweis</a> beachten.</b>
+<br><br>
+
+Die Basisroutinen in <a href="crc_hash_2018-01-01.zip">crc_hash_2018-01-01.zip</a>
+sind mit vielen g&auml;ngigen Pascal- (TP 5/5.5/6, BP 7, VP 2.1,
+FPC 1.0/2.0-2.6/3.x) und Delphi-Compilern &uuml;bersetzbar (getestet mit
+Versionen 1-7/9/10/12/17-18/25S).<br><br>
+
+<hr size="1" noshade width="100%" align="center">
+<font color="#cc0033"><b>Letzte &Auml;nderungen:&nbsp;</b></font>
+<ul style="margin-top:0">
+  <li>
+    Auf Benutzerwunsch gibt es die Unit
+    <a href="crchash_de.html#lookup3">BJL3</a>,
+    die Bob Jenkins' nicht-kryptographische Hashfunktion
+    lookup3 implementiert (Basisfunktion wie in Delphis System.hash-Unit);
+  </li>
+  <li>
+    Noch ein Benutzerwunsch: Die <i>[hash]file</i> Funktionen haben jetzt
+    einen <b>string</b> als Dateinamen-Parametertyp (str255 war ein
+    &Uuml;berbleibsel von alten Versionen mit DLL-kompatiblen Funktionen);
+  </li>
+  <li>
+   Aktualisierte (englische) <a href="hash_intro.html">Hash/HMAC/KDF</a>-Einf&uuml;hrung.
+  </li>
+</ul>
+
+<hr size="1" noshade width="100%" align="center">
+
+Seit <b>Feb. 2006</b> gibt es eine neue Hash/HMAC-Architektur: Hash-Deskriptor-Records erm&ouml;glichen
+eine einfache einheitliche HMAC-Implementierung f&uuml;r alle Hash&shy;algorithmen;
+die Schl&uuml;ssel&shy;ableitungs&shy;funktionen (KDF) k&ouml;nnen jetzt alle unterst&uuml;tzten
+Hashalgorithmen benutzen.
+Ab <b>Mai 2008</b> unterst&uuml;tzen die Hash- und HMAC-Routinen Eingabestrings mit beliebiger Bitl&auml;nge,
+und seit <b>Aug. 2015</b> macht die SHA3-Integration eine &Auml;nderung
+des Typs THashContext erforderlich.
+Seit <b>Juni 2017</b> gibt es eine kleine &Auml;nderung im Hash-Deskriptor
+(Blake2 hat OID-Vektoren der L&auml;nge 11).
+
+
+<br>
+<br>
+Eine kurze (englische) <a href="hash_intro.html">Einf&uuml;hrung</a>
+gibt mehr Informationen &uuml;ber die Hash/HMAC-Units und -Prozeduren.
+
+<br>
+<hr size="1" noshade width="100%" align="center">
+
+<br>
+Die Basisroutinen wurden in den Vorg&auml;nger-Versionen leicht verbessert. Das Optimieren erinnert
+allerdings an schwarze Magie, es ist stark abh&auml;ngig von CPU, Cache,
+Compiler, Codeposition, usw. Beispiel: Wenn die SHA256-Schleife
+aufgedr&ouml;selt ("unrolled") wird, so wird die Funktion auf meinem Rechner
+ (1.7 GHz P4, D6, Win98) ca. 40% langsamer, auf einem anderen (AMD 2600+,
+D5, Win98) jedoch etwa 15% schneller.
+<br>
+<br>
+Mit dem Testprogramm <b>T_SpeedA</b> und dem hochaufl&ouml;senden Zeitmesser aus <a href="misc_de.html#HRTimer">hrtimer</a> wurden die CPU-Cyclen pro
+Byte (Cyc/B) und damit die Verarbeitungsrate in MB/s gemessen (man beachte,
+da&szlig; die CPU-Taktfrequenz dynamisch bestimmt wurde). Hier die Werte
+f&uuml;r Delphi/FPC auf Win98 mit Pentium 4 / 1.7 GHz bei einer
+Blockgr&ouml;&szlig;e von 50000 Bytes (Std: Standard-Routinen mit
+BASM, PP oder 64: Pascal-Pur mit inline f&uuml;r D18 und FPC2.6.4 -O3,
+64-Bit unter Win7/64 Core i3-2350M):
+
+<a name="timetable"></a>
+<br><br>
+<table BORDER=1 CELLSPACING=0 CELLPADDING=0 WIDTH="90%" summary="" >
+<tr>  <td align=right>           </td>  <td align=right> D3/Std </td>  <td align=right> D3/Std </td>  <td align=right> D6/Std </td>  <td align=right> D6/PP </td> <td align=right> FPC/PP </td> <td align=right> FPC-64 </td> <td align=right> D18-64 </td> </tr>
+<tr>  <th align=right>       Name</th>  <th align=right>   MB/s </th>  <th align=right>  Cyc/B </th>  <th align=right>  Cyc/B </th>  <th align=right> Cyc/B </th> <th align=right>  Cyc/B </th> <th align=right>  Cyc/B </th> <th align=right>  Cyc/B </th> </tr>
+<tr>  <td align=right>      CRC16</td>  <td align=right> 200.16 </td>  <td align=right>    8.5 </td>  <td align=right>    8.5 </td>  <td align=right>  33.4 </td> <td align=right>   44.9 </td> <td align=right>   16.3 </td> <td align=right>   14.7 </td> </tr>
+<tr>  <td align=right>      CRC24</td>  <td align=right> 180.17 </td>  <td align=right>    9.4 </td>  <td align=right>    9.4 </td>  <td align=right>  29.9 </td> <td align=right>   35.1 </td> <td align=right>   15.3 </td> <td align=right>   14.2 </td> </tr>
+<tr>  <td align=right>      CRC32</td>  <td align=right> 276.51 </td>  <td align=right>    6.1 </td>  <td align=right>    6.1 </td>  <td align=right>  19.7 </td> <td align=right>   22.3 </td> <td align=right>   15.2 </td> <td align=right>   14.2 </td> </tr>
+<tr>  <td align=right>     FCRC32</td>  <td align=right> 389.18 </td>  <td align=right>    4.4 </td>  <td align=right>    4.4 </td>  <td align=right>  19.4 </td> <td align=right>   17.0 </td> <td align=right>    5.8 </td> <td align=right>    5.6 </td> </tr>
+<tr>  <td align=right>    Adler32</td>  <td align=right> 350.85 </td>  <td align=right>    4.8 </td>  <td align=right>    4.5 </td>  <td align=right>   4.6 </td> <td align=right>    7.2 </td> <td align=right>    2.2 </td> <td align=right>    2.0 </td> </tr>
+<tr>  <td align=right> BJ lookup3</td>  <td align=right> 412.23 </td>  <td align=right>    4.1 </td>  <td align=right>    4.1 </td>  <td align=right>   4.1 </td> <td align=right>    9.0 </td> <td align=right>    3.5 </td> <td align=right>    2.8 </td> </tr>
+<tr>  <td align=right>      CRC64</td>  <td align=right>  93.06 </td>  <td align=right>   18.2 </td>  <td align=right>   18.3 </td>  <td align=right>  93.2 </td> <td align=right>   59.8 </td> <td align=right>   11.4 </td> <td align=right>   10.3 </td> </tr>
+<tr>  <td align=right>    eDonkey</td>  <td align=right> 208.88 </td>  <td align=right>    8.1 </td>  <td align=right>    8.1 </td>  <td align=right>   8.1 </td> <td align=right>   23.9 </td> <td align=right>    7.0 </td> <td align=right>    8.2 </td> </tr>
+<tr>  <td align=right>        MD4</td>  <td align=right> 206.74 </td>  <td align=right>    8.2 </td>  <td align=right>    8.1 </td>  <td align=right>   8.1 </td> <td align=right>   23.2 </td> <td align=right>    7.0 </td> <td align=right>    8.2 </td> </tr>
+<tr>  <td align=right>        MD5</td>  <td align=right> 151.30 </td>  <td align=right>   11.2 </td>  <td align=right>   11.2 </td>  <td align=right>  11.2 </td> <td align=right>   44.5 </td> <td align=right>   10.5 </td> <td align=right>   10.5 </td> </tr>
+<tr>  <td align=right>     RMD160</td>  <td align=right>  53.27 </td>  <td align=right>   31.8 </td>  <td align=right>   31.7 </td>  <td align=right>  31.9 </td> <td align=right>   88.6 </td> <td align=right>   29.0 </td> <td align=right>   27.9 </td> </tr>
+<tr>  <td align=right>       SHA1</td>  <td align=right>  51.27 </td>  <td align=right>   33.1 </td>  <td align=right>   38.1 </td>  <td align=right>  41.7 </td> <td align=right>   52.6 </td> <td align=right>   25.8 </td> <td align=right>   18.7 </td> </tr>
+<tr>  <td align=right>     SHA224</td>  <td align=right>  28.88 </td>  <td align=right>   58.7 </td>  <td align=right>   55.6 </td>  <td align=right>  50.1 </td> <td align=right>   64.2 </td> <td align=right>   45.7 </td> <td align=right>   34.8 </td> </tr>
+<tr>  <td align=right>     SHA256</td>  <td align=right>  28.91 </td>  <td align=right>   58.6 </td>  <td align=right>   55.4 </td>  <td align=right>  50.2 </td> <td align=right>   64.6 </td> <td align=right>   45.8 </td> <td align=right>   34.6 </td> </tr>
+<tr>  <td align=right>     SHA384</td>  <td align=right>   9.79 </td>  <td align=right>  173.2 </td>  <td align=right>  205.7 </td>  <td align=right> 206.2 </td> <td align=right>  219.9 </td> <td align=right>   28.4 </td> <td align=right>   25.2 </td> </tr>
+<tr>  <td align=right>     SHA512</td>  <td align=right>   9.77 </td>  <td align=right>  173.4 </td>  <td align=right>  205.7 </td>  <td align=right> 206.4 </td> <td align=right>  227.6 </td> <td align=right>   28.5 </td> <td align=right>   25.1 </td> </tr>
+<tr>  <td align=right> SHA512/224</td>  <td align=right>   9.77 </td>  <td align=right>  173.5 </td>  <td align=right>  205.7 </td>  <td align=right> 206.6 </td> <td align=right>  227.7 </td> <td align=right>   28.5 </td> <td align=right>   25.1 </td> </tr>
+<tr>  <td align=right> SHA512/256</td>  <td align=right>   9.79 </td>  <td align=right>  173.1 </td>  <td align=right>  205.8 </td>  <td align=right> 206.2 </td> <td align=right>  219.2 </td> <td align=right>   28.5 </td> <td align=right>   25.2 </td> </tr>
+<tr>  <td align=right>  Whirlpool</td>  <td align=right>  17.14 </td>  <td align=right>   98.9 </td>  <td align=right>   98.9 </td>  <td align=right>  99.1 </td> <td align=right>   98.7 </td> <td align=right>   66.1 </td> <td align=right>   58.3 </td> </tr>
+<tr>  <td align=right>   SHA3-224</td>  <td align=right>  15.20 </td>  <td align=right>  111.5 </td>  <td align=right>  110.7 </td>  <td align=right> 109.4 </td> <td align=right>  124.1 </td> <td align=right>   23.6 </td> <td align=right>   22.5 </td> </tr>
+<tr>  <td align=right>   SHA3-256</td>  <td align=right>  14.60 </td>  <td align=right>  116.1 </td>  <td align=right>  116.7 </td>  <td align=right> 115.9 </td> <td align=right>  132.5 </td> <td align=right>   24.9 </td> <td align=right>   23.8 </td> </tr>
+<tr>  <td align=right>   SHA3-384</td>  <td align=right>  10.97 </td>  <td align=right>  154.5 </td>  <td align=right>  151.5 </td>  <td align=right> 149.9 </td> <td align=right>  173.7 </td> <td align=right>   32.6 </td> <td align=right>   30.9 </td> </tr>
+<tr>  <td align=right>   SHA3-512</td>  <td align=right>   7.87 </td>  <td align=right>  215.5 </td>  <td align=right>  216.1 </td>  <td align=right> 215.3 </td> <td align=right>  234.6 </td> <td align=right>   46.7 </td> <td align=right>   44.6 </td> </tr>
+<tr>  <td align=right>Blake2s-224</td>  <td align=right>  33.87 </td>  <td align=right>   50.0 </td>  <td align=right>   50.4 </td>  <td align=right>  49.7 </td> <td align=right>   68.1 </td> <td align=right>   40.8 </td> <td align=right>   30.0 </td> </tr>
+<tr>  <td align=right>Blake2s-256</td>  <td align=right>  33.76 </td>  <td align=right>   50.2 </td>  <td align=right>   49.2 </td>  <td align=right>  49.2 </td> <td align=right>   62.0 </td> <td align=right>   40.7 </td> <td align=right>   30.0 </td> </tr>
+<tr>  <td align=right>Blake2b-384</td>  <td align=right>  12.17 </td>  <td align=right>  139.3 </td>  <td align=right>  116.5 </td>  <td align=right> 116.4 </td> <td align=right>  104.6 </td> <td align=right>   23.8 </td> <td align=right>   18.2 </td> </tr>
+<tr>  <td align=right>Blake2b-512</td>  <td align=right>  12.17 </td>  <td align=right>  139.2 </td>  <td align=right>  116.4 </td>  <td align=right> 116.3 </td> <td align=right>  104.6 </td> <td align=right>   23.7 </td> <td align=right>   18.2 </td> </tr>
+</table>
+<br>
+<b>MD4, eDonkey/eMule:</b>  F&uuml;r Dateien/Zeichenfolgen mit einem Vielfachen
+von 9728000 Bytes sind die eDonkey- und eMule-Hashwerte verschieden; die <b>ed2k</b>-Unit
+berechnet immer beide Werte. Die Demoprogramme und
+das FAR-Plugin zeigen beide Hashwerte an, wenn sie verschieden sind.
+
+<a name="sha5_224_256"></a><br><br>
+<b>Units SHA5_224 und SHA5_256:</b>
+Im M&auml;rz 2012 hat das NIST den neuen Secure Hash Standard
+<a href="http://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf">FIPS 180-4</a>
+ver&ouml;ffentlicht.
+Es werden u.a. zwei zus&auml;tzliche kryptographische Hashalgorithmen
+SHA-512/224 und SHA-512/256 definiert. Ihre Konstruktion ist analog zu SHA384,
+sie verwenden die Kompressions&shy;funktion von SHA512 aber verschiedene
+Initialisierungswerte. (&Uuml;bersetztes) NIST-Zitat: <i>SHA-512/224 und SHA-512/256 k&ouml;nnen
+effizientere Alternativen sein zu SHA-224 bzw. SHA-256 auf Plattformen,
+die f&uuml;r 64-Bit-Operationen optimiert sind.</i> (Siehe die 64-Bit-Spalten
+in der Tabelle). Meine Pascal-Implementationen benutzen SHA512 und sind jetzt voll
+ins Standardpaket integriert; Symbole f&uuml;r die neuen Algorithmen sind in
+der allgemeinen Hash-Unit definiert, spezifische Hash- und HMAC-Units sind vorhanden.
+
+
+<a name="int64"></a><br><br>
+<b>Int64-Unterst&uuml;tzung f&uuml;r SHA384/512:</b> Leider gibt es dazu
+verwirrende prozessor-spezifische Ergebnisse: Auf einem P4/1.8GHz nimmt
+die Int64-Geschwindigkeit auf 83% der longint-Geschwindigkeit ab (Cyc/B steigt
+von 174 auf 209). Mit einem Celeron 500 MHz steigt  die
+Geschwindigkeit um mehr als 30%, Cyc/B f&auml;llt von 146 (longint) auf 111 (Int64). Im
+Quellcode ist Int64 Standard f&uuml;r D4+ und FPC ('conditional define'
+UseInt64 in SHA512.PAS).
+
+<a name="align_basm16"></a><br><br>
+<b>BASM16-Tabellenausrichtung:</b> Da bei einigen BASM16-Implementationen 32-Bit-Zugriffe auf 32-Bit-Tabellen erfolgen,
+sollten diese Tabellen idealerweise auf 4-Byte-Grenzen ausgerichtet sein. Die 16-Bit
+Compiler richten aber nur auf Byte- oder Word-Grenzen aus! Deshalb k&ouml;nnen mit den Definitionen
+aus der Includedatei <b>align.inc</b> Dummy-Worte generiert werden, die die Tabellen auf
+4-Byte-Grenzen ausrichten. Diese M&ouml;glichkeit ist f&uuml;r CRC24 ... CRC64 implementiert;
+wenn mehrere dieser Units verwendet werden, mu&szlig; die Ausrichtungs&shy;anpassung eventuell
+iteriert werden.
+
+
+<a name="ppch"></a><br><br>
+<b>Pascal-Pur-Versionen:</b>
+Das Quellcodearchiv enth&auml;lt reine Pascal Versionen der Basisroutinen ohne
+BASM (fr&uuml;her in einem separatem Archiv). Der Hauptzweck ist, Quellcode
+f&uuml;r portablere Implementationen (z.B. f&uuml;r Linux/ARM) zur
+Verf&uuml;gung zu stellen; konsequenterweise ist der Code f&uuml;r FPC mit
+int64 und ohne Assembler entwickelt, er kann jedoch auch mit Delphi4+ benutzt
+werden. Die Pur-Pascal-Routinen werden benutzt, wenn das Symbol PurePascal
+definiert ist: <i>{$define PurePascal}</i>, automatisch f&uuml;r BIT64.
+
+F&uuml;r 32-Bit-Systeme sind die portablen CRC-Routinen sind wesentlich langsamer als
+die Standardausf&uuml;hrungen (siehe <a href="crchash_de.html#timetable">Tabelle</a>), die
+Geschwindigkeiten der Hashfunktionen bieten kein so einheitliches Bild.
+
+Die Pur-Pascal-Routinen sind <b>64-Bit-kompatibel</b> (getestet mit D17+ und
+FPC 2.6+ unter Win64).
+
+Besonderer Dank geht an <b>Nicola Lugato</b>, der die Pur-Pascal-Units
+nachgefragt und die ersten Versionen auf seiner ARM/Linux-Maschine getestet hat.
+
+<a name="crcmodel"></a><br><br>
+<b>Rocksoft&trade; CRC-Modellalgorithmus:</b>
+Die Unit <b>crcmodel</b> ist eine Pascal-Implementation von Ross Williams' parametrisiertem
+CRC-Modell&shy;algorithmus, beschrieben in <a href="http://www.ross.net/crc/download/crc_v3.txt">A Painless Guide to CRC Error Detection Algorithms</a>
+(lokale <a href="crc_v3.html">HTML-Version</a>).
+Fast alle gebr&auml;uchlichen CRC-Algorithmen mit Polynomen bis zum Grad 32 k&ouml;nnen mit dieser
+Unit modelliert werden. Die Unit <b>crcm_cat</b> enth&auml;lt vordefinierte Parameter&shy;records f&uuml;r
+circa 100 CRC-Algorithmen; die meisten sind Adaptionen von
+Greg Cooks <a href="http://reveng.sourceforge.net/crc-catalogue/">Catalogue of Parameterised CRC Algorithms</a>,
+weitere Referenzen sind im Unitkopf aufgef&uuml;hrt.
+Die interaktiven GUI-Demoprogramme <b>tcrc16/tcrc32</b> berechnen und zeigen die
+Ergebnisse aller CRC16/CRC32-Algorithmen aus <b>crcm_cat</b> f&uuml;r Hex- und Stringeingabe,
+<b>SRP16</b> sucht CRC16 Rocksoft-Parameter f&uuml;r gegebene Daten;
+EXE-Dateien sind in <a href="chksum_bin_2017-11-29.zip">chksum_bin_2017-11-29.zip</a> enthalten.
+
+
+<a name="keccak"></a>
+<hr size="1" noshade width="100%" align="center">
+<h3>Keccak, SHA-3 und SHAKE</h3>
+Am 2. Okt. 2012 hat das
+<a href="http://csrc.nist.gov/groups/ST/hash/sha-3/winner_sha-3.html">NIST</a>
+das von Guido Bertoni, Joan Daemen, Micha&euml;l Peeters und Gilles Van Assche
+entwickelte <a href="http://keccak.noekeon.org/">Keccak</a>
+als Gewinner des SHA-3-Hash-Wettbewerbs bekanntgegeben.
+Das Archiv <a href="keccak_2013-01-07.zip">keccak_2013-01-07.zip</a>
+enth&auml;lt meine original Pascal/Delphi Keccak-Implementation basierend auf dem  SHA-3 NIST API:
+Beliebig lange Bitfolgen sind als Eingabedaten erlaubt, die unterst&uuml;tzten
+Hashwert-L&auml;ngen sind 224, 256, 384 und 512 Bit, sowie beliebig lange
+Byteausgaben.
+<br>
+<br>
+Es gibt zur Zeit im wesentlichen zwei Code-Varianten von Keccak-f[1600]:
+Die erste mit 32-Bit-Interleaving (Verschr&auml;nkung),
+wobei die Rotationen in purem 32-Bit-Pascal als XOR von zwei Verschiebungen
+kodiert sind, bzw. via Inline-Anweisungen f&uuml;r die 16-Bit-Compiler;
+die zweite benutzt 64-Bit-Datentypen und -Rotationen.
+Allerdings ist der 64-Bitcode nur dann schneller als 32-Bit,
+wenn er f&uuml;r eine 64-Bit-CPU kompiliert und auf einem 64-Bit-System
+ausgef&uuml;hrt wird!
+F&uuml;r neuere 32-Bit Compiler kann man f&uuml;r FPC und ab Delphi 6 mit {$define USE_MMXCODE}
+in der Unit sha3.pas den MMX-Code verwenden
+(die relative Leistungs&auml;nderung h&auml;ngt von CPU und Algorithmus ab;
+tats&auml;chlich gibt es zwei Include-Dateien, die von Eric Grange
+beigesteuerte wird standardm&auml;&szlig;ig verwendet, diese Version ist
+schneller auf allen getesteten Systemen als die von Anna Kaliszewicz und payl).
+
+<br>
+<br>
+
+Im August 2015 hat das NIST den
+<a href="http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf">Standard SHA3 / FIPS202</a>
+ver&ouml;ffentlicht, der die Hashfunktionen SHA3-224/256/384/512 (aufbauend auf
+Keccak aber <b>nicht identisch</b>) und die XOF-Funktionen SHAKE128/256 beschreibt
+(XOF = e<u>X</u>tendable <u>O</u>utput: <u>F</u>unktionen mit w&auml;hlbarer L&auml;nge des 'Fingerabdrucks').
+
+Das aktuelle CRC/Hash-Archiv
+<a href="crc_hash_2018-01-01.zip">crc_hash_2018-01-01.zip</a>
+enth&auml;lt Implementationen aller genannten Funktionen basierend auf meinen
+Keccak-Routinen. Ungl&uuml;cklicherweise hat NIST auch die Bit-Reihenfolge in
+Bytes ge&auml;ndert; deshalb gibt es in der SHA3-Unit eine entsprechende
+Funktion <b>SHA3_FinalBit_LSB</b>, um die letzen abschlie&szlig;enden LSB-Bits
+zu verarbeiten. Die enthaltenen Testprogramme verifizieren meine Implementationen
+gegen die NIST-Beispiele und die aktualisierten Testvektoren
+des <a href="http://keccak.noekeon.org/">Keccak</a>-Teams.
+
+<br>
+<br>
+<a name="blake2"></a>
+<hr size="1" noshade width="100%" align="center">
+<h3>Blake2</h3>
+Die kryptographische Hashfunktion
+<a href="https://blake2.net/">Blake2</a>
+wurde entwickelt von  J.-P. Aumasson,
+S. Neves, Z. Wilcox-O'Hearn und C. Winnerlein.
+Sie ist standardisiert im <a href="https://tools.ietf.org/html/rfc7693">RFC 7693</a>
+und  hat einen eingebauten Schl&uuml;ssel-Modus, der HMAC-Blake2 im
+wesentlichen &uuml;berfl&uuml;ssig macht.
+Besonderer Dank geht an <b>EddyHawk</b>
+f&uuml;r seine schnelle 32/64-Bit Kompressionsfunktionen.
+<br>
+<br>
+Meine erste Implementation im CRC/Hash-Archiv ist <b>Blake2s</b>, das mit
+allen unterst&uuml;tzten Pascal-Compilern benutzt werden kann; Blake2s liefert
+Hashdigests bis zu 32 Bytes. Die Unit blake2s.pas implementiert die
+allgemeinen Blake2s-Funktionen (incl. Schl&uuml;sselverarbeitung), die Units
+blaks224.pas und blaks256.pas enthalten den spezifischen Code f&uuml;r
+schl&uuml;ssellose 224- und 256-Bit Digests.
+<br>
+<br>
+Es gibt auch eine andere inkompatible Version <b>Blake2b</b>,
+die f&uuml;r 64-Bit-Systeme optimiert ist, die Units k&ouml;nnen
+mit allen Compilern &uuml;bersetzt werden, aber man beachte:
+F&uuml;r Compiler &auml;lter als Delphi 4
+wird die Int64-Arithmetik simuliert (und ist deshalb langsamer).
+
+<a name="lookup3"></a>
+<hr size="1" noshade width="100%" align="center">
+<h3>Bob Jenkins' lookup3</h3>
+Diese Hashfunktion von Bob Jenkins ist f&uuml;r die Verwendung mit
+Hashtabellen gedacht, es ist <b>keine kryptographische Hashfunktion.</b>
+Der Zweck der User-Wunschunit BJL3 ist die Bereitstellung der
+entsprechenden Funktion aus der Delphi-Unit system.hash (seit
+Delphi 22 / XE8 / VER290).
+BJL3 ist eine Reinraum-Pascal-Implementation des C-Codes
+lookup3.c f&uuml;r Little-Endian, die keinen Code von Delphi oder
+FreePascal benutzt. <b>Achtung:</b> Lookup3
+verarbeitet alle Bytes eines Textes in einem einzigen Aufruf (und
+ist abh&auml;ngig von der Textl&auml;nge). Eine Standard-Verkettung
+(On-line Algorithmus, Init/Update/Final)) kann implementiert werden,
+aber das Ergebnis h&auml;ngt von der Textaufteilung ab und ist deshalb
+praktisch unbrauchbar f&uuml;r Datei-Checksummen.
+
+
+<br>
+<br>
+<hr size="1" noshade width="100%" align="center">
+<a name="crchash_demo"></a>
+<h3>CRC/Hash-Demoprogramme</h3>
+<font color="#cc0033"><b>Letzte &Auml;nderungen:&nbsp;</b></font>
+Das Source-Archiv enth&auml;lt jetzt Lazarus-GUI-Quellcode.
+<br>
+<br>
+
+Das Archiv <a href="chksum_src_2018-06-18.zip">chksum_src_2018-06-18.zip</a>
+enth&auml;lt Pascal Quellcodes, die die Anwendung der CRC- und Hash-Units
+demonstrieren.
+
+Das Kommando&shy;zeilen-Demoprogramm <b>CCH.EXE</b> kann mit allen Pascal- und
+Delphi-Versionen kompiliert werden.
+<b>GCH.EXE</b> ist
+eine einfache Win32/Win64 GUI-Applikation f&uuml;r Klick-Klack-Techniker:),
+kompilierbar mit Delphi 2-7/9/10/12/17-18/25S (<a href="gch.png">Vorschau</a>).
+Eingabe-Dateien k&ouml;nnen als Kommando&shy;zeilen-Parameter angegeben werden.
+<br><br>
+Die interaktive GUI-Demoprogramme <b>tcrc16/tcrc32</b> berechnen und zeigen
+die Ergebnisse aller CRC16/CRC32-Algorithmen aus <b>crcm_cat</b> f&uuml;r
+Hex- und Stringeingabe (<a href="tcrc16.png">Vorschau</a>).
+<p>
+Das GUI-Programm <b>SRP16</b> sucht CRC16 Rocksoft-Parameter
+f&uuml;r gegebene Daten-/CRC16-S&auml;tze mit vielen Optionen (<a href="srp16.png">Vorschau</a>).
+Die Hauptroutine verarbeitet <i>Poly</i>-/<i>Init</i>-Bereiche mit
+weiteren Kombinationen von <i>refin</i>-, <i>refout</i>- und <i>xorout</i>-Werten.
+<p>
+<b>Lazcrc16, lazcrc32, lazgch, lazsrp16</b> sind die entsprechenden Lazarus-Programme.
+
+<p>
+Eine SFX-Installation der Delphi-EXE-Dateien befindet sich im Archiv
+<a href="chksum_bin_2017-11-29.zip">chksum_bin_2017-11-29.zip</a>,
+zum Selbst&uuml;bersetzen werden die Quellcodes aus <a href=
+"crc_hash_2018-01-01.zip">crc_hash_2018-01-01.zip</a> ben&ouml;tigt.
+(Die Lazarus-EXEs sind nicht enthalten, jedes ist &uuml;ber 16MB gro&szlig;!)
+<br><br>
+<br>
+
+<a name="FarPlugin"></a>
+<table BORDER=0 CELLPADDING=2 WIDTH="100%" SUMMARY="" >
+<tr>
+<td ALIGN=CENTER BGCOLOR="#77dddd"><b>FAR-Manager-Plugin</b></td>
+</tr>
+</table>
+<br>
+
+Die Basisroutinen sind in dem DLL-Plugin <a href="far_plug.png">(Vorschau)</a> f&uuml;r den beliebten <a href=
+"http://www.farmanager.com">FAR</a>-Manager verwendet:
+
+<br><br>
+<font color="#cc0033"><b>Wichige Information:&nbsp;</b></font>
+Version 1.17 in <a href="HashCRC117.zip">HashCRC117.zip</a>
+ist die letzte ver&ouml;ffentlichte Version. Sie unterst&uuml;tzt vollst&auml;ndig
+FAR 1.70 und arbeitet mit neueren FAR-Versionen, aber es kann
+eventuell Unicode-Probleme mit Dateinamen geben - die Hashwerte der
+(bin&auml;ren) Datei-Inhalte sind immer korrekt.
+Die Entwicklung wurde eingestellt bis wieder zuverl&auml;ssige englische
+Domentationen (und Supportdateien f&uuml;r Pascal) vorhanden sind,
+auch in den letzen 'stabilen' und 'n&auml;chtlichen' Versionen
+gibt es <b>keine</b> englische Encyclopedia-Dateien und FarEng.hlp
+enth&auml;lt mehr als 30% kyrillisches(?) Gekrakel.
+
+<br>
+<br>
+Besonderer Dank geht an <b>Dmitry Yerokhin</b>, der die russischen &Uuml;bersetzungen der .hlp- und .lng-Dateien
+zur Verf&uuml;gung gestellt hat.
+
+<br><br>
+Den Quellcode f&uuml;r das Plugin gibt's hier: <a href=
+"HashCRC117_Src.zip">HashCRC117_Src.zip</a>. Zum Kompilieren wird Virtual
+Pascal 2.1 bzw. Delphi 2 oder neuer sowie der Quellcode aus den
+CRC/Hash-Basisroutinen ben&ouml;tigt (plugins.pas aus dem FAR-Manager-Paket ist im
+Archiv vorhanden).
+
+<br><br>
+
+<b>Historie:</b> Version 1.2 splittet die SHA256-Ausgabe (um Abschneiden zu vermeiden), ist mit
+Virtual Pascal kompiliert und die Berechnung kann mit Esc abgebrochen werden.
+Version 1.3 arbeitet mit einer .lng-Datei f&uuml;r englische Texte und einem
+neuen Esc-Check f&uuml;r Delphi. Neu in Version 1.4 sind CRC64 und Adler32.
+Die Plugin-Version 1.6 kennt SHA224, SHA384 und SHA512 und zeigt nur die berechneten
+Werte an (kein <i>N/A</i> f&uuml;r abgew&auml;hlte Funktionen), sie ist ca. 40%
+schneller als V1.5.
+
+<br><br>Version 1.7 erlaubt die Konfiguration HEX/Base64 und Gro&szlig;/Kleinbuchstaben f&uuml;r HEX und ist
+jetzt ohne Fehler kompilierbar mit D4...D7/9.
+Die Basisroutinen sind mehr als 20% schneller als V1.6 (Code-Verbesserung und Delphi3-DLL).
+Werte werden als LSB HEX-Strings angezeigt; CRC16, CRC32, Adler32 werden als
+MSB HEX dargestellt (Indikator <i>M</i> in Separatorzeile, sonst <i>L</i>), wenn die Config-Option
+<i>Strict LSB</i> nicht gesetzt ist.  V1.7.1 ist die Version mit den SHA512-Bugfixes.
+<br><br>
+Version 1.8 hat zwei zus&auml;tzliche Buttons die Ergebnisse k&ouml;nnen in die Zwischenablage
+oder in eine Datei geschrieben werden (der Dateiname erh&auml;lt die zus&auml;tzliche Endung <i>.chf</i>).
+
+<br><br>
+Version 1.9 implementiert den <i>Multi-Datei-Modus</i>: Wenn mehrere
+Dateien markiert sind, werden die Hash/CRC-Berechnungen f&uuml;r alle Dateien
+durchgef&uuml;hrt und das Ergebnis in eine Datei geschrieben (das Format ist
+&auml;hnlich zur Ausgabe von CCH.). Der Dateiname ist via Dialog w&auml;hlbar;
+au&szlig;erdem kann konfiguriert werden, ob eventuelle E/A-Fehler mit in die
+Datei geschrieben werden.
+
+<br><br>
+Version 1.10 in unterst&uuml;tzt Whirlpool V3.0 und benutzt die Zeilenzahl der
+FAR-Konsole zur Vermeidung des &Uuml;berlaufs des Dialogfensters.
+Vers. 1.11 benutzt die neue Hash-Architektur und unterst&uuml;tzt RIPEMD-160,
+V1.12 unterst&uuml;tzt die in (Open)PGP und GnuPG verwendete CRC24.
+
+<br><br>
+Version 1.13 ist das Resultat einer Zusammenarbeit mit <b>Giovanni Drusian</b>. Sie enth&auml;lt
+eine Spezial-MD5-Behandlung f&uuml;r PE-Dateien (Portable Executable), die
+n&uuml;tzlich ist f&uuml;r die Erkennung und Klassifizierung von Schadprogrammen (Malware).
+Au&szlig;erdem gibt es eine neue Konfigurations&shy;option f&uuml;r die Ausgabe der
+vollst&auml;ndigen Dateinamen (incl. Pfad) beim Schreiben in Datei oder Zwischenablage.
+Version 1.14 korrigiert den Whirlpool-Fehler bei Dateigr&ouml;&szlig;en &uuml;ber 512MB,
+V1.15 enth&auml;lt Anpassungen zur Vermeidung des Delphi-<i>eof/4GB</i>-Fehlers.
+V1.16 berechnet MD4- und eDonkey/eMule-Hashwerte und hat ein ge&auml;ndertes
+Layout f&uuml;r den Konfigurations-Dialog.
+Version 1.17 korrigiert einen SHA512/384-Fehler bei Dateigr&ouml;&szlig;en &uuml;ber 512MB.
+
+<br><br>
+<table BORDER=0 CELLSPACING=4 CELLPADDING=4 WIDTH="100%" summary="" >
+<tr>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="index_de.html">Start</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="crchash_de.html">CRC/Hash</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="crypt_de.html">Krypto</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="misc_de.html">Sonstiges</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="links_de.html">Links</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="crchash_en.html">English</a></b></td>
+</tr>
+</table>
+</body>
+
+</html>

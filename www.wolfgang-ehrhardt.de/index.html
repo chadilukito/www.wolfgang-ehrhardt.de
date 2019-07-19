@@ -1,0 +1,1320 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD html 4.01 transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="author" content="Wolfgang Ehrhardt">
+  <meta name="keywords" content="Pascal, Delphi, Sourcecode, Freeware, Programming">
+  <title>W.Ehrhardt: Home/News</title>
+</head>
+
+<body text="#000000" bgcolor="#F0FFFF" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" summary="" >
+<tr>
+<td ALIGN=LEFT> <font size=1>&copy; 2018 W.Ehrhardt </font></td>
+<td ALIGN=RIGHT><font size=1>Last update Dec. 28, 2018</font></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=4 CELLPADDING=4 WIDTH="100%" summary="" >
+<tr>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="index.html">Home</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="crchash_en.html">CRC/Hash</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="crypt_en.html">Crypto</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="misc_en.html">Misc.</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="info_en.html">Info</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="links_en.html">Links</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="index_de.html">Deutsch</a></b></td>
+</tr>
+</table>
+
+<br>
+<table BORDER=0 CELLPADDING=4 WIDTH="100%" SUMMARY="">
+<tr>
+<td ALIGN=CENTER BGCOLOR="#77DDDD"><b>Home / News</b></td>
+</tr>
+</table>
+
+<h1>
+Welcome to Wolfgang Ehrhardt's home page!
+</h1>
+
+Most pages are available in English and German, for navigation or language
+switching use the top and bottom menus. Please feel free to report bugs in
+the software or send questions or comments to the <a href="index.html#bottom">e-mail</a> address (listed in mangled form
+together with my public <a href="index.html#bottom">PGP key</a> at the bottom of this page).
+Make sure the subject line is related to these pages, e.g. contains <i>CRC/Hash</i>;
+if you do not get a reply within a few days then retry to send your mail.
+
+<br>
+<br>
+If needed, these pages are available with <b>https</b> as
+<a href="https://sslsites.de/wolfgang-ehrhardt.de/index.html">https://sslsites.de/wolfgang-ehrhardt.de/index.html</a>.
+
+<br><br>
+
+<b>Before downloading any software from this site please read this
+<a href="info_en.html#LegalNotice">legal notice</a>.</b>
+<br><br>
+
+<hr size="1" noshade width="100%">
+
+<h2>
+News</h2>
+
+<b>Dec. 28, 2018</b><br>
+For health reasons, there will be no updates in the next few weeks.
+<br><br>
+<b>
+Nov. 27, 2018
+</b><br>
+<ul style="margin-top:0">
+<li>
+ Updated multi precision arithmetic package <a href="misc_en.html#mparith">MPArith 1.39.12</a> with
+ <ul style="margin-top:0">
+   <li>New functions:
+       succd/s/x, predd/s/x in mp_rcalc,
+       mpc_log10, mpc_is_ia in mp_cmplx,
+       and the <b>new unit mp_ccalc</b>, which parses and evaluates mp_complex expressions;
+   </li>
+
+   <li>Changed functions:
+       adjust sign of mpc_arctanh on the branch cut,
+       error MP_PRECISION in s_mpf_mod_pi2k instead of assert;
+   </li>
+
+   <li>Other: configuration parameter MPC_NO_EXECPTIONS;
+   </li>
+
+   <li>Bugfixes: mp_real: copy/paste bug in mpf_sinhcosh, subtle bug for mpf_arctan2(y,0),
+       mp_cmplx: mpc_ln1p and mpc_expm1 for small imaginary a, mpc_arctanh for real |a| > 1.
+   </li>
+
+   <li>
+     The basic <a href="mp_intro.html">introduction</a> and the multi precision
+     calculator <a href="mp_intro.html#t_rcalc">t_rcalc</a> are updated,
+     there is the new calculator <a href="mp_intro.html#t_ccalc">t_ccalc</a>
+     for complex expressions.
+   </li>
+ </ul>
+</li>
+
+<li>
+ Updated <a href="misc_en.html#amath">AMath</a> archive and accompanying <a href="amath_functions.html">introduction:</a>
+  <ul style="margin-top:0">
+    <li>
+      Unit <a href="misc_en.html#amath_unit">AMath V2.50</a> with
+      the <b>new</b> functions: population covariance pcov/x and
+      generic aliases Infinity, NegInfinity, NaN;
+    </li>
+    <li>
+      <a href="misc_en.html#specfun_units">Special Functions V1.53.03</a>
+      with the <b>new functions:</b>
+      derivatives of the zero order Kelvin functions
+      (kelvin_berp / beip / kerp / keip);
+    </li>
+    <li>
+      Unit <a href="misc_en.html#amcomplex">AMCmplx V1.14</a>
+      with the <b>new functions:</b> zeta, sinpi, Ei, E1, li;
+      <b>changed functions</b>:
+        Set agm(x,-x) = 0, nroot special cases n=1,2;
+      <b>fixed</b>: expm1 and ln1p for small pure imaginary arguments.
+    </li>
+  </ul>
+</li>
+<li>
+ The 64-bit compatible <a href="misc_en.html#damath">DAMath</a> archive with
+ the units <a href="misc_en.html#damath_unit">DAMath V1.17</a>,
+ <a href="misc_en.html#dam_spec">Special Functions V1.38.02</a>
+ and  <a href="misc_en.html#damcomplex">DAMCmplx V0.70</a>
+ has essentially the same updates as AMath.
+</li>
+
+<li>
+ AMath and DAMath document
+  <a href="specialfunctions.pdf">Special Functions Reference Manual with
+  Implementation Notes</a> Version 2.27 (including Complex Functions)
+</li>
+
+<li>
+ <a href="misc_en.html#util">Util</a> archive with the standard include file
+  <a href="misc_en.html#util_stdinc">std.inc</a> V1.75
+  and unit <a href="misc_en.html#Compvers">Compvers</a> V0.41.
+  <font color="#a00000">The std.inc file has basic support for Delphi 26 / 10.3 'Rio' / VER330;
+  it is needed for some units, e.g. for mem_util.</font>
+</li>
+
+</ul>
+
+
+<b>
+Nov. 02, 2018
+</b><br>
+<ul style="margin-top:0">
+
+  <li>
+   <a href="misc_en.html#amath">AMath</a> archive with
+    unit <a href="misc_en.html#amath_unit">AMath V2.47</a> (reintegrated amath2/ext2);
+    <a href="misc_en.html#specfun_units">Special Functions V1.52.04</a>
+    (new: modified digamma, synchrotron functions F and G;
+     changed: Nan/Inf checks for sfc_EllipticPiCim,
+     maximum iteration check in some elliptic integrals);
+    unit <a href="misc_en.html#amcomplex">AMCmplx V1.04</a>
+    (new: separate Jacobi elliptic functions sn, cn, dn;
+    changed: LambertWk (order of arguments and initial approximations),
+    RStheta with Maclaurin series for |z| &lt; 1/64,
+    improved lngamma for  0 &le; z.re  &lt; 2);
+    <a href="misc_en.html#amtools">AMTools V0.46</a> with Ridders root finding method.
+  </li>
+  <li>
+   64-bit compatible <a href="misc_en.html#damath">DAMath</a> archive with
+   the units <a href="misc_en.html#damath_unit">DAMath V1.14</a>,
+   <a href="misc_en.html#dam_spec">Special Functions V1.37.01</a>,
+   <a href="misc_en.html#damtools">DAMTools V0.47</a>
+   and  <a href="misc_en.html#damcomplex">DAMCmplx V0.63</a>.
+  </li>
+  <li>
+    D/AMath internal archive <a href="misc_en.html#complexdemo">complexdemo</a> with the
+    complex expression parser / interpreter amccalc.pas and the demo
+    programs PlotPhase (a GUI application for the visualization of complex
+    functions) and T_CCalcX (a console program for the evaluation of complex expressions);
+  </li>
+ <li>
+  <a href="misc_en.html#util">Util</a> archive with
+  Compvers V0.40 and version 1.73 of the standard include file std.inc.
+ </li>
+</ul>
+
+
+
+<b>
+Oct. 08, 2018
+</b><br>
+<ul style="margin-top:0">
+  <li>
+   <a href="misc_en.html#amath">AMath</a> with
+   unit <a href="misc_en.html#amath_unit">AMath V2.44</a>
+   (more ext2 routines: abs2x, ceil2x, chs2x, cmp2x, exp1_2x, exp2x, floor2x,
+   ldexp2x, ln2x, ln2_2x,nroot2x, pow2x, trunc2x);
+   <a href="misc_en.html#specfun_units">Special Functions V1.51.07</a>
+   with the new unit sfBessl2 and <b>new functions:</b>
+   Coulomb functions (phase shift, normalizing constant, regular and irregular wave
+   functions), truncated exponential sum function;
+   <b>changed functions</b>:
+     igamma with Laguerre expansion and x &lt; 0,
+     igammal for x &lt; 0,
+     removed igamman;
+   unit <a href="misc_en.html#amcomplex">AMCmplx V0.98</a>
+   with the integer power function cpowi.
+  </li>
+  <li>
+   64-bit compatible <a href="misc_en.html#damath">DAMath</a> archive with
+   the units <a href="misc_en.html#damath_unit">DAMath V1.12</a>,
+   <a href="misc_en.html#dam_spec">Special Functions V1.36.08</a>
+   and  <a href="misc_en.html#damcomplex">DAMCmplx V0.57</a>.
+  </li>
+ <li>
+  Updated <a href="misc_en.html#util">Util</a> archive with unit
+  <a href="misc_en.html#Compvers">Compvers</a> V0.39
+  (support for FPC 3.2.0 and FPC 3.3.1)
+  and version 1.71 of the standard include file.
+ </li>
+</ul>
+
+
+
+<b>
+Sep. 12, 2018
+</b><br>
+<ul style="margin-top:0">
+
+<li>
+ <a href="misc_en.html#amath">AMath</a> with
+    unit <a href="misc_en.html#amath_unit">AMath V2.42</a>
+    (new: Total variance tvar/x, signaling NaNs;
+    changed: Bitmask names of single exceptions compatible to DAMath);
+    <a href="misc_en.html#specfun_units">Special Functions V1.50.18</a>
+    (new: Euler polynomials, Bessel polynomials, logarithm of Barnes G,
+        exponential integral beta,  incomplete gamma function igamma(n,x),
+        partial x-derivative of P(a,x);
+    changed:
+        Exponential integral E_n for n &lt;0 and x  &gt; 0,
+        implemented  max. iteration check in some elliptic integral functions,
+        fix return type of M_EllipticPiC, more NaN/Inf checks).
+</li>
+<li>
+ 64-bit compatible <a href="misc_en.html#damath">DAMath</a> archive with
+ the units <a href="misc_en.html#damath_unit">DAMath V1.11</a>,
+ <a href="misc_en.html#dam_spec">Special Functions V1.35.17</a>.
+ Unit DFPU now supports Get/SetExceptionMask, in unit DAMath
+ there are fixes for some 32-bit compiler functions
+ (trunc/round/frac changed FPC control word) and for ln in some
+ FPC versions (non-standard exceptions and Inf handling).
+ </li>
+
+</ul>
+
+
+
+
+<b>
+Aug. 08, 2018
+</b><br>
+<ul style="margin-top:0">
+<li>
+ Updated multi precision arithmetic package <a href="misc_en.html#mparith">MPArith 1.38.10</a> with
+ <ul style="margin-top:0">
+   <li>New functions:
+     Simulated ASX for 64-bit, const PINC for default precision elevation;
+   </li>
+
+   <li>Changed functions:
+     frexpx/ldxepx only if not EXT64, prime32 uses doubles,
+     mpf_??_ext changed to mpf_??_dbl, mpc_??_ext changed to mpc_??_dbl,
+     s_mp_ln/log2 return double;
+   </li>
+
+   <li>Other: some manual precision adjustments.
+   </li>
+
+   <li>
+     The basic <a href="mp_intro.html">introduction</a> and the multi precision
+     calculators <a href="mp_intro.html#t_calc">t_calc</a> and
+     <a href="mp_intro.html#t_rcalc">t_rcalc</a> are updated.
+   </li>
+ </ul>
+</li>
+
+<li>
+  <a href="misc_en.html#amath">AMath</a> archive including
+     unit <a href="misc_en.html#amath_unit">AMath V2.38</a> with
+     SafeDivX (safe division), CoeffVar/X (coefficient of variation),
+     interfaced sqr12x; improved intpower.
+  <a href="misc_en.html#specfun_units">Special Functions V1.49.03</a>
+     with relative exponential of order n, hypergeometric function 2F0.
+</li>
+
+<li>
+ 64-bit compatible <a href="misc_en.html#damath">DAMath</a> archive with
+ the units <a href="misc_en.html#damath_unit">DAMath V1.06</a>,
+ <a href="misc_en.html#dam_spec">Special Functions V1.34.02</a>,
+ and an improved PurePascal version.
+ of ldexpd.
+</li>
+
+<li>
+ <a href="misc_en.html#util">Util</a> and
+ std.zip archives with the standard include file std.inc V1.70,
+ defining HAS_FP_CAST (typecast for floating point available, e.g. double(1)).
+</li>
+
+</ul>
+
+
+<b>
+June 18, 2018
+</b><br>
+<ul style="margin-top:0">
+<li>
+ Multi precision arithmetic package <a href="misc_en.html#mparith">MPArith 1.37.12</a> with
+ <ul style="margin-top:0">
+   <li>New functions: mp_reverse (reverse mp_int in any base),
+     mpf_cell1, mpf_cell2, mp_calc (with _EE, _EK, _ASS)
+   </li>
+
+   <li>Changed functions: Renamed mp_base.mp_reverse to s_mp_reverse
+   </li>
+
+   <li>Other: mp_calc with input in base 2 .. MaxRadix
+   </li>
+
+   <li>Bugfix: s_mpr_cmp_mag if a=0
+   </li>
+ </ul>
+</li>
+<li>
+The source archive for <a href="crchash_en.html#crchash_demo">CRC/Hash demo programs</a>
+now contains Lazarus GUI codes.
+
+</li>
+<li>
+ <a href="misc_en.html#amath">AMath</a> archive with
+    unit <a href="misc_en.html#amath_unit">AMath V2.31</a>
+    (new relative compound function and a fix for FPC2.6.x)
+    and <a href="misc_en.html#specfun_units">Special Functions V1.48.04</a>
+    (with the new functions: Derivatives of Weierstrass elliptic functions
+    (wpe_der / wpg_der), Mathematica style incomplete elliptic integral of the
+    third kind,
+</li>
+
+<li> 64-bit compatible <a href="misc_en.html#damath">DAMath</a> archive
+      with the units <a href="misc_en.html#damath_unit">DAMath V1.01</a>,
+      and <a href="misc_en.html#dam_spec">Special Functions V1.33.04</a>.
+</li>
+
+</ul>
+
+
+
+<b>
+May 10, 2018
+</b>
+<br>
+<ul style="margin-top:0">
+<li>
+ Updated <a href="misc_en.html#amath">AMath</a> archive and accompanying <a href="amath_functions.html">introduction:</a>
+  <ul style="margin-top:0">
+    <li>
+      <a href="misc_en.html#specfun_units">Special Functions V1.47.15</a>
+      with the <b>new functions:</b>
+        Weierstrass elliptic functions and inverses,
+        Klein invariant, modular lambda function,
+        Mathematica style incomplete elliptic integrals;
+      <b>changed functions</b>:
+        sfc_el2 is computed with Carlson functions,
+        changed argument check in sfc_ell_rd;
+    </li>
+    <li>
+      Units
+      <a href="misc_en.html#amath_unit">AMath V2.29</a>,
+      <a href="misc_en.html#amcomplex">AMCmplx V0.97</a>, and
+      <a href="misc_en.html#amtools">AMTools V0.45</a>
+      contain fixes for problems with FPC 3.1.1.
+    </li>
+  </ul>
+</li>
+<li>
+ The 64-bit compatible <a href="misc_en.html#damath">DAMath</a> archive with
+ the units <a href="misc_en.html#damath_unit">DAMath V1.00</a>,
+ <a href="misc_en.html#damcomplex">DAMCmplx V0.56</a>,
+ <a href="misc_en.html#damtools">DAMTools V0.46</a>,
+ and  <a href="misc_en.html#dam_spec">Special Functions V1.32.07</a>
+ has essentially the same updates as AMath. Unit DAMath additionally
+ contains a bug-free frac function for FPC 3.1.1/64-bit.
+</li>
+
+<li>
+  <font color="#cc0044">
+  <b>Note for FreePascal users: </b></font>
+  The errors with FPC 3.1.1-r20:38296_[2018/02/21] are corrected: The  bad  FPC design decision to evaluate constants like 2.0/9.0 in single precision,
+  is fixed by using integer(!) quotients like 2/9 (hoping this will stay correct in future versions).
+  The broken frac function for 64-bit will be fixed in upcoming FPC snapshots
+  (see  <a href="https://bugs.freepascal.org/view.php?id=33635">https://bugs.freepascal.org/view.php?id=33635</a>),
+  until then DAMath defines its own frac function for FPC64/311.
+</li>
+
+<li>
+  Some broken links in the basic <a href="mp_intro.html">MPArith introduction</a>
+  are fixed.
+</li>
+
+</ul>
+
+
+<b>
+Apr. 18, 2018
+</b>
+<br>
+<ul style="margin-top:0">
+<li>
+  <a href="misc_en.html#amath">AMath</a> archive with
+  <a href="misc_en.html#specfun_units">Special Functions V1.46.15</a>
+  (<b>new functions:</b> Integrals of zero-order Bessel functions,
+   EllipticPiCim (for imaginary modulus), Mathematica style complete elliptic
+   integrals, Neville theta functions, inverse lemniscate functions;
+   <b>changed functions</b>: comp_ellint_b/d and EllipticPiC for |k| &ge; 1,
+   fixed Nakagami distribution return types in specfun),
+   unit <a href="misc_en.html#amcomplex">AMCmplx V0.95</a>
+   with the new Riemann-Siegel theta and the
+   reciprocal gamma function.
+</li>
+<li>
+ 64-bit compatible <a href="misc_en.html#damath">DAMath</a> archive
+ with <a href="misc_en.html#damcomplex">DAMCmplx V0.54</a>
+ and  <a href="misc_en.html#dam_spec">Special Functions V1.31.07</a>.
+</li>
+</ul>
+
+
+<b>
+Mar. 18, 2018
+</b>
+<br>
+<ul style="margin-top:0">
+<li>
+ <a href="misc_en.html#amath">AMath</a> archive
+ with unit <a href="misc_en.html#amath_unit">AMath V2.28</a>
+ and the  new procedure CSEvalXDer (evaluate Chebyshev sum and derivative);
+ <a href="misc_en.html#specfun_units">Special Functions V1.45.11</a>
+  with the <b>new functions:</b>
+    Bose-Einstein integrals,
+    inverse Langevin function,
+    inverse tangent integral of real order,
+    Rogers-Ramanujan continued fraction;
+  <b>changed functions</b>:
+    LegendreChi for |x| > 1,
+    LerchPhi for z < -1,
+    polylogarithms of real order for x > 1.
+</li>
+<li>
+ 64-bit compatible <a href="misc_en.html#damath">DAMath</a> archive with
+ unit <a href="misc_en.html#damath_unit">DAMath V0.99</a>,
+ and  <a href="misc_en.html#dam_spec">Special Functions V1.30.11</a>.
+</li>
+</ul>
+
+
+<b>
+Feb. 17, 2018
+</b>
+<br>
+<ul style="margin-top:0">
+<li>
+ <a href="misc_en.html#amath">AMath</a> with
+ unit <a href="misc_en.html#amath_unit">AMath V2.26</a>
+ (types for functions with pointer to parameters);
+ <a href="misc_en.html#specfun_units">Special Functions V1.44.17</a>
+ (new: Owen's T function, inverse RiemannR, inverse erfce, Einstein functions,
+ transport integrals, Fermi-Dirac functions of real order;
+ changed; Polylogarithms (integer order for x > 1, real order for x < -1),
+ improved RiemannR, and other changes in erf_p, erf_q, Debye functions, Struve H_v(x)).
+ Unit <a href="misc_en.html#amtools">AMTools V0.44</a> with the
+ new procedures intde_p and intdei_p (parameter pointer versions
+ of the double exponential integration routines) and PolyRootsOA (open array version).
+</li>
+<li>
+ 64-bit compatible <a href="misc_en.html#damath">DAMath</a> archive with
+ <a href="misc_en.html#damath_unit">DAMath V0.97</a>,
+ <a href="misc_en.html#damtools">DAMTools V0.45</a>,
+ and  <a href="misc_en.html#dam_spec">Special Functions V1.29.18</a>.
+</li>
+</ul>
+
+
+<b>
+Jan. 01, 2018
+</b>
+<br>
+<ul style="margin-top:0">
+<li>
+ <a href="misc_en.html#amath">AMath</a> archive with
+ units <a href="misc_en.html#amath_unit">AMath V2.25</a>,
+ <a href="misc_en.html#amtools">AMTools V0.40</a>,
+ <a href="misc_en.html#amcomplex">AMCmplx V0.93</a> and
+   <a href="misc_en.html#specfun_units">Special Functions V1.43.11</a>
+   (new functions:
+   inverse imaginary error function,
+   exponentially scaled exponential integrals Ei and E1,
+   generalized Marcum Q function,
+   Nakagami distribution).
+</li>
+<li>
+ 64-bit compatible <a href="misc_en.html#damath">DAMath</a> archive with
+ unit <a href="misc_en.html#damath_unit">DAMath V0.96</a>,
+ <a href="misc_en.html#damtools">DAMTools V0.40</a>,
+ <a href="misc_en.html#damcomplex">DAMCmplx V0.53</a>,
+ and  <a href="misc_en.html#dam_spec">Special Functions V1.28.12</a>.
+</li>
+
+<li>
+Updated <a href="crchash_en.html">CRC/Hash</a> archive and
+<a href="hash_intro.html">Hash/HMAC/KDF introduction</a> page
+<ul style="margin-top:0">
+  <li>
+    User-requested unit
+    <a href="crchash_en.html#lookup3">BJL3</a>
+    which implements Bob Jenkins' non-cryptographic
+    hash function lookup3 (which is used in Delphi's system.hash unit);
+  </li>
+  <li>
+    Another user-request: The <i>[hash]file</i> functions take a <b>string</b> as
+    file name parameter type (str255 was a relict from
+    older versions which had DLL compatible functions).
+  </li>
+</ul>
+<li>
+The new <a href="misc_en.html#prng">PRNG</a> archive has the following changes
+<ul style="margin-top:0">
+  <li>
+   Another pseudo random number generator: <b>Well1024a</b> by
+   F. Panneton, P. L'Ecuyer and M. Matsumoto;
+  </li>
+  <li>
+   Functions rangel/w  for random longint/word in range 0..range-1 for all generators;
+  </li>
+  <li>
+   Unit pasrand with TP/Delphi compatible LC generator and common random functions;
+  </li>
+  <li>
+  New archive layout: tests subdirectory, more test, AES/Salsa functions
+  included.
+  </li>
+</ul>
+
+</li>
+<li>
+ The <a href="misc_en.html#util">Util</a> and
+ std.zip archives with the standard include file std.inc V1.69, defining D22PLUS for easy
+ system.hash handling.
+</li>
+
+</ul>
+
+
+
+<b>
+Nov. 29, 2017
+</b>
+<br>
+<ul style="margin-top:0">
+<li>
+Updated <a href="crchash_en.html">CRC/Hash</a> archive
+<ul style="margin-top:0">
+  <li>
+   Faster 32/64-bit <a href="crchash_en.html#blake2">Blake2b</a> compress
+   routines from EddyHawk, speed-up for 16-bit and non-int64 compilers,
+   now available for all compilers;
+  </li>
+  <li>
+   Faster <a href="crchash_en.html#blake2">Blake2s</a>
+   16-bit compress routines;
+  </li>
+  <li>
+  The <a href="crchash_en.html#crchash_demo">CRC/Hash demo programs</a>
+  are recompiled to use the faster Blake2b algorithms.
+  </li>
+</ul>
+<li>
+ FPC/ARM and Delphi Tokyo adjustments on the <a href="crypt_en.html">Crypto page</a>:
+  <ul style="margin-top:0">
+    <li>
+      <a href="crypt_en.html#anubis">Anubis</a>,&nbsp;
+      <a href="crypt_en.html#blowfish">Blowfish</a>,&nbsp;
+      <a href="crypt_en.html#salsa20">Salsa20</a>,&nbsp;
+      <a href="crypt_en.html#SEED">SEED</a>,&nbsp;
+      <a href="crypt_en.html#shacal2">SHACAL-2</a>,&nbsp;
+      <a href="crypt_en.html#skipjack">SkipJack</a>,&nbsp;
+      <a href="crypt_en.html#sosemanuk">Sosemanuk</a>,&nbsp;
+      <a href="crypt_en.html#XTEA">XTEA</a>;&nbsp;
+    </li>
+    <li>
+      <a href="crypt_en.html#poly1305">Poly1305</a>
+    </li>
+  </ul>
+</li>
+<li>
+ FPC/ARM and Delphi Tokyo adjustments for the
+ <a href="misc_en.html#prng"> random number generators</a>
+ and the Delphi <a href="misc_en.html#CRT">CRT</a> unit.
+</li>
+</ul>
+
+<b>
+Nov. 17, 2017
+</b>
+<br>
+<ul style="margin-top:0">
+<li>
+Updated <a href="crchash_en.html">CRC/Hash</a> archive:
+<ul style="margin-top:0">
+  <li>
+  User-requested <a href="crchash_en.html#blake2">Blake2b</a> hash functions
+  (supported for TP6/7, D2-D7/D9-D10/D12/D17-D18/D25S, FPC, VP),
+  </li>
+  <li>
+  Fast <a href="crchash_en.html#blake2">Blake2s</a> 32/64-bit
+  compression function contributed by EddyHawk,
+  </li>
+  <li>
+  The <a href="crchash_en.html#crchash_demo">CRC/Hash demo programs</a>
+  use the new Blake2b algorithms, GCH and CCH are compiled with Delphi 6 / FPC 3.0.0.
+  </li>
+</ul>
+<li>
+ Changes on the <a href="crypt_en.html">Crypto page</a>:
+  <ul style="margin-top:0">
+  <li>
+   GCM mode for <a href="crypt_en.html#camellia">Camellia</a>,
+  </li>
+  <li>
+   Test programs for <a href="crypt_en.html#serpent">Serpent</a>&nbsp; EAX and OMAC,
+  </li>
+  <li>
+    FPC/ARM and Delphi Tokyo adjustments for
+    <a href="crypt_en.html#AES">AES</a>,&nbsp;
+    <a href="crypt_en.html#camellia">Camellia</a>,&nbsp;
+    <a href="crypt_en.html#serpent">Serpent</a>,&nbsp;
+    <a href="crypt_en.html#twofish">Twofish</a>,&nbsp;
+    and the <a href="crypt_en.html#FCADemo">FCA demo archive</a>.
+  </li>
+  </ul>
+</li>
+<li>
+  Updated <a href="misc_en.html#util">Util</a> archive with
+  <ul style="margin-top:0">
+  <li>
+  <a href="misc_en.html#Compvers">Compvers</a>
+  V0.38 unit (basic support for FPC 3.0.4)
+  </li>
+  <li>
+  Small FPC/ARM-WinCE adjustments for
+  <a href="misc_en.html#Dates">Dates</a> V0.38,
+  <a href="misc_en.html#TSC">TSC</a> V0.44
+  </li>
+  </ul>
+</li>
+</ul>
+
+<b>
+Nov. 02, 2017
+</b><br>
+<ul style="margin-top:0">
+<li>
+ Updated <a href="misc_en.html#amath">AMath</a> archive and accompanying <a href="amath_functions.html">introduction:</a>
+  <ul style="margin-top:0">
+    <li>
+      Unit <a href="misc_en.html#amath_unit">AMath V2.24</a> with the new
+      accurate helper function fma_x to compute a*b + c; old non-BASM code was removed.
+    </li>
+    <li>
+      <a href="misc_en.html#specfun_units">Special Functions V1.42.01</a>
+      with the new exponentially scaled exponential integral eisx2; the domain
+      of the Goodwin-Staton integral gsi was extended to negative arguments.
+    </li>
+    <li>
+      <a href="misc_en.html#amcomplex">AMCmplx V0.92</a>
+      with LambertW function for all branches.
+    </li>
+    <li>
+      <b>New unit</b> <a href="misc_en.html#amquat">AMQuat V0.19</a> with
+      quaternionic arithmetic and elementary transcendental functions.
+    </li>
+  </ul>
+</li>
+
+<li>
+ 64-bit compatible <a href="misc_en.html#damath">DAMath</a> archive with
+ unit <a href="misc_en.html#damath_unit">DAMath V0.95</a>,
+ <a href="misc_en.html#damcomplex">DAMCmplx V0.52</a>,
+ <a href="misc_en.html#damquat">DAMQuat V0.19</a>,
+ <a href="misc_en.html#dam_spec">Special Functions V1.27.01</a>.
+</li>
+
+</ul>
+
+
+
+<b>
+Oct. 05, 2017
+</b><br>
+<ul style="margin-top:0">
+<li>
+ Multi precision arithmetic package <a href="misc_en.html#mparith">MPArith 1.36.12</a> with
+ <ul style="margin-top:0">
+  <li>
+    New functions: mp_digitsum, mp_is_lpsp, mp_is_slpsp, mp_is_psp,
+    mp_is_psp_d, mp_nextpower/_ex, s_mp_is_lpsp
+  </li>
+  <li>
+    Changed functions: mp_is_slpsp with standard Selfridge A parameters,
+   old function renamed to mp_is_slpsp_alt
+  </li>
+  <li> Other:
+   mp_calc with digitsum, nextpower, psp; extended help with ?? for t_calc;
+   radix command for t_calc and t_rcalc
+  </li>
+ </ul>
+</li>
+</ul>
+
+
+<b>
+Aug. 03, 2017
+</b><br>
+<ul style="margin-top:0">
+<li>
+ Multi precision arithmetic package <a href="misc_en.html#mparith">MPArith 1.35.07</a> with
+ <ul style="margin-top:0">
+  <li>
+    New functions: mp_fact_swing, mp_swing and from AMath/fdamsupp:
+    mpf_arccosd, mpf_arccotcd, mpf_arccotd, mpf_arcsind, mpf_arctand,
+    mpf_cbrt, mpf_cosd, mpf_cospi, mpf_cotd, mpf_deg2rad, mpf_rad2deg,
+    mpf_rem,2pi, mpf_sind, mpf_sinpi, mpf_tand, mpf_tanpi
+  </li>
+  <li> Changed functions: mp_fact: check n &le; MaxFact; mp_types: no threadvar for FPC1.0.10/Win32
+  </li>
+ </ul>
+</li>
+
+<li>
+ <a href="misc_en.html#amath">AMath</a> archive with
+  unit <a href="misc_en.html#amath_unit">AMath V2.22</a>:
+  accurate helper functions ln1pexp, logaddexp, logsubexp;
+  ext2 procedures xmul12, xadd12, xdivrem; and the function isRMNearest.
+  <a href="misc_en.html#specfun_units">Special Functions V1.41.06</a> with
+  the Fresnel auxiliary functions FresnelF/G, Bessel lambda functions,
+  accurate two parameter error function erfh and erf2,
+  and the chi distribution chi_pdf/cdf/inv.
+  <a href="misc_en.html#amtools">AMTools V0.39</a> with root polishing for complex roots.
+</li>
+
+<li>
+ 64-bit compatible <a href="misc_en.html#damath">DAMath</a> archive with
+ unit <a href="misc_en.html#damath_unit">DAMath V0.94</a>,
+ <a href="misc_en.html#damtools">DAMTools V0.39</a>,
+ and  <a href="misc_en.html#dam_spec">Special Functions V1.26.05</a>.
+ The new unit <b>DFPU V0.17</b> implements 64-bit and ARM compatible
+ <a href="amath_functions.html#fpu_control">rounding and precision functions</a>
+  based on the compiler math units.
+</li>
+
+</ul>
+
+
+<b>
+July 05, 2017
+</b><br>
+<ul style="margin-top:0">
+<li>
+ <a href="misc_en.html#amath">AMath</a> archive
+ with unit <a href="misc_en.html#amath_unit">AMath V2.16</a>:
+ accurate helper functions lncosh, lnsinh, some polynomial routines
+ (PolEvalC, PolEvalDeriv, PolEvalCHEDer), tanPi, pow1pf.
+ <a href="misc_en.html#specfun_units">Special Functions V1.40.07</a>
+ with q-Pochhammer Euler function, Dedekind eta for imaginary
+ arguments, complete elliptic integrals K and E for k>1.
+ <a href="misc_en.html#amtools">AMTools V0.37</a> with the new
+ <a href="misc_en.html#polyroots">PolyRoots</a>
+ procedure to find the real and complex roots of a polynomial up to
+ degree 20 using a companion matrix method, balancing, and the QR
+ algorithm for the eigenvalues of an upper Hessenberg matrix.
+</li>
+
+<li>
+ 64-bit compatible <a href="misc_en.html#damath">DAMath</a> archive with
+ unit <a href="misc_en.html#damath_unit">DAMath V0.90</a>,
+ <a href="misc_en.html#damtools">DAMTools V0.38</a>,
+ <a href="misc_en.html#dam_spec">Special Functions V1.25.04</a>.
+</li>
+
+</ul>
+
+
+<b>
+June 04, 2017
+</b><br>
+<ul style="margin-top:0">
+
+<li>
+Updated <a href="crchash_en.html">CRC/Hash</a> archives with
+<ul style="margin-top:0">
+  <li>
+  Fully integrated
+  <a href="crchash_en.html#blake2">Blake2s</a> hash functions. The source
+  in the archive should be compatible with units/applications that do not
+  expect the old values of MaxOIDLen or C_HashVers.
+  All <a href="crchash_en.html#crchash_demo">CRC</a> and
+  <a href="crypt_en.html#FCADemo">FCA/FZCA</a> demo programs programs compile without changes.
+  </li>
+  <li>
+  New <a href="crchash_en.html#crcmodel">Rocksoft</a> parameter records (total 100)
+  </li>
+  <li>
+  The <a href="crchash_en.html#crchash_demo">CRC/Hash demo programs</a>
+  support the new Blake2s algorithms and Rocksoft parameters.
+  </li>
+  <li>
+  Combined HMAC test program
+  </li>
+  <li>
+  Tested with Raspberry Pi 3 and Delphi 25 (Tokyo starter)
+  </li>
+  <li>
+  and more ...
+  </li>
+
+</ul>
+
+<li>
+  Updated <a href="misc_en.html#util">Util</a> archive with a
+  fix for debug mode range check error in <a href="misc_en.html#base2n">Base2N V0.42</a>.
+  <br>
+</li>
+
+</ul>
+
+
+
+<b>
+May 14, 2017
+</b><br>
+<ul style="margin-top:0">
+<li>
+ The 64-bit compatible <a href="misc_en.html#damath">DAMath</a> functions
+ now support <b>Raspberry Pi 3</b>. There are no changes in the DAMath units,
+ some error bounds in the test files have been adjusted for FPC/ARM with
+ Raspberry Pi, results from FPC 3.0.2 are now included in the test suite.
+</li>
+
+<li>
+ Multi precision arithmetic package <a href="misc_en.html#mparith">MPArith 1.34.02</a> with
+ <ul style="margin-top:0">
+  <li>
+    New functions: mp_is_pcarmichael, mp_is_pcarmichael_ex
+  </li>
+  <li> Changed functions: mp_calc uses mp_is_pcarmichael
+  </li>
+  <li> Other: Some broken links in mp_rsa are corrected;
+              time hint for CPUARM in help for t_calc and t_rcalc
+  </li>
+ </ul>
+</li>
+
+<li>
+  Updated <a href="misc_en.html#util">Util</a> archive with
+  <ul style="margin-top:0">
+   <li>
+    <a href="misc_en.html#Compvers">Compvers</a> V0.37 unit (support for
+    <b>Delphi 25</b> VER320/'Tokyo' and <b>FPC 3.0.2</b>)
+   </li>
+   <li>
+    <a href="misc_en.html#Dates">Dates</a> V0.37 (FPC/CPUARM adjustments)
+   </li>
+   <li>
+    <a href="misc_en.html#HRTimer">Hrtimer</a> V0.29 (Simple hacks for FPC/CPUARM)
+   </li>
+   <li>
+    <a href="misc_en.html#TSC">TSC</a> V0.43 (Routines for FPC/CPUARM)
+   </li>
+   <li>
+    and version 1.68 of the standard include file
+    <a href="misc_en.html#util_stdinc">std.inc</a>
+   </li>
+  </ul>
+
+</ul>
+
+<b>
+Apr. 21, 2017
+</b><br>
+<ul style="margin-top:0">
+<li>
+The first update after 6 months brings only some minor changes:
+<a href="misc_en.html">std.zip</a> addresses Delphi 25 (VER320, 'Tokyo') and FPC/CPUARM;
+the <a href="hmac-sha3-testvectors.html">HMAC-SHA3 test vector page</a>
+is updated and some broken links are corrected.
+</li>
+<li>
+In the near future there will be ARM (Raspberry Pi 3) compatible
+versions of many packages, starting with MPArith, CRC/Hash, and DAMath.
+Testing on AMD processors will be dropped.
+</li>
+</ul>
+
+<b>
+Oct. 23, 2016
+</b><br>
+<ul style="margin-top:0">
+<li>
+ Multi precision arithmetic package <a href="misc_en.html#mparith">MPArith 1.33.10</a> with
+ <ul style="margin-top:0">
+  <li>
+    New functions: is_Carmichael32, mpc_exp2, mpc_exp10, mpc_expm1, mpc_ln1p;
+  </li>
+  <li> Changed functions:
+    Allow n &gt; p-1 in s_mp_nroot_modp, mpc_coth without vers;
+  </li>
+  <li> Bug fixes: fix error for JACOBI in mp_calc,
+    fix arg check in mpc_agm1;
+  </li>
+  <li> Other: Print factors/check only if trace is true in unit pfdu,
+   moved some mp_clear[x] into success blocks in unit mp_rsa;
+  </li>
+ </ul>
+</li>
+<li>
+ Updated <a href="misc_en.html#amath">AMath</a> archive and accompanying <a href="amath_functions.html">introduction:</a>
+  <ul style="margin-top:0">
+    <li>
+      Unit <a href="misc_en.html#amath_unit">AMath V2.09</a> with the new
+      accurate helper function sqrt1pmx = sqrt(1+x^2)-x;
+    </li>
+    <li>
+      <a href="misc_en.html#specfun_units">Special Functions V1.39.04</a>
+      with the new general Fibonacci function,
+      general Chebyshev function the first kind, the nth "probabilists'" Hermite polynomial,
+      CDF and ICDF for the limiting form of the Kolmogorov distribution function,
+      and the functional inverse of gamma;
+    </li>
+    <li>
+      <a href="misc_en.html#amtools">AMTools V0.35</a> with the new
+      function zbrenty for zeros of f(x)-y.
+    </li>
+  </ul>
+</li>
+
+<li>
+ The 64-bit compatible <a href="misc_en.html#damath">DAMath</a> archive with
+ unit <a href="misc_en.html#damath_unit">DAMath V0.85</a>,
+ <a href="misc_en.html#damtools">DAMTools V0.35</a>,
+ and  <a href="misc_en.html#dam_spec">Special Functions V1.24.04</a>
+ has essentially the same updates as AMath.
+</li>
+
+<li>
+ AMath and DAMath document
+ <a href="specialfunctions.pdf">Special Functions Reference Manual with Implementation Notes</a> Version 2.13
+ (including Complex Functions)
+</li>
+
+</ul>
+
+
+<b>
+July 04, 2016
+</b><br>
+<ul style="margin-top:0">
+<li>
+  <a href="misc_en.html#amath">AMath</a> with
+  <a href="misc_en.html#specfun_units">Special Functions V1.38.06</a>
+  (new complete and incomplete elliptic integrals B, Bring radical, Wright omega function)
+  and <a href="misc_en.html#amcomplex">AMCmplx V0.91</a>
+  (improved complete elliptic integral E, new Jacobi elliptic functions
+  sn, cn, dn for complex argument z and real modulus&nbsp;k).
+</li>
+
+<li>
+ 64-bit compatible <a href="misc_en.html#damath">DAMath</a> archive with
+ <a href="misc_en.html#dam_spec">Special Functions V1.23.04</a>
+ and <a href="misc_en.html#damcomplex">DAMCmplx V0.51</a>.
+</li>
+</ul>
+
+
+<b>
+May 01, 2016
+</b><br>
+<ul style="margin-top:0">
+<li>
+ Changes on the <a href="crypt_en.html">Crypto page</a>:
+  <ul style="margin-top:0">
+  <li>
+   New <a href="crypt_en.html#poly1305">Poly1305</a>
+   message-authentication algorithm,
+  </li>
+  <li>
+    Updated <a href="crypt_en.html#FCADemo">FCA demo archive</a> with
+    Serpent and Twofish units contributed by Giorgio Tani
+    and corresponding test programs.
+  </li>
+  </ul>
+</li>
+<li>
+  Updated <a href="crchash_en.html">CRC/Hash</a> archive with
+  <ul style="margin-top:0">
+    <li>
+    New SHA3 MMX version for 32-bit compilers contributed by Eric Grange,
+    </li>
+    <li>
+    Fixed HMAC-SHA3 test program from <a href="hmac-sha3-testvectors.html">test vector page.</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="misc_en.html#util">Util</a> archive with
+  <a href="misc_en.html#Compvers">Compvers</a> V0.36 unit (basic support for
+  Delphi 24 'Berlin') and version 1.66 of the standard include
+  file  <a href="misc_en.html#util_stdinc">std.inc</a>
+</li>
+<li>
+  <a href="misc_en.html#amath">AMath V2.08</a> with accurate helper function arccos1m(x) = arccos(1-x),
+  <a href="misc_en.html#amcomplex">AMCmplx V0.86</a> with complex error functions erf/erfc,
+  and <a href="misc_en.html#specfun_units">Special Functions V1.37.00</a>.
+</li>
+
+<li>
+ 64-bit compatible <a href="misc_en.html#damath">DAMath</a> archive with
+ unit <a href="misc_en.html#damath_unit">DAMath V0.84</a>,
+ <a href="misc_en.html#dam_spec">Special Functions V1.22.00</a>,
+ and <a href="misc_en.html#damcomplex">DAMCmplx V0.46</a>.
+</li>
+
+</ul>
+
+
+<b>
+Mar. 01, 2016
+</b><br>
+<ul style="margin-top:0">
+<li>
+ Updated HMAC-SHA3 test program and <a href="hmac-sha3-testvectors.html">vectors</a>;
+ now including intermediate values.
+</li>
+</ul>
+
+
+
+<b>
+Oct. 27, 2015
+</b><br>
+<ul style="margin-top:0">
+<li>
+ <a href="misc_en.html#amath">AMath</a> with <a href="misc_en.html#specfun_units">Special Functions V1.36.02</a>
+ (new lemniscate functions sin lemn and cos lemn,
+ the reflection formula for polygamma uses derivatives of Euler's series for &pi; cot(&pi; x),
+ the parabolic cylinder function V(a,x) is extended to negative a)
+</li>
+<li>
+ 64-bit compatible <a href="misc_en.html#damath">DAMath</a> archive with
+ <a href="misc_en.html#dam_spec">Special Functions V1.21.02</a>
+</li>
+</ul>
+
+
+
+<b>
+Sep. 14, 2015
+</b><br>
+<ul style="margin-top:0">
+
+<li>
+Updated <a href="crchash_en.html">CRC/Hash</a> archive and
+<a href="hash_intro.html">Hash/HMAC/KDF introduction</a> page
+
+<ul style="margin-top:0">
+  <li>
+  Optional MMX coded Keccak state permutation for 32-bit compilers
+  (contributed by Anna Kaliszewicz and payl);
+  </li>
+  <li>
+  HMAC-SHA3 test program and <a href="hmac-sha3-testvectors.html">vectors</a>;
+  </li>
+  <li>
+  Faster PurePascal scrypt key derivation (reordered salsa20/8 core routine).
+  </li>
+</ul>
+</li>
+
+<li>
+ <a href="misc_en.html#amath">AMath</a> and
+ the 64-bit compatible <a href="misc_en.html#damath">DAMath</a>
+ avoid some inaccuracies introduced by
+ FreePascal's -O4 fastmath 'optimization' (FPC 2.7.1, 3.0.0/1, 3.1.1): Among
+ others floating point division by constants may be replaced by multiplication
+ with the inverse, leading to quotients which <b>are sometimes
+ not correctly rounded! </b>
+ <font color="#000000">&nbsp;I&nbsp;recommend to turn off this feature using
+ {$OPTIMIZATION NOFASTMATH} or with command line option &ndash;OoNOFASTMATH!</font>
+ <br>
+</li>
+
+<li>
+ Changes on the <a href="crypt_en.html">Crypto page</a>:
+  <ul style="margin-top:0">
+  <li>
+  Constant time verification/compare for
+  the all-in-one packet functions
+  of <a href="crypt_en.html#AES">AES</a> (aes_eax, aes_gcm, aes_ccm) and
+  <a href="crypt_en.html#camellia">Camellia</a> (cam_eax, cam_ccm);
+  </li>
+  <li>
+   Improved <a href="crypt_en.html#salsa20">Salsa20</a>
+   stream cipher (faster reordered PurePascal salsa20_wordtobyte);
+  </li>
+  <li>
+    Updated <a href="crypt_en.html#FCADemo">FCA demo archive</a>.
+  </li>
+  </ul>
+</li>
+
+<li>
+  <a href="misc_en.html#util">Util</a> archive with
+  <a href="misc_en.html#Compvers">Compvers</a> V0.35 unit (basic support for
+  FPC 3.0.0 and Delphi 23) and version 1.65 of the standard include
+  file  <a href="misc_en.html#util_stdinc">std.inc</a>
+</li>
+
+<li>
+  Maintenance adjustments for the <a href="misc_en.html#zlib">zlib</a> library
+</li>
+
+</ul>
+
+
+<b>
+Aug. 23, 2015
+</b><br>
+<ul style="margin-top:0">
+
+<li>
+Updated <a href="crchash_en.html">CRC/Hash</a> with
+<ul style="margin-top:0">
+  <li>
+  Fully integrated SHA3 hashes: The source in the archive should be
+  compatible with units/applications that do not expect the old size of
+  THashContext. All
+  <a href="crchash_en.html#crchash_demo">CRC</a> and
+  <a href="crypt_en.html#FCADemo">FCA/FZCA</a> demo programs programs compile without changes.
+  </li>
+  <li>
+  Improved CRC64 for 64-bit code on 64-bit systems
+  </li>
+  <li>
+  The <a href="crchash_en.html#crchash_demo">GCH/CCH programs</a> support the new SHA3 algorithms
+  </li>
+  <li>
+  Removed the DLL related sources
+  </li>
+</ul>
+</li>
+
+<li>
+ <a href="misc_en.html#amath">AMath</a> archive
+ with unit <a href="misc_en.html#amath_unit">AMath V2.06</a>,
+ <a href="misc_en.html#specfun_units">Special Functions V1.34.06</a>
+ (Struve functions H and L for negative real order, faster
+  Dirichlet eta function for s near 1, improved
+  Gauss hypergeometric function 2F1, and some special cases for Bessel Y
+  and Bulirsch's incomplete elliptic integral of the 1st kind)
+  and unit <a href="misc_en.html#amcomplex">AMCmplx V0.84</a>
+  (optional scaled robust division, new functions elle, ellke, exp2, exp10
+  and improved cpolyr using Knuth's faster evaluation scheme).
+</li>
+
+<li>
+ 64-bit compatible <a href="misc_en.html#damath">DAMath</a> archive with
+ the <a href="misc_en.html#damath_unit">DAMath V0.82</a> unit,
+ <a href="misc_en.html#dam_spec">Special Functions V1.19.06</a>,
+ and <a href="misc_en.html#damcomplex">DAMCmplx V0.44</a>.
+</li>
+
+</ul>
+
+
+<b>
+July 01, 2015
+</b><br>
+<ul style="margin-top:0">
+<li>
+  <a href="misc_en.html#amath">AMath</a> archive with unit
+  <a href="misc_en.html#amath_unit">AMath V2.05</a>
+  (new accurate functions sinhc, sinhmx, versint)
+  and <a href="misc_en.html#specfun_units">Special Functions V1.33.15</a>
+  (completely symmetric elliptic Carlson integral R<sub>G</sub>,
+   Struve and modified Struve functions of positive real order,
+  scaled Airy functions, solutions of Kepler's equation and more)
+</li>
+
+<li>
+ 64-bit compatible <a href="misc_en.html#damath">DAMath</a> archive with
+ the <a href="misc_en.html#damath_unit">DAMath V0.81</a> unit,
+ <a href="misc_en.html#dam_spec">Special Functions V1.18.14</a>,
+ and <a href="misc_en.html#damcomplex">DAMCmplx V0.41</a>
+</li>
+
+</ul>
+
+
+
+<b>
+May 04, 2015
+</b><br>
+<ul style="margin-top:0">
+<li>
+  <a href="misc_en.html#util">Util</a> archive with
+  <a href="misc_en.html#Compvers">Compvers</a> V0.33 unit
+  (basic support for Delphi 22 / XE8, VER290),
+  unit <a href="misc_en.html#util_btypes">BTypes</a> V0.21,
+  and version 1.64 of the standard include
+  file <a href="misc_en.html#util_stdinc">std.inc</a>
+</li>
+<li>
+  <a href="misc_en.html#amath">AMath</a> archive
+  with unit <a href="misc_en.html#amath_unit">AMath V2.02</a>
+  (two new accurate functions for scaled integer powers of Pi) and
+  <a href="misc_en.html#specfun_units">Special Functions V1.32.04</a> (new
+  complete elliptic integral D, functional inverse ei_inv of the exponential integral)
+</li>
+<li>
+ 64-bit compatible <a href="misc_en.html#damath">DAMath</a> archive with
+ the <a href="misc_en.html#damath_unit">DAMath V0.78</a> unit and
+ <a href="misc_en.html#dam_spec">Special Functions V1.17.03</a>
+</li>
+
+<li>
+ Multi precision arithmetic package <a href="misc_en.html#mparith">MPArith V1.32.04</a> with
+ with updated <a href="mp_intro.html">introduction</a>,
+ new BIT16 compatibility functions (mpf_adecimal, mpf_adecimal_alt),
+ some FPC adjustments, and more.
+</li>
+
+</ul>
+
+
+
+<b>
+Jan. 18, 2015
+</b><br>
+<ul style="margin-top:0">
+<li>
+  <a href="misc_en.html#util">Util</a> archive with
+  <a href="misc_en.html#Compvers">Compvers</a> V0.32 unit (basic support for
+  FPC 2.7.1, FPC 3.0.1, FPC 3.1.1) and version 1.62 of the standard include
+  file  <a href="misc_en.html#util_stdinc">std.inc</a>
+</li>
+<li>
+  <a href="misc_en.html#amath">AMath</a> archive with unit
+  <a href="misc_en.html#amath_unit">AMath V2.00</a>
+  and <a href="misc_en.html#specfun_units">Special Functions V1.31.08</a>
+  with new statistical distributions (inverse gamma, logarithmic series, Wald)
+  Euler numbers, and more.
+</li>
+
+<li>
+ 64-bit compatible <a href="misc_en.html#damath">DAMath</a> archive with
+ the <a href="misc_en.html#damath_unit">DAMath V0.76</a> unit,
+ <a href="misc_en.html#dam_spec">Special Functions V1.16.07</a>,
+ and <a href="misc_en.html#damcomplex">DAMCmplx V0.40</a>.
+</li>
+
+</ul>
+
+
+
+
+<h3>
+<a href="archind_en.html">More news (2003 - 2014)</a>
+</h3>
+
+<a name="bottom"></a>
+
+<hr size="2" noshade width="100%">
+<table ALIGN=CENTER BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="99%"  SUMMARY="">
+<tr>
+<td ALIGN=LEFT WIDTH="50%">
+Mail concact (use @ to make it valid):
+<br>
+<b>info<!-- --> (<!-- (-->at<!--) -->) wolfgang<!-- - -->-<!--  -->ehrhardt<!-- . -->.<!--  -->de</b>
+</td>
+<td ALIGN=RIGHT WIDTH="50%">
+<b><a href="WolfgangEhrhardt.asc">My PGP key</a></b>&nbsp;&nbsp;&nbsp;&nbsp;
+</td>
+</tr>
+</table>
+<hr size="2" noshade width="100%">
+
+<br>
+<table BORDER=0 CELLSPACING=4 CELLPADDING=4 WIDTH="100%" summary="" >
+<tr>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="index.html">Home</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="crchash_en.html">CRC/Hash</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="crypt_en.html">Crypto</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="misc_en.html">Misc.</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="info_en.html">Info</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="links_en.html">Links</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="index_de.html">Deutsch</a></b></td>
+</tr>
+</table>
+
+</body>
+</html>

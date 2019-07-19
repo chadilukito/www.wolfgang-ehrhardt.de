@@ -1,0 +1,875 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD html 4.01 transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="author" content="Wolfgang Ehrhardt">
+  <meta name="keywords" content="zlib, PRNG, Zufallszahl, Langzahl, Bignum, Pascal, Delphi, Freeware, Programmierung">
+  <title>W.Ehrhardt: Sonstiges</title>
+</head>
+
+<body text="#000000" bgcolor="#F0FFFF" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" summary="" >
+<tr>
+<td ALIGN=LEFT> <font size=1>&copy; 2018 W.Ehrhardt </font></td>
+<td ALIGN=RIGHT><font size=1>Letzte &Auml;nderung 27. Nov. 2018</font></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=4 CELLPADDING=4 WIDTH="100%" summary="" >
+<tr>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="index_de.html">Start</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="crchash_de.html">CRC/Hash</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="crypt_de.html">Krypto</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="misc_de.html">Sonstiges</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="info_de.html">Info</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="links_de.html">Links</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="misc_en.html">English</a></b></td>
+</tr>
+</table>
+
+<br>
+<table BORDER=0 CELLPADDING=4 WIDTH="100%" SUMMARY="">
+<tr>
+<td ALIGN=CENTER BGCOLOR="#77dddd"><b>Sonstiges</b></td>
+</tr>
+</table>
+<br>
+
+Hier findet man eine wachsende Liste von Utility- und Einzel-Quellcodes, die
+nicht CRC/Hash oder Krypto zuzuordnen sind:
+<a href="misc_de.html#util">Util</a>, <a href="misc_de.html#prng">PRNG</a>,
+<a href="misc_de.html#mparith">MPArith</a>, <a href="misc_de.html#amath">AMath</a>, <a href="misc_de.html#damath">DAMath</a>,
+<a href="misc_de.html#zlib">zlib</a>, <a href="misc_de.html#CRT">Delphi CRT</a>.
+
+<br><br>
+
+<a name="BTypes"></a>
+<a name="stdinc"></a>
+Das Archiv <b><a href="std.zip">std.zip</a></b>
+enth&auml;lt immer die neuesten Versionen der Includedatei <b>std.inc</b>
+(Compiler&shy;erkennung, Standard&shy;definitionen, Optionen)
+und der <b>BTypes</b>-Unit (gemeinsame Basistyp-Deklarationen).
+<br><br>
+
+<b>Vor dem Herunterladen von Software von diesen Seiten bitte diesen
+<a href="info_de.html#LegalNotice">rechtlichen Hinweis</a> beachten.</b>
+<br><br>
+
+<a name="util"></a>
+<hr size="1" width="100%" color="#44DDFF">
+<h2>Util</h2>
+Das Archiv <a href="util_2018-11-27.zip">util_2018-11-27.zip</a>
+enth&auml;lt eine Ansammlung kleiner Units, die zum Teil fr&uuml;her separat angeboten wurden.
+Hilfedateien gibt es als Windows .hlp und als .tph f&uuml;r die BP7 IDE.
+<br><br>
+<font color="#cc0033"><b>Letzte &Auml;nderungen:</b></font>
+std.inc und Unit Compvers unterst&uuml;tzen Delphi 26 / 10.3 'Rio' / VER330
+
+<ul>
+<li><a name="base2n"></a><b>Base2N V0.42:</b> Allgemeine Konvertierungen
+zur Basis 2**N, N=1...6
+</li>
+
+<li><a name="bitarray"></a><b>Bitarray V0.19:</b>
+Bit-Array-Context mit max. 524160 Bits (Nebenprodukt des MPArith-Siebs
+f&uuml;r 16-Bit-Primzahlen)
+</li>
+
+<li><a name="util_btypes"></a><b>BTypes V0.21:</b>
+Gemeinsame portable Basis-Datentypen
+</li>
+
+<li><a name="Compvers"></a><b>Compvers V0.41:</b>
+Compiler-Version als String oder Symbol
+</li>
+
+<li><a name="Dates"></a><b>Dates V0.38:</b>
+Implementiert Compiler- und Betriebssystem unabh&auml;ngige Routinen f&uuml;r
+das aktuelle Datum und die aktuelle Zeit (incl. Millisekunden seit
+Mitternacht) und Funktionen f&uuml;r Julianische Tageszahlen.
+</li>
+
+<li><a name="HRTimer"></a><b>Hrtimer V0.29:</b>
+Enth&auml;lt einen hochaufl&ouml;senden Zeitmesser f&uuml;r
+Pascal/Delphi-Compiler, es wird der comp Datentyp verwendet. Der Zeitmesser
+benutzt den RDTSC-Befehl, deshalb stoppt die Unit auf allen Systemen, die
+diesen Befehl nicht unterst&uuml;tzen (abschaltbar via $ifdef). HRTimer wird
+von einigen Optimierungs-Testprogrammen ben&ouml;tigt.
+</li>
+
+<li><a name="memh"></a><b>memh V0.15:</b>
+Implementiert portable Funktionen f&uuml;r sichere Speicherbelegung auf dem Heap.
+</li>
+
+
+<li><a name="MemUtil"></a><b>Mem_util V0.99:</b>
+Implementiert Compiler-unabh&auml;ngige Routinen zum Vergleich von
+Speicherbl&ouml;cken und zur Darstellung von Speicherbereichen als HEX- und
+Base64-Strings.
+</li>
+
+
+<li><a name="ministat"></a><b>Ministat V0.45:</b>
+Kleine Statistik-Unit mit akkuraten "laufende Statistik"-Routinen f&uuml;r
+eine und zwei Variable.
+</li>
+
+
+<li><a name="sort"></a><b>Sort V1.18:</b>
+Allgemeine QuickSort-, HeapSort- (Standard und Bottom-up), CombSort-Routinen,
+die <i>swap</i>/<i>compare</i>-Funktionen benutzen. Zus&auml;tzliche Pointerversionen haben
+einen typlosen Zeiger, der in den Routinen durchgeschleift wird und zum
+Zugriff auf lokale Daten usw. des Aufrufers verwendet werden kann.
+</li>
+
+<li><a name="util_stdinc"></a><b>std.inc V1.75:</b>
+Standard-Includedatei f&uuml;r Compiler&shy;erkennung, Standard&shy;definitionen, Optionen.
+</li>
+
+
+<li><a name="TSC"></a><b>Tsc V0.44:</b>
+Diese Unit verwendet einen maschinenn&auml;heren Zugriff auf den TSC als
+hrtimer. Es wird au&szlig;erdem ein systemabh&auml;ngiger allgemeiner Z&auml;hler bereitgestellt
+(TSC falls vorhanden; sonst GetTickCount, 18.2 Hz Systick-Z&auml;hler oder Millisekunden seit
+Mitternacht).
+</li>
+</ul>
+
+<a name="prng"></a>
+<hr size="1" width="100%" color="#44DDFF">
+<h2>PRNG</h2>
+<font color="#cc0033"><b>Letzte &Auml;nderungen:&nbsp;</b></font>
+Neuer <b>Well1024a</b>-Generator von F. Panneton, P. L'Ecuyer and M. Matsumoto;
+Funktionen <b>rangel/w</b> f&uuml;r Zufalls-longint/-word im Bereich 0..range-1;
+Unit pasrand mit TP/Delphi kompatiblem LC-Generator;
+neue Archiv-Aufteilung.
+
+
+<br><br>
+
+Das Archiv <a href="prng_2018-01-01.zip">prng_2018-01-01.zip</a>
+enth&auml;lt sieben schnelle Pseudo-Zufallszahlen-Generatoren
+mit wesentlich gr&ouml;&szlig;eren Periodenl&auml;ngen als die Pascal-Funktion
+<i>random</i>: &nbsp;<b>taus88</b> und <b>taus113</b> (Pierre L'Ecuyer),
+<b>tt800</b> und <b>mt19937</b> (Makoto Matsumoto et al, mt19937 ist der bekannte Mersenne Twister),
+<b>kiss123 </b>(George Marsaglia),
+<b>well1024a</b> (Panneton, L'Ecuyer, Matsumoto),
+sowie <b>xor4096</b> (Richard P. Brent).
+Alle benutzen Kontextrecords, so da&szlig; mehrere Generatoren unabh&auml;ngig
+gleichzeitig benutzt werden k&ouml;nnen, sie sind <u>nicht</u> kryptographisch sicher.
+Ein TP/Delphi kompatibler LC-Generator mit den gemeinsamen Funktionen
+und Eigenschaften ist in Unit pasrand implementiert.
+
+<br><br>
+Zus&auml;tzlich gibt es noch drei <b>kryptographische</b> Generatoren:
+
+<ul>
+
+<li>
+Bob Jenkins Public-Domain-Generator <b>ISAAC</b>
+&nbsp;(<u>I</u>ndirection, <u>S</u>hift, <u>A</u>ccumulate, <u>A</u>dd, und <u>C</u>ount).
+Die mittlere Periodenl&auml;nge wird mit 2**8295 angegeben, die minimale L&auml;nge ist 2**40.
+</li>
+
+<li>
+<b>salsar</b> basiert auf der <a href="crypt_de.html#salsa20">Salsa20-</a>
+Stromchiffre und ben&ouml;tigt die <i>salsa20</i>-Unit (enthalten in
+$supp_rng.zip) Die Basisroutine verwendet 128-Bit Schl&uuml;ssel und 8 Runden
+(dieser Standardwert kann mit der Prozedur <i>salsar_set_rounds</i> auf 12
+oder 20 ge&auml;ndert werden).
+</li>
+
+
+<li><b>aesr</b> benutzt <a href="crypt_en.html#AES">AES/CTR</a>-Modus-Routinen
+mit 128-Bit Schl&uuml;sseln (enthalten in $supp_rng.zip).
+</li>
+
+</ul>
+
+
+Die Units und Testprogramme k&ouml;nnen mit den &uuml;blichen
+Compilern &uuml;bersetzt werden: Pascal (TP5/5.5/6, BP7, VP 2.1,
+FPC 1.0/2.0-2.6/3.x) und Delphi (1..7/9-10/12/17-18/25).
+
+Die meisten Testprogramme brauchen die <i>ministat-</i> und/oder die <i>hrtimer-</i>Unit.
+Alle Generatoren exportieren folgende gemeinsame Funktionen (einige spezielle
+Prozeduren sind hier nicht aufgef&uuml;hrt):
+
+<pre><font color="#000080">
+procedure generic_init(var ctx: generic_ctx; seed: longint);
+  {-Init context from seed}
+
+procedure generic_init0(var ctx: generic_ctx);
+  {-Init context from randseed}
+
+procedure generic_next(var ctx: generic_ctx);
+  {-Next step of PRNG}
+
+procedure generic_read(var ctx: generic_ctx; dest: pointer; len: longint);
+  {-Read len bytes from the PRNG to dest}
+
+function  generic_long(var ctx: generic_ctx): longint;
+  {-Next random positive longint}
+
+function  generic_dword(var ctx: generic_ctx): {$ifdef HAS_CARD32}cardinal{$else}longint{$endif};
+  {-Next 32 bit random dword (cardinal or longint)}
+
+function  generic_word(var ctx: generic_ctx): word;
+  {-Next random word}
+
+function  generic_double(var ctx: generic_ctx): double;
+  {-Next random double [0..1) with 32 bit precision}
+
+function  generic_double53(var ctx: generic_ctx): double;
+  {-Next random double in [0..1) with 53 bit precision}
+
+function  generic_rangew(var ctx: generic_ctx; range: word): word;
+  {-Next random word in range 0..range-1}
+
+function  generic_rangel(var ctx: generic_ctx; range: longint): longint;
+  {-Next random longint in range 0..range-1}
+
+function  generic_selftest: boolean;
+  {-Simple self-test of PRNG}
+</font></pre>
+
+Tabelle der Generatoreigenschaften (C/B: CPU-Zyklen pro Byte,
+MB/s: Millionen Bytes pro Sekunde.
+Mit 1.7 GHz Pentium 4 / Windows 98:  BP7 = Borland Pascal 7 Realmode mit 386 BASM
+und D6 = Delphi 6; mit Win7/64 Core i3-2350M: D18/64 = Delphi 18 64-bit.
+Hinweis: isaac wurde kompiliert mit <i>{$define testing}</i>):
+
+<br><br>
+<table BORDER=1 CELLSPACING=0 CELLPADDING=2 WIDTH="80%" summary="" >
+<tr>  <th align=right>         </th>   <th align=right>        </th>   <th align=right>            </th>   <th align=right>   BP7</th>   <th align=right>    BP7</th>   <th align=right>    D6</th>  <th align=right>     D6</th>  <th align=right> D18/64</th>  <th align=right> D18/64</th>   </tr>
+<tr>  <th align=right> Generator</th>   <th align=right> ctx Gr&ouml;&szlig;e</th>   <th align=right>Periode ca.</th>   <th align=right>   C/B</th>   <th align=right>   MB/s</th>   <th align=right>   C/B</th>  <th align=right>   MB/s</th>  <th align=right>    C/B</th>  <th align=right>   MB/s</th>   </tr>
+<tr>  <td align=right>   pasrand</td>   <td align=right>       4</td>   <td align=right>       2**32</td>   <td align=right>  74.0</td>   <td align=right>   22.9</td>   <td align=right>   5.0</td>  <td align=right>  294.0</td>  <td align=right>    5.0</td>  <td align=right>  459.0</td>   </tr>
+<tr>  <td align=right>    taus88</td>   <td align=right>      16</td>   <td align=right>       2**88</td>   <td align=right>  79.0</td>   <td align=right>   21.5</td>   <td align=right>   8.0</td>  <td align=right>  211.9</td>  <td align=right>   10.8</td>  <td align=right>  213.5</td>   </tr>
+<tr>  <td align=right>   taus113</td>   <td align=right>      20</td>   <td align=right>      2**113</td>   <td align=right>  85.0</td>   <td align=right>   20.0</td>   <td align=right>   8.0</td>  <td align=right>  211.9</td>  <td align=right>   13.5</td>  <td align=right>  170.0</td>   </tr>
+<tr>  <td align=right>   kiss123</td>   <td align=right>      20</td>   <td align=right>      2**123</td>   <td align=right> 114.0</td>   <td align=right>   14.9</td>   <td align=right>  13.3</td>  <td align=right>  127.9</td>  <td align=right>   15.0</td>  <td align=right>  153.0</td>   </tr>
+<tr>  <td align=right>     tt800</td>   <td align=right>     106</td>   <td align=right>      2**800</td>   <td align=right> 308.3</td>   <td align=right>    5.5</td>   <td align=right>  18.5</td>  <td align=right>   91.7</td>  <td align=right>   18.0</td>  <td align=right>  126.7</td>   </tr>
+<tr>  <td align=right> well1024a</td>   <td align=right>     134</td>   <td align=right>     2**1024</td>   <td align=right> 166.5</td>   <td align=right>   10.2</td>   <td align=right>   7.8</td>  <td align=right>  218.7</td>  <td align=right>   13.8</td>  <td align=right>  166.9</td>   </tr>
+<tr>  <td align=right>   xor4096</td>   <td align=right>     522</td>   <td align=right>     2**4096</td>   <td align=right>  80.0</td>   <td align=right>   21.0</td>   <td align=right>   6.5</td>  <td align=right>  260.7</td>  <td align=right>   12.3</td>  <td align=right>  187.3</td>   </tr>
+<tr>  <td align=right>   mt19937</td>   <td align=right>    2502</td>   <td align=right>    2**19937</td>   <td align=right> 227.4</td>   <td align=right>    7.4</td>   <td align=right>   8.3</td>  <td align=right>  204.5</td>  <td align=right>   12.6</td>  <td align=right>  181.5</td>   </tr>
+<tr>  <td align=right>      aesr</td>   <td align=right>     290</td>   <td align=right>      2**128</td>   <td align=right> 211.2</td>   <td align=right>    8.0</td>   <td align=right>  28.4</td>  <td align=right>   59.7</td>  <td align=right>   60.2</td>  <td align=right>   38.1</td>   </tr>
+<tr>  <td align=right>    salsar</td>   <td align=right>     202</td>   <td align=right>       2**70</td>   <td align=right> 108.3</td>   <td align=right>   15.7</td>   <td align=right>  15.4</td>  <td align=right>  110.3</td>  <td align=right>   31.1</td>  <td align=right>   73.8</td>   </tr>
+<tr>  <td align=right>     isaac</td>   <td align=right>    2066</td>   <td align=right>     2**8295</td>   <td align=right> 122.0</td>   <td align=right>   13.9</td>   <td align=right>   9.0</td>  <td align=right>  189.3</td>  <td align=right>   12.8</td>  <td align=right>  178.9</td>   </tr>
+</table>
+<br>
+
+<hr size="1" width="100%" color="#44DDFF">
+<a name="mpint"></a>
+<a name="mparith"></a>
+<h2>MPArith</h2>
+
+<a href="mparith_2018-11-27.zip">mparith_2018-11-27.zip</a>: Dieses Archiv enth&auml;lt
+Pascal-Quellcodes f&uuml;r <b>Multipr&auml;zisions-Arithmetik f&uuml;r ganze, rationale,
+reelle und komplexe Zahlen</b>.
+Die Basisroutinen k&ouml;nnen mit den &uuml;blichen Pascalversionen &uuml;bersetzt werden,
+die <i>const</i>-Parameter unterst&uuml;tzen (getestet mit BP 7.0, VP 2.1, FPC 1.0/2.0/2.2/2.4/2.6/3x
+und Delphi-Versionen 1..7/9/10/12/17/18/25/26).
+<br>
+<br>
+Separate Informationen gibt es auf der (englischen) <a href="mp_intro.html">Einf&uuml;hrungsseite</a>;
+Windows- und BP7-Hilfedateien befinden sich im Archiv.
+
+<br><br>
+<font color="#cc0033"><b>Letzte &Auml;nderungen:</b></font>
+Version 1.39.12 hat folgende neue/ge&auml;nderte Funktionen:
+
+<ul>
+<li><b>Neue Funktionen: </b>
+  succd/s/x, predd/s/x in mp_rcalc;
+  mpc_log10, mpc_is_ia in mp_cmplx;
+  <b>neue Unit mp_ccalc</b> zum Parsen und Berechnen von
+  mp_complex-Ausdr&uuml;cken;
+</li>
+
+<li><b>Ge&auml;nderte Funktionen:</b>
+  Vorzeichenanpassung mpc_arctanh auf dem Verzweigungsschnitt,
+  Fehler MP_PRECISION in s_mpf_mod_pi2k an Stelle von assert;
+</li>
+
+<li><b>Anderes:</b>
+  Konfigurationsparameter MPC_NO_EXECPTIONS;
+</li>
+
+<li><b>Korrekturen:</b>
+  mp_real: Copy/Paste-Fehler in mpf_sinhcosh,
+  subtiler Fehler f&uuml;r mpf_arctan2(y,0);
+  mp_cmplx: mpc_ln1p und mpc_expm1 f&uuml;r kleine rein-imagin&auml;re a,
+  mpc_arctanh f&uuml;r reelle |a| > 1.</li>
+</ul>
+
+Eine vollst&auml;ndige Liste mit kurzer Beschreibung findet man in der
+<a href="mp_intro.html#functionlist"> Funktionsliste</a>:
+<br><br>
+
+Es gibt Testprogramme f&uuml;r die Verifikation der  Funktionen und der
+Kompilierung; Demoprogramme sind enthalten u.a. f&uuml;r Pi-Berechnung,
+Ausdruckszerlegung und -Auswertung (inkl. zwei interaktive Multipr&auml;zisions-Rechner),
+Faktorisierung mit Pollards rho- und (p-1)-, Williams (p+1)- und ECM-Methoden
+sowie Angriffe auf RSA usw.
+
+<br><br>
+Meine Pascal-Routinen basieren auf vielen &ouml;ffentlich zug&auml;nglichen
+Ressourcen (Quellcode-Bibliotheken, B&uuml;cher, Artikel); Links findet man im
+<a href="mp_intro.html#references">Referenzabschnitt</a>.
+<br><br>
+
+<a name="amath"></a>
+<hr size="1" width="100%" color="#44DDFF">
+<h2>AMath</h2>
+
+Das Archiv <a href="amath_2018-11-27.zip">amath_2018-11-27.zip</a> enth&auml;lt
+Units f&uuml;r <b>akkurate mathematische Methoden</b> ohne Benutzung von
+Multipr&auml;zisions-Arithmetik. Diese hohe Genauigkeit wird jedoch nur mit
+der Standard-Rundungsart <b>rmNearest</b> erreicht, bei den anderen
+Rundungsarten nimmt sie ab. AMath wurde f&uuml;r den <b>80-Bit-Extended</b>
+Datentyp entwickelt und kann deshalb nicht mit 64-Bit-Code auf 64-Bit-Systemen
+verwendet werden (f&uuml;r diese gibt es das entsprechende
+<a href="misc_de.html#damath">DAMath-</a>Paket). Weitere Informationen gibt es auf der
+(englischen) <a href="amath_functions.html">Einf&uuml;hrungsseite</a>.
+
+<br><br>
+Die Units und Basistestprogramme k&ouml;nnen mit den folgenden Compilern &uuml;bersetzt
+werden: Pascal (BP7, VP 2.1, FPC 1.0/2.0/2.2/2.4/2.6/3x) und Delphi (2..7/9/10/12/17/18/25/26).
+Die Test laufen ohne Warnung &uuml;ber relative Fehler auf Intel-CPUs unter Win98,
+Win2000 (siehe Logdateien), WinXP und Win7. Bei anderen Prozessoren oder
+Betriebssystemen k&ouml;nnen vereinzelt solche Warnungen auftreten, dies sind
+i.d.R. <b>keine</b> AMath-Bugs sondern <i>Features</i> der Prozessoren (und k&ouml;nnen durch
+kleine Vergr&ouml;&szlig;erung der Fehlertoleranzen unterdr&uuml;ckt werden).
+
+<br><br>
+<font color="#cc0033"><b>Letzte &Auml;nderungen:</b></font>
+Unit <b>AMath</b> mit den
+neuen Funktionen: Populations-Kovarianz pcov/x und
+den generischen Aliasnamen Infinity, NegInfinity, NaN;
+
+<b>Spezielle Funktionen</b> mit den
+Ableitungen der Kelvin-Funktionen 0-ter Ordnung;
+
+<b>AMCmplx</b> mit den neuen Funktionen: Zeta, sinpi, Ei, E1, li;
+ge&auml;ndert: agm(x,-x) = 0, Spezialf&auml;lle n=1,2 in nroot;
+korrigiert: expm1 und ln1p f&uuml;r kleine rein-imagin&auml;re Argumente.
+
+
+<ul>
+<li><a name="amath_unit"></a>
+<b>AMath V2.50:</b>
+
+Diese Unit implementiert akkurate elementare Funktionen;
+AMath stellt viele der Delphi-Math-Funktionen f&uuml;r die anderen unterst&uuml;tzten
+Pascalversionen zur Verf&uuml;gung und beseitigt Fehler und Ungenauigkeiten von Delphi.
+<p>
+Es ist seit mehr als 20 Jahren bekannt, da&szlig; exp bis zu 13 Bits f&uuml;r
+extended Argumente verliert; selbst die neueren Delphi-Versionen
+(best&auml;tigt bis D14, einige sind korrigiert in D17) haben schlimme Bugs: z.B.
+arccsch(2) = 0.27980789397 (korrekt = 0.48121182506);
+coth(12000)=1 oder sech(12000)=0 st&uuml;rzen ab,
+sinh(x)/x=0 statt 1 f&uuml;r kleine x,
+sin(1e22)=1e22 (korrekt = -0.852200849767);
+StdDev(a,a+1,a+2) st&uuml;rzt ab f&uuml;r a=100000000000; usw.
+<p>
+Die elementaren mathematischen Funktionen umfassen:
+Exponential-, Logarithmus-, trigonometrische, hyperbolische, inverse
+trigonometrische / hyperbolische Funktionen.
+Weiter gibt es Polynom-, Vektor- und Statistikprozeduren,
+sowie Flie&szlig;komma- und FPU-Kontrollfunktionen.
+
+Delphis unsinnige Routinen
+(IfThen, IsZero, InRange ...) und seine Finanzfunktionen sind <b>nicht</b>
+(und werden auch nicht) implementiert. Hier ist die vollst&auml;ndige Liste der
+<a href="amath_functions.html#amath_func">AMath-Funktionen</a> mit kurzen Beschreibungen.
+<br>
+<br>
+Alle elementaren transzendenten Standard-Funktionen mit einem Argument haben
+maximale relative Fehler kleiner als 2.2e-19, die Werte f&uuml;r power(x,y)
+sind 2.1e-19 (f&uuml;r |x|,|y| < 1000) und 3.4e-19 (f&uuml;r |x|,|y| < 2000).
+Die Genauigkeit wird ermittelt mit dem Programm
+<b>t_amathx</b>, das <a href="misc_de.html#mparith">MPArith</a>-Prozeduren benutzt.
+<br>
+<br>
+Die double-extended ext2-Routinen arbeiten mit Paaren von
+Extended-Gleitkommazahlen, die die nicht-ausgewertete Summe der h&ouml;her- und niederwertigen Teile
+repr&auml;sentieren a = (a.h, a.l) = a.h + a.l, normalerweise mit |a.l| &le; eps_x*|a.h|.
+<br>
+<br>
+</li>
+
+<li>
+<a name="amtools"></a>
+Die Unit <b>AMTools V0.46</b> bietet akkurate und zuverl&auml;ssige Werkzeuge zur
+Nullstellenbestimmung und Suche lokaler Minima von Funktionen, zur
+n&auml;herungsweisen Berechnung von eindimensionalen Integralen,
+zur Konvergenz-Beschleunigung von Folgen und Reihen,
+sowie zur L&ouml;sung quadratischer, kubischer und polynomialer Gleichungen:
+<br>
+<br>
+Die Funktionen <b>localmin, mbrent, fmin</b> (sie unterscheiden sich nur
+durch Anzahl der Parameter) verwenden Brents Algorithmus mit garantierter
+Konvergenz zur Bestimmung eines lokalen Minimums einer Funktion
+in einem Intervall (a,b). Der Algorithmus kombiniert Suche via
+Goldenem Schnitt und sukzessive parabolische Interpolation und benutzt
+nur Funktionsaufrufe (keine Ableitungen).
+
+Die Funktionen <b>zbrent und zeroin</b> benutzen den Brent/Dekker-Algorithmus
+mit garantierter Konvergenz zur Nullstellen-Berechnung einer stetigen Funktion
+in einem Intervall [a,b], wenn f(a) und f(b) verschiedene Vorzeichen haben;
+<b>zbrenty</b> findet Nullstellen von f(x)-y. Der Algorithmus basiert auf
+der Kombination von wiederholter Interpolation und Bisektion.
+<b>zridders</b> implementiert Ridders' Methode, sie benutzt
+Regula falsi und Exponential-Faktoren.
+
+
+<br>
+<br>
+Die <b>qag*</b>-Prozeduren sind Pascal&uuml;bersetzungen der entsprechenden
+<a href="http://www.netlib.org/quadpack/">Quadpack</a>
+-Algorithmen von R. Piessens, E. de Doncker-Kapenga, C.W. &Uuml;berhuber, D. Kahaner.
+Diese global-adaptiven Routinen implementieren die numerische Integration
+von Funktionen &uuml;ber endlichen oder unendlichen Intervallen und arbeiten
+mit Gauss-Kronrod-Regeln f&uuml;r die Teilintervalle und Wynns Epsilon-Algorithmus
+zur Konvergenz-Beschleunigung. Sie k&ouml;nnen relativ schwierige Integrale
+berechnen, u.a. auch f&uuml;r Integranden mit Sprungstellen und integrierbaren
+Singularit&auml;ten. <b>quagk</b> ist eine einfache &uuml;bergeordnete Prozedur, die die
+speziellen Routinen aufruft.
+Der Quadpack-Algorithmus <b>qawc</b> berechnet den Cauchyschen Hauptwert
+von f(x)/(x-c) mit einer global-adaptiven Strategie und modifizierter
+Clenshaw-Curtis-Integration auf den Teilintervallen, die den Punkt x=c enthalten.
+
+<br>
+<br>
+Die Prozeduren <b>intdeo</b> und <b>intdei</b>
+benutzen die doppelt-exponentielle (DE) Transformation (entwickelt von M. Mori, T. Ooura und anderen)
+zur automatischen Quadratur von f(x) &uuml;ber das halbunendliche Intervall (a,+INF)
+f&uuml;r Funktionen mit und ohne oszillatorische Faktoren.
+<b>intde</b> integriert &uuml;ber endliche Intervalle (a,b) und
+<b>intde_p</b>, <b>intdei_p</b> sind die entsprechenden Prozeduren f&uuml;r
+Funktionen f(x,p) mit Parametern.
+
+<br>
+<br>
+Der adaptive <b>Quanc8</b>-Algorithmus von G.E. Forsythe, M.A. Malcolm, C.B. Moler
+approximiert das Integral einer glatten Funktion &uuml;ber einem endlichen
+Intervall mit Hilfe einer Newton-Cotes-Regel.
+
+<br>
+<br>
+<a name="convacc"></a>
+Die Prozeduren <b>levinu1</b> und <b>wynneps1</b> sind eigenst&auml;ndige
+Versionen von bereits verwendeten Methoden zur Konvergenz-Beschleunigung,
+sie f&uuml;hren jeweils einen Schritt der Levin u-Transformation f&uuml;r Summen
+oder eine Iteration des Wynnschen Epsilon-Algorithmus
+f&uuml;r Summen oder Folgen aus (spezialisierte Originalversionen
+werden in LerchPhi bzw. den Quadpack-Routinen eingesetzt).
+Der Konvergenz-Verlauf der Prozesse mu&szlig; von den &uuml;bergeordneten
+aufrufenden Routinen analysiert und &uuml;berwacht werden.
+
+<br>
+<br>
+<a name="quadsolv"></a>Die <b>squad</b>-Funktionen berechnen
+genaue L&ouml;sungen quadratischer Gleichungen mit Double-Koeffizienten,
+sie implementieren Ideen von G.E. Forsythe, W. Kahan, P.H. Sterbenz
+(hochgenaue Berechnung der Diskriminante, Skalierung mit Zweierpotenzen).
+<a name="cubsolv"></a>
+Die <b>cubsolve</b>-Prozedur ermittelt die L&ouml;sungen reeller kubischer
+Gleichungen mit Double-Koeffizienten, sie beruht auf Vorlesungsnotizen von W. Kahan.
+<a name="polyroots"></a>
+Die Prozedur <b>PolyRoots</b> berechnet die n (komplexen) Nullstellen
+x[k] + i*y[k] des Polynom p[0] + p[1]*z + ... p[n]*z^n
+mit dem QR-Algorithmus angewendet auf die ausgeglichene Begleitmatrix
+(<i>balanced companion matrix</i>). <b>PolyRootsA</b> benutzt PolyRoots,
+anschlie&szlig;end werden die Nullstellen sortiert und verbessert.
+
+<br>
+<br>
+</li>
+
+<li><a name="specfun_units"></a>
+Die Units <b>SpecFun/SpecFunX V1.53.03</b> implementieren viele spezielle
+Funktionen mit Double- und Extended-Genauigkeit. In dieser Ausgabe sind
+folgende Funktionsgruppen verf&uuml;gbar:
+<ul style="margin-top:0">
+<li> Bessel-Funktionen und verwandte,</li>
+<li> elliptische Integrale/Funktionen und Thetafunktionen,</li>
+<li> Exponentialintegrale und verwandte,</li>
+<li> Fehlerfunktion und verwandte,</li>
+<li> Gamma-Funktion und verwandte,</li>
+<li> Zetafunktionen, Polylogarithmen und verwandte,</li>
+<li> orthogonale Polynome, Legendrefunktionen und verwandte,</li>
+<li> hypergeometrische Funktionen und verwandte,</li>
+<li> statistische Verteilungen,</li>
+<li> und verschiedene spezielle Funktionen.</li>
+</ul>
+Zur Zeit gibt es f&uuml;r alle Funktionen Double- und Extended-Versionen
+(extended mit Suffix <b>x</b>, z.B. <i>erfc</i> vs. <i>erfcx</i>).
+Hier ist die vollst&auml;ndige Liste der
+<a href="amath_functions.html#spec_func">Speziellen Funktionen</a>
+mit kurzen Beschreibungen.
+Die Datei <a href="specialfunctions.pdf">specialfunctions.pdf</a>
+enth&auml;lt das (englische) <i>Referenzhandbuch Spezielle Funktionen mit Implementationshinweisen.</i>
+
+<br><br>
+Im allgemeinen haben die Extended-Versionen der Funktionen gr&ouml;&szlig;ere relative
+Fehler (gemessen in den entsprechenden relativen Rundungseinheiten eps_x bzw.
+eps_d) als ihre Double-Gegenst&uuml;cke, insbesondere <i>gammax</i> und<i>
+betax</i> f&uuml;r gro&szlig;e Argumente. Weiterhin ist zu beachten, da&szlig;
+einige Funktionen bei kleinen Argument&auml;nderungen starke &Auml;nderungen
+bei den Funktionswerten zeigen; bei hochgenauen Vergleichen sollten deshalb
+nur Argumentwerte verwendet werden, die in beiden Rechnungen exakt darstellbar sind.
+<br>
+<br>
+</li>
+<li>
+<a name="amcomplex"></a>
+<img src="plotphase.png" alt="Beispielbild PlotPhase" align=right title="Beispielbild PlotPhase">
+Die Unit <b>AMCmplx V1.14</b> implementiert AMath-basierte komplexe Arithmetik
+sowie grundlegende und transzendente Funktionen;
+hier die <a href="amath_functions.html#amcmplx">komplette Liste</a>
+mit kurzen Beschreibungen, im Referenz-PDF gibt es ein eigenes Kapitel.
+Der Datentyp <b>complex</b> ist ein Record mit
+Real- und Imagin&auml;rteil vom Typ extended. Die meisten Routinen sind Prozeduren
+mit <b>const</b> Eingabe-Record(s) und <b>var</b> Ausgabe.
+<br>
+<br>
+Bitte beachten: Die Exponential-, trigonometrischen und Hyperbel-Funktionen
+k&ouml;nnen &Uuml;berlauf erzeugen oder INF bzw. NaN zur&uuml;ckliefern f&uuml;r Eingaben
+mit Real- oder Imagin&auml;rteil in der N&auml;he von ln_MaxExt oder gr&ouml;&szlig;er,
+diese Situationen werden systematischer in kommenden Versionen behandelt.
+<br>
+<br>
+<a name="complexdemo"></a>
+Das interne Archiv complexdemo.zip enth&auml;lt den Ausdrucks-Parser/Interpreter
+amccalc.pas und die darauf basierenden Demo-Programme PlotPhase (eine
+GUI-Anwendung zur Visualisierung komplexer Funktionen, rechts ein Beispielbild)
+und T_CCalcX (ein Konsolprogramm zur Berechnung komplexer Ausdr&uuml;cke).
+<br>
+<br>
+
+</li>
+<li>
+<a name="amquat"></a>
+Die Unit <b>AMQuat V0.20</b> implementiert AMath-basierte
+Arithmetik sowie grundlegende und transzendente Funktionen f&uuml;r
+Quaternionen, hier die <a href="amath_functions.html#amquat">komplette Liste</a>
+mit kurzen Beschreibungen.
+
+Der Datentyp <b>quaternion</b> ist ein Record mit
+Real- oder Skalarteil und Imagin&auml;r- oder Vektorteil:
+<pre>
+type
+  Quaternion = record
+                 r:     extended; {real or scalar part     }
+                 x,y,z: extended; {imaginary or vector part}
+               end;
+</pre>
+Die meisten Routinen sind Prozeduren
+mit <b>const</b> Eingabe-Record(s) und <b>var</b> Ausgabe.
+Eine Quaternion wird oft geschrieben als  a = r<b>1</b> + x<b>i</b> + y<b>j</b>
++ z<b>k</b>, wobei <b>1, i, j, k</b> die Basisquaternionen sind
+(als 4-dimensionale Vektoren sind sie die Standard-Einheitsvektoren).
+
+<br>
+<br>
+Addition und Subtraktion sind komponentenweise definiert,
+d.h. als &uuml;bliche Vektoraddition in R<sup>4</sup>. Die Multiplikation
+von  Quaternionen ist assoziativ und distributiv,
+aber sie ist <b>nicht kommutativ</b>, sondern festgelegt durch die Relationen
+<b>i^2 = j^2 = k^2 = ijk = -1</b>. Die Norm einer Quaternion
+ist r^2 + x^2 + y^2 +z^2, der Betrag |a| ist die Quadratwurzel der
+Norm und conj(a) = r<b>1</b> - x<b>i</b> - y<b>j</b> - z<b>k</b>
+hei&szlig;t Konjugierte. Die multiplikative Inverse ist (1/a) = conj(a)/norm(a)
+und die Division ist definiert als a/b = a*(1/b).
+<br>
+<br>
+
+Die meisten (inversen) trigonometrischen / hyperbolischen Quaternion-Funktionen
+b=f(a) werden in <b>AMath</b> im allgemeinen berechnet mit der korrespondieren
+komplexen Funktion w=F(z) mit z = Re(a) + i*abs(Im(a))
+und der Abbildung auf Quaternionen Re(b) = Re(w), Im(b) =
+Im(w)*Im(a)/abs(Im(a)).
+Zu beachten: Es gibt keine Potenzfunktion zweier Quaternionen a^b,
+f&uuml;r reelle b=x reell wird a^x  definiert als exp(x*ln(a)).
+
+<br>
+<br>
+</ul>
+
+<a name="damath"></a>
+<hr size="1" width="100%" color="#44DDFF">
+<h2>DAMath</h2>
+Das Archiv <a href="damath_2018-11-27.zip">damath_2018-11-27.zip</a>
+enth&auml;lt ebenfalls Units f&uuml;r <b>akkurate mathematische Methoden</b>
+ohne Benutzung von Multipr&auml;zisions-Arithmetik oder Assembler;
+anders als AMath verwenden sie jedoch <b>Double</b>-Datentypen. Der Hauptzweck
+ist die Bereitstellung der AMath-Funktionen f&uuml;r 64-Bit-Systeme ohne
+Extended-Genauigkeit oder 387-FPU, allerdings werden auch noch 32-Bitsysteme
+unterst&uuml;tzt.
+
+Der Quellcode kann mit den &uuml;blichen Pascalversionen &uuml;bersetzt werden,
+die <i>const</i>-Parameter unterst&uuml;tzen (getestet mit BP 7.0, VP 2.1, FPC 1.0/2.0/2.2/2.4/2.6/3x
+und Delphi-Versionen 1..7/9/10/12/17/18/25/26).
+<br>
+<br>
+Die Units setzen IEEE-754 53-Bit-Doubleprecision (Binary64) und die
+Standard-Rundungsart rmNearest voraus; seit Aug. 2017 gibt es die separate
+Unit <b>DFPU</b> mit 64-bit/ARM kompatiblen Funktionen f&uuml;r Rundungsart- und
+Genauigkeitskontrolle basierend auf der Math-Unit des Compilers.
+<font color="#0060FF">Detaillierte
+Beschreibungen der Units/Funktionen werden hier nicht wiederholt, sie sind
+analog zu <b>AMath</b></font>.
+
+<br><br>
+<font color="#cc0033"><b>Letzte &Auml;nderungen:</b></font>
+Unit <b>DAMath</b> mit den
+neuen Funktionen: Populations-Kovarianz pcov und
+den generischen Aliasnamen Infinity, NegInfinity, NaN;
+
+<b>Spezielle Funktionen</b> mit den
+Ableitungen der Kelvin-Funktionen 0-ter Ordnung;
+
+<b>DAMCmplx</b> mit den neuen Funktionen: Zeta, sinpi, Ei, E1, li;
+ge&auml;ndert: agm(x,-x) = 0, Spezialf&auml;lle n=1,2 in nroot;
+korrigiert: expm1 und ln1p f&uuml;r kleine rein-imagin&auml;re Argumente.
+
+<ul>
+<li><a name="damath_unit"></a>
+<b>DAMath V1.17:</b>
+Diese Unit implementiert akkurate elementare mathematische Funktionen mit
+Double-Genauigkeit: Exponential-, Logarithmus-, trigonometrische, hyperbolische, inverse
+trigonometrische / hyperbolische Funktionen; au&szlig;erdem gibt es
+Polynom-, Vektor- und Statistikprozeduren und Flie&szlig;komma-Funktionen.
+<br>
+<br>
+Aus der System-Unit benutzt DAMath die Funktionen abs, arctan, frac, int, ln und trunc
+(einschlie&szlig;lich vorhandener Fehler in 32-Bit-Versionen).
+Weil FPC-64 (Versionen &le; 2.6.4) bis zu 13 der 53 Bits  f&uuml;r die Exponentialfunktion verliert,
+implementiert DAMath eine eigene exp-Funktion. System.sin(x)
+und cos(x) werden f&uuml;r |x| &le; Pi/4 benutzt, f&uuml;r |x| > 2^30 wird die
+Bereichsreduktion nach Payne/Hanek verwendet.
+<br>
+<br>
+Unter Win7/64 haben die DAMath-64-Bit-Versionen der elementaren transzendenten
+Standardfunktionen mit einem Argument und die Potenzfunktion maximale relative
+Fehler kleiner als 2*eps_d (ca. 4.4e-16), die RMS-Werte sind &lt; 0.6*eps_d;
+die vollst&auml;ndige Liste und die entsprechenden Zahlen f&uuml;r Delphi/FPC
+findet man in der Datei t_xdamat64.cmp.
+<br>
+<br>
+Die double-double dbl2-Routinen rechnen mit Paaren von 53-Bit-Zahlen, die die
+nicht-ausgewertete Summe repr&auml;sentieren a = (a.h, a.l) = a.h + a.l,
+normalerweise mit |a.l| &le; eps_d*|a.h|.
+<br>
+<br>
+</li>
+
+<li>
+<a name="damtools"></a>
+Die Unit <b>DAMTools V0.47</b> bietet akkurate und zuverl&auml;ssige Werkzeuge zur
+Nullstellenbestimmung und Suche lokaler Minima von Funktionen, zur
+n&auml;herungsweisen Berechnung von eindimensionalen Integralen,
+zur Konvergenz-Beschleunigung von Folgen und Reihen,
+sowie zur L&ouml;sung quadratischer, kubischer und polynomialer Gleichungen.
+<br>
+<br>
+</li>
+<li>
+<a name="dam_spec"></a>
+
+Die auf DAMath basierenden <b>Speziellen Funktionen</b> mit Doubleprecision
+sind aus den AMath-Implementationen abgeleitet, d.h. die
+Beschreibungen in der <a href="amath_functions.html#spec_func">Einf&uuml;hrung</a>
+und im Referenzmanual <a href="specialfunctions.pdf">specialfunctions.pdf</a>
+sind (mit offensichtlichen Einschr&auml;nkungen) im wesentlichen g&uuml;ltig,
+die Funktionen der Interface-Unit <b>SpecFunD V1.38.02</b>
+haben die gleichen Namen usw. Hier einige interne Details:
+<ul>
+<li>
+Die internen Funktionen haben den Prefix <i>sfd_</i>, die Unitnamen
+beginnen mit <i>sd</i>, z.B. sdBessel vs. sfBessel.
+</li>
+<li>
+Konstanten, Argument- und Funktionswert-Bereiche wurden an Doubleprecision
+angepa&szlig;t.
+</li>
+<li>
+Hex/Extended-Konstrukte wurden durch Hex/Double ersetzt (teilweise neuberechnet).
+</li>
+<li>
+Die meisten Approximationen mit Polynomen oder rationalen Funktionen wurden
+beibehalten, sie sind deshalb manchmal sub-optimal (optimale Doubleprecision-Approximationen
+sind in der Regel sehr verschieden).
+</li>
+<li>
+Chebyshev-Approximationen konnten einfach an Doubleprecision angepa&szlig;t werden!
+</li>
+<li>
+Der relative Fehler der Speziellen Funktionen aus DAMath ist normalerweise
+gr&ouml;&szlig;er (besonders auf 64-Bit-Systemen) als der der entsprechenden AMath
+Double-Funktionen (die oft wegen der internen Extended-Arithmetik korrekt
+gerundet sind).
+<br>
+</li>
+</ul>
+<br>
+</li>
+<li>
+<a name="damcomplex"></a>
+Die Unit <b>DAMCmplx V0.70</b> implementiert DAMath-basierte komplexe Arithmetik
+sowie grundlegende und transzendente Funktionen; der Datentyp
+<b>complex</b> ist ein Record mit Real- und Imagin&auml;rteil vom Typ double.
+Das interne Archiv complexdemo.zip enth&auml;lt die 64-Bit kompatiblen Versionen
+des Ausdrucks-Parser/Interpreter damccalc.pas und die darauf basierenden
+Demo-Programme PlotPhaseD und T_CCalcD.
+<br><br>
+
+<li>
+<a name="damquat"></a>
+Die Unit <b>DAMQuat V0.20</b> implementiert DAMath-basierte
+Arithmetik sowie grundlegende und transzendente Funktionen f&uuml;r
+Quaternionen.
+
+Der Datentyp <b>quaternion</b> ist ein Record mit
+Real- oder Skalarteil und Imagin&auml;r- oder Vektorteil:
+<pre>
+type
+  Quaternion = record
+                 r:     double; {real or scalar part     }
+                 x,y,z: double; {imaginary or vector part}
+               end;
+</pre>
+Die meisten Routinen sind Prozeduren
+mit <b>const</b> Eingabe-Record(s) und <b>var</b> Ausgabe.
+Addition und Subtraktion sind komponentenweise definiert. Die Multiplikation
+von  Quaternionen ist assoziativ und distributiv,
+aber sie ist <b>nicht kommutativ</b>. Die meisten (inversen) trigonometrischen / hyperbolischen Quaternion-Funktionen
+werden im allgemeinen mit der korrespondieren komplexen Funktion berechnet.</li>
+</ul>
+
+<a name="zlib"></a>
+<hr size="1" width="100%" color="#44DDFF">
+<h2>zlib</h2>
+<a href="zlibw114_2015-09-14.zip">zlibw114_2015-09-14.zip</a> ist meine Pascal-Portierung
+der Version 1.1.4 von <a href="http://www.zlib.net/">zlib</a>, <i>der</i> freien, allgemeinen
+Bibliothek zur verlustfreien Daten-Komprimierung. Der Quellcode basiert auf
+<b>PASZLIB 1.0</b> von Jacques Nomssi Nzali (entspricht zlib 1.1.2). Mein Code enth&auml;lt offizielle
+Patches und &Auml;nderungen bis V1.1.4 und einige Ergebnisse einer E-Mail-Korrespondenz
+mit Mark Adler.
+
+<br><br>
+Weitere &Auml;nderungen sind in gzio/minigzip, inffixed.inc, minizip, zdeflate
+(Code f&uuml;r $ifdef FASTEST ist jetzt benutzbar), zlibh (z_assign als Workaround
+f&uuml;r einen l&auml;stigen D6/7/9-Bug), zutil, example (Fehler in test_sync
+usw. beseitigt).
+
+<br><br>
+Andere Erweiterungen: 1) <b>zlibex</b>-Unit mit anpassbaren deflate- und inflate-Routinen (incl. Testprogramm),
+die Unit wird im <a href="crypt_de.html#FCADemo">FZCA-Demoprogramm</a> benutzt. &nbsp;
+2) Pascal-Port des <b>zpipe</b>-Beispiels.&nbsp;
+3) Code-Verbesserungen: BUILDFIXED und assert funktionieren jetzt, Bugfix in gzerror, usw.
+
+<br><br>
+<font color="#cc0033"><b>Letzte &Auml;nderungen:&nbsp;</b></font>
+Anpassungen f&uuml;r Delphi 17+ und FPC 3.x
+<br><br>
+
+Die Bibliothek kann kompiliert werden mit BP7 (DOS/Win/DPMI), Delphi 1-7/9-10/12/17-18, Virtual
+Pascal V2.1 und Free Pascal 1/2/3.x.
+
+Die Unit-Struktur ist leicht ge&auml;ndert verglichen mit PASZLIB:
+<b>zlib</b> (Funktionen),
+<b>zlibh</b> (Typen/Konstanten),
+<b>gzio</b> (gz-Funktionen)
+sollten die einzigen Units in <i>uses-</i>Anweisungen der zlib-Applikationen
+sein.
+
+<br><br>
+<b>Bitte beachten:</b>
+<ul style="margin-top:0">
+  <li>
+    Die Code-Basis V1.1.4 ist sehr alt und es gibt inzwischen neuere und
+    bessere Zlib-Versionen. Deshalb sollten neuere Delphi- und FPC-Versionen
+    soweit m&ouml;glich die mitgelieferten Zlib-Units verwenden.
+  </li>
+  <li>
+    Meine zlib-Routinen sollten nur auf Dateien mit weniger als 2 GB angewendet
+    werden (32 Bitz&auml;hler; Delphi eof-Fehler und/oder 32-Bit filesize Funktion).
+  </li>
+</ul>
+<br>
+
+<hr size="1" width="100%" color="#44DDFF">
+<a name="CRT"></a>
+
+<h2>Delphi CRT-Unit</h2>
+
+W&auml;hrend der Entwicklung des <a href="misc_de.html#mparith">MPArith</a>-Ausdrucksparsers
+wurden ein paar Abweichungen von Will de Witts bew&auml;hrter Delphi-CRT-Unit
+im Vergleich zu BP7 festgestellt; ich habe  deshalb  eine etwas kompatiblere
+Unit erstellt.
+
+<br><br>
+<font color="#cc0033"><b>Letzte &Auml;nderungen:&nbsp;</b></font>
+Anpassungen f&uuml;r Delphi 25 (Tokyo)
+
+<br><br>
+<a href="dcrt_2017-11-29.zip">dcrt_2017-11-29.zip</a> ist eine vereinfachte
+Version von Will DeWitts Code mit einigen Fehlerkorrekturen (readkey,
+Zeileneingabe, erweiterte Tastencodes etc)  Wills <i>'unit was based heavily
+off of the Borland CBuilder 5 RTL'</i>. Wegen des unklaren Lizenzstatus von
+Wills Unit gilt f&uuml;r diese meine Unit auch <b>nicht</b> die zlib-Lizenz,
+sondern sie wird mit folgendem <b>Ausschlu&szlig;hinweis</b> ver&ouml;ffentlicht:
+
+<br><br>
+
+<tt>Die Software wird ohne jegliche Zusagen oder Garantien bez&uuml;glich
+Funktionalit&auml;t oder Funktionsf&auml;higkeit abgegeben. Die Autoren
+&uuml;bernehmen keine Verantwortung f&uuml;r Sch&auml;den, die durch die Benutzung
+der Software verursacht werden. Wird die  Software benutzt, bitte auf die
+Herkunft verweisen und die Referenzen auf die anderen Autoren und Quellen
+beibehalten. </tt>
+
+<br><br>
+Wie auch immer: Wills bzw. Borlands Unit wurde radikal umgeschrieben und
+umgestellt. Leitanforderung war weitgehende Kompatibilit&auml;t zur BP7-Unit.
+
+<br><br>
+Die Idee der Hardware/Software-Trennung der Tonerzeugung stammt von Rudy
+Velthuis' Freeware-Konsoleunit, aber die Implementation ist verschieden.
+
+<br><br>
+Die unterst&uuml;tzten Tastenkombination bei der Zeileneingabe sind von BP7
+(^A, ^H, ^D, ^F, ^M, ^S, ^Z), der Paradigmenwechsel von <i>readkey</i> zu <i>keypressed
+</i>als Arbeitspferd findet sich bei FP. Die Tastencodes, -&Uuml;bersetzungen und
+-Funktionalit&auml;ten wurden dem Phoenix-BIOS-Buch und einem mit BP7
+kompilierten Testprogramm entnommen.
+
+<br><br>
+Hier sind <a href="links_de.html#Pascal">Links</a> zu den beschriebenen Programmen.
+
+<br><br>
+Es bleiben noch einige Kleinigkeiten zu tun f&uuml;r seltene spezielle
+erweiterte Tastenkombinationen (nationale Spezialcodes etc); aber dies
+wird bei Bedarf erledigt, wenn Fehler und Probleme beseitigt werden
+m&uuml;ssen. <b>Hinweis:</b> Obwohl DCRT V1.32+ kompatibel zu D12+ ist,
+benutzt die Konsolausgabe weiterhin ANSI und <b>nicht</b> Unicode.
+
+
+<br><br>
+
+<table BORDER=0 CELLSPACING=4 CELLPADDING=4 WIDTH="100%" summary="" >
+<tr>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="index_de.html">Start</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="crchash_de.html">CRC/Hash</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="crypt_de.html">Krypto</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="misc_de.html">Sonstiges</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="info_de.html">Info</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="links_de.html">Links</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="misc_en.html">English</a></b></td>
+</tr>
+</table>
+
+</body>
+</html>

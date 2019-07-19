@@ -1,0 +1,686 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD html 4.01 transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="author" content="Wolfgang Ehrhardt">
+  <meta name="keywords" content="AES, CTR, CFB, OFB, CBC, ECB, OMAC, EAX, Blowfish, TwoFish, Salsa, Pascal, Delphi, Sourcecode, Freeware, Programming">
+  <title>W.Ehrhardt: Crypto</title>
+</head>
+
+<body text="#000000" bgcolor="#F0FFFF" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" summary="" >
+<tr>
+<td ALIGN=LEFT> <font size=1>&copy; 2018 W.Ehrhardt </font></td>
+<td ALIGN=RIGHT><font size=1>Last update Jan. 01, 2018</font></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=4 CELLPADDING=4 WIDTH="100%" summary="" >
+<tr>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="index.html">Home</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="crchash_en.html">CRC/Hash</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="crypt_en.html">Crypto</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="misc_en.html">Misc.</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="info_en.html">Info</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="links_en.html">Links</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="crypt_de.html">Deutsch</a></b></td>
+</tr>
+</table>
+
+<br>
+
+<h2>Cryptographic algorithms</h2>
+
+On this page there are several cipher algorithms: the 128-bit block ciphers
+<a href="crypt_en.html#AES">AES</a> and <a href="crypt_en.html#twofish">Twofish</a>,
+the 64-bit block cipher <a href="crypt_en.html#blowfish">Blowfish</a>,
+and the stream ciphers <a href="crypt_en.html#salsa20">Salsa20/XSalsa20/ChaCha</a>
+and <a href="crypt_en.html#sosemanuk">Sosemanuk</a>.
+
+Please note:
+<ul>
+
+<li>In most cases encryption should be used together with authentication and decryption with verification.
+Most of the block ciphers have the EAX mode, and the <a href="hash_intro.html#HMAC">HMAC</a>
+construction can be used with both cipher types;
+see also  <a href="crypt_en.html#poly1305">Poly1305</a>.
+</li>
+
+<li>The secret keys should be produced by
+
+<a href="hash_intro.html#KDF">key derivation functions</a>
+ from pass phrases and (session) salts.
+</li>
+
+<li>See the <a href="crypt_en.html#FCADemo">FCA demo</a> for a basic implementation.</li>
+</ul>
+
+In the section <a href="crypt_en.html#OtherBlockCiphers">other block ciphers</a> there
+are some more block ciphers with short descriptions and source code archives:
+<a href="crypt_en.html#anubis">Anubis</a>,&nbsp;
+<a href="crypt_en.html#camellia">Camellia</a>,&nbsp;
+<a href="crypt_en.html#SEED">SEED</a>,&nbsp;
+<a href="crypt_en.html#serpent">Serpent</a>,&nbsp;
+<a href="crypt_en.html#shacal2">SHACAL-2</a>,&nbsp;
+<a href="crypt_en.html#skipjack">SkipJack</a>,&nbsp;
+<a href="crypt_en.html#XTEA">XTEA</a>.
+<br><br>
+
+The basic/test/demo source codes  can be compiled with most current Pascal (TP
+5/5.5/6, BP 7, VP 2.1, FPC 1.0/2.0/2.2/2.4/2.6/3.x) and Delphi versions (tested with
+V1 up to V7/9/10-12/17-18/25S).
+
+<br><br>
+<b>Before downloading any software from this site please read this
+<a href="info_en.html#LegalNotice">legal notice</a>.</b>
+<br><br>
+
+
+<a name="AES"></a>
+<br>
+<table BORDER=0 CELLPADDING=4 WIDTH="100%" SUMMARY="" >
+<tr>
+<td ALIGN=CENTER BGCOLOR="#77dddd"><b>A E S</b></td>
+</tr>
+</table>
+
+<br>
+Here are the AES (Advanced Encryption Standard) related Pascal / Delphi
+sources:  basic AES routines  and recommended block cipher modes of operation (with test programs that verify compilation
+and results), demo programs for file encryption / authentication and decryption / verification,
+and a look at other implementations.
+
+<br><br>
+<hr size="1" noshade width="100%">
+
+<font color="#cc0033"><b>Last changes:&nbsp;</b></font>
+FPC/ARM and Delphi Tokyo adjustments
+<hr size="2" width="100%"><br>
+
+The block level routines in <a href="aes_2017-11-17.zip">aes_2017-11-17.zip</a> include separate units
+for encryption and decryption,  the source code for basic encryption/decryption is split into several include files.
+At the lowest level there are type definitions and common routines.
+Key sizes of 128, 192, and 256 bits are supported.
+
+<br><br>
+Building on these routines, the following block cipher modes of operation are implemented:
+<b>CBC, CFB128, CFB8, CTR, ECB, OFB</b> as well as <b>OMAC, CMAC, CCM, EAX, GCM, XTS</b>.
+All modes allow plain and cipher text lengths that
+need not be multiples of the block length (for ECB, CBC, and XTS cipher text stealing is used for
+the short block; only one short block is allowed and there must be at least one full block).
+CTR mode can use 4 built-in incrementing functions or a user supplied one,
+and provides seek functions for random access reads.
+<br><br>
+All AES routines are included in the AES_DLL.DLL, there are two interface units for this DLL
+(one for Virtual Pascal, the second for the other Win32 compilers).
+The source code archive contains many test programs which are used to check compilation
+processes, the implementation against known test values, etc.
+
+<br><br>With the <b>t_gsp128</b> test program the CPU cycles per block and the (theoretical) encryption speed in
+MB/s were measured for the different compilers (this program needs the high resolution timer
+routines from <a href="misc_en.html#HRTimer">hrtimer</a>).  Here are the
+results for a Pentium 4, 1.8 GHz, Win98, 128 bit key size; the first data pairs are
+for full tables, the second for compressed tables (8 byte aligned for 32 bit compiler):
+
+<br>
+<br>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="80%" summary="" >
+<tr>  <th align=right>Compiler   </th>   <th align=right>Cyc/Bl-F</th>   <th align=right>MB/s-F</th>    <th align=right>Cyc/Bl-C</th>    <th align=right>MB/s-C</th> </tr>
+<tr>  <td align=right>TP5        </td>   <td align=right>    6302</td>   <td align=right>   4.6</td>    <td align=right>    5356</td>    <td align=right>   5.4</td> </tr>
+<tr>  <td align=right>TP55       </td>   <td align=right>    6321</td>   <td align=right>   4.5</td>    <td align=right>    6980</td>    <td align=right>   4.1</td> </tr>
+<tr>  <td align=right>TP6        </td>   <td align=right>    1436</td>   <td align=right>  20.0</td>    <td align=right>    1762</td>    <td align=right>  16.3</td> </tr>
+<tr>  <td align=right>BP7        </td>   <td align=right>    1493</td>   <td align=right>  19.2</td>    <td align=right>    1927</td>    <td align=right>  14.9</td> </tr>
+<tr>  <td align=right>Delphi2    </td>   <td align=right>     365</td>   <td align=right>  78.6</td>    <td align=right>     398</td>    <td align=right>  72.1</td> </tr>
+<tr>  <td align=right>Delphi3    </td>   <td align=right>     373</td>   <td align=right>  76.9</td>    <td align=right>     398</td>    <td align=right>  72.1</td> </tr>
+<tr>  <td align=right>Delphi4    </td>   <td align=right>     386</td>   <td align=right>  74.3</td>    <td align=right>     398</td>    <td align=right>  72.1</td> </tr>
+<tr>  <td align=right>Delphi5    </td>   <td align=right>     375</td>   <td align=right>  76.5</td>    <td align=right>     398</td>    <td align=right>  72.1</td> </tr>
+<tr>  <td align=right>Delphi6    </td>   <td align=right>     380</td>   <td align=right>  75.5</td>    <td align=right>     398</td>    <td align=right>  72.1</td> </tr>
+<tr>  <td align=right>Delphi7    </td>   <td align=right>     380</td>   <td align=right>  75.5</td>    <td align=right>     398</td>    <td align=right>  72.1</td> </tr>
+<tr>  <td align=right>Delphi9    </td>   <td align=right>     381</td>   <td align=right>  76.3</td>    <td align=right>     397</td>    <td align=right>  72.3</td> </tr>
+<tr>  <td align=right>Delphi10   </td>   <td align=right>     380</td>   <td align=right>  75.0</td>    <td align=right>     398</td>    <td align=right>  72.1</td> </tr>
+<tr>  <td align=right>VPC        </td>   <td align=right>     426</td>   <td align=right>  67.3</td>    <td align=right>     425</td>    <td align=right>  67.3</td> </tr>
+<tr>  <td align=right>FPC 2.2 -O3</td>   <td align=right>     416</td>   <td align=right>  69.0</td>    <td align=right>     417</td>    <td align=right>  68.8</td> </tr>
+<tr>  <td align=right>FPC 1 GoV2 </td>   <td align=right>     542</td>   <td align=right>  53.0</td>    <td align=right>     541</td>    <td align=right>  53.1</td> </tr>
+</table>
+
+
+<br>
+TP5 and 5.5 have pure 8086 Pascal code, TP6/BP7 use 16-bit 80386 BASM
+code in the core routines. The Delphi 2..7/9/10, VPC, and FPC sources are written
+in pure 32-bit Pascal code.
+
+<br>
+<br><hr size="1" noshade width="100%"><br>
+
+In the following table my routines (WE/.., program <b>t_aes_ws</b>) are
+compared with other open source packages. The source code  to build the test
+programs for the third party packages is in <a href="aes_cmpsrc_2006-07-30.zip">aes_cmpsrc_2006-07-30.zip</a>.
+The original sources are required in order to compile the test programs, the
+URLs are given on the <a href="links_en.html#Cryptography">Links</a> page. The
+times are in s for encrypting 512 MB (8000000 blocks of 64 byte) with 128-bit keys using a 1.8 GHz P4 with Win98.
+
+<br><br>
+<table BORDER=1 CELLSPACING=0 CELLPADDING=2 WIDTH="80%" summary="" >
+<tr>  <th align=right>Package/Compiler</th>   <th align=right> CTR</th>   <th align=right> CFB</th>   <th align=right> OFB</th>   <th align=right> ECB</th>   <th align=right> CBC</th>  <th align=right>OMAC</th>  </tr>
+<tr>  <td align=right>   LibTom117/VC6</td>   <td align=right>13.0</td>   <td align=right>16.3</td>   <td align=right>16.4</td>   <td align=right>12.9</td>   <td align=right>13.9</td>  <td align=right>15.6</td>  </tr>
+<tr>  <td align=right> LTC117/GCC4.2.1</td>   <td align=right>10.1</td>   <td align=right>14.5</td>   <td align=right>10.6</td>   <td align=right> 9.0</td>   <td align=right> 9.3</td>  <td align=right>14.2</td>  </tr>
+<tr>  <td align=right>    dcpcrypt2/D6</td>   <td align=right>28.8</td>   <td align=right>32.7</td>   <td align=right>28.6</td>   <td align=right>   -</td>   <td align=right>32.7</td>  <td align=right>   -</td>  </tr>
+<tr>  <td align=right>       DEC5.1/D6</td>   <td align=right>   -</td>   <td align=right>13.9</td>   <td align=right>10.9</td>   <td align=right>10.2</td>   <td align=right>11.8</td>  <td align=right>   -</td>  </tr>
+<tr>  <td align=right>     StrSecII/D6</td>   <td align=right> 9.0</td>   <td align=right>11.5</td>   <td align=right> 9.1</td>   <td align=right> 7.7</td>   <td align=right> 9.3</td>  <td align=right>   -</td>  </tr>
+<tr>  <td align=right>           WE/D3</td>   <td align=right> 9.0</td>   <td align=right> 8.1</td>   <td align=right> 8.1</td>   <td align=right> 7.7</td>   <td align=right> 9.1</td>  <td align=right> 9.1</td>  </tr>
+<tr>  <td align=right>           WE/D6</td>   <td align=right> 9.0</td>   <td align=right> 8.0</td>   <td align=right> 8.0</td>   <td align=right> 7.7</td>   <td align=right> 8.4</td>  <td align=right> 9.1</td>  </tr>
+<tr>  <td align=right>  WE/FPC 2.2 -O3</td>   <td align=right> 9.9</td>   <td align=right> 9.1</td>   <td align=right> 9.1</td>   <td align=right> 9.0</td>   <td align=right>11.2</td>  <td align=right> 9.0</td>  </tr>
+<tr>  <td align=right>      WE/VPC 2.1</td>   <td align=right>10.4</td>   <td align=right>10.2</td>   <td align=right>10.3</td>   <td align=right> 9.3</td>   <td align=right>13.9</td>  <td align=right>12.0</td>  </tr>
+<tr>  <td align=right>          WE/BP7</td>   <td align=right>47.1</td>   <td align=right>41.4</td>   <td align=right>41.4</td>   <td align=right>34.3</td>   <td align=right>51.0</td>  <td align=right>45.3</td>  </tr>
+</table>
+
+<br><br>
+The comparison with one of the fastest known open source implementations
+(Brian Gladman using C/ASM) is a little more detailed. With the program
+<b>t_gspeed</b> the cycles/block of the encryption and decryption core
+routines are measured for all AES key lengths, in fact with the same method
+that Gladman uses in his <b>aestmr.cpp</b> file.
+<b>ASM</b> is Gladman's highly optimized NASM version, <b>C++</b> his
+optimized standard version, the other entries are my versions from above.
+
+<br><br>
+<table BORDER=1 CELLSPACING=0 CELLPADDING=2 WIDTH="80%" summary="" >
+<tr>  <th align=right>Func/Bit</th>  <th align=right>ASM</th>   <th align=right>C++</th>   <th align=right> D6</th>   <th align=right> VPC</th>   <th align=right>FPC2</th>   <th align=right> BP7</th>  </tr>
+<tr>  <td align=right>Enc/128</td>   <td align=right>295</td>   <td align=right>385</td>   <td align=right>370</td>   <td align=right> 425</td>   <td align=right> 546</td>   <td align=right>1490</td>  </tr>
+<tr>  <td align=right>Dec/128</td>   <td align=right>293</td>   <td align=right>376</td>   <td align=right>382</td>   <td align=right> 405</td>   <td align=right> 551</td>   <td align=right>1545</td>  </tr>
+<tr>  <td align=right>Enc/192</td>   <td align=right>352</td>   <td align=right>439</td>   <td align=right>434</td>   <td align=right> 532</td>   <td align=right> 648</td>   <td align=right>1768</td>  </tr>
+<tr>  <td align=right>Dec/192</td>   <td align=right>346</td>   <td align=right>443</td>   <td align=right>451</td>   <td align=right> 476</td>   <td align=right> 653</td>   <td align=right>1723</td>  </tr>
+<tr>  <td align=right>Enc/256</td>   <td align=right>403</td>   <td align=right>497</td>   <td align=right>498</td>   <td align=right> 580</td>   <td align=right> 751</td>   <td align=right>1948</td>  </tr>
+<tr>  <td align=right>Dec/256</td>   <td align=right>407</td>   <td align=right>507</td>   <td align=right>518</td>   <td align=right> 549</td>   <td align=right> 755</td>   <td align=right>1971</td>  </tr>
+</table>
+
+<a name="comprtab"></a>
+<br><hr size="2" width="100%">
+Since the July 2006 release  there are conditional defines to support <b>compressed tables</b>:
+one 2K encryption table (calculated with <b>t_mkctab</b>) replaces the four 1K tables
+(same for decryption, here the inverse SBox is no longer needed).
+Besides using less static memory, compressed tables
+are considered as a countermeasure against <b>cache timing attacks</b>.
+
+<br>
+<br>
+It seems that modern x86 processors can use these inherently unaligned/overlapping
+data from cache with very little speed penalty, IF (a big if) the whole table is at
+least aligned to a 8 byte boundary. Unfortunately Delphi has no means to force
+this alignment for a single table. So there are some other defines and
+diagnostic variables to deal with the proper alignment (gathered in the
+configuration file <b>aes_conf.inc</b>). If the compressed tables are not 8
+byte aligned, the cycle counts nearly double.
+
+<br>
+<br>
+Another countermeasure against cache timing attacks is the forced
+disabling of large tables for the last rounds if compressed tables
+are used (the compressed tables have copies of the SBox and InvSBox bytes).
+<br>
+<br>
+Compressed tables should be used if timing data are available for
+an attacker, he may be able to recover some or all key bits.
+Here are some links to background material on  AES cache timing attacks:
+
+<ul>
+
+<li>
+Anne Canteaut, C&eacute;dric Lauradoux, Andr&eacute; Seznec; Understanding cache attacks<BR>
+<a href="http://hal.inria.fr/docs/00/07/13/87/PDF/RR-5881.pdf">http://hal.inria.fr/docs/00/07/13/87/PDF/RR-5881.pdf</a>
+</li>
+
+<li>
+ECRYPT - AES Security Report (D.STVL.2), Rev 1.0, 30 Jan 2006<BR>
+<a href="http://www.ecrypt.eu.org/ecrypt1/documents/D.STVL.2-1.0.pdf">http://www.ecrypt.eu.org/ecrypt1/documents/D.STVL.2-1.0.pdf</a>
+</li>
+
+<li>
+Daniel J. Bernstein, Cache-timing attacks on AES<BR>
+<a href="http://cr.yp.to/antiforgery/cachetiming-20050414.pdf">http://cr.yp.to/antiforgery/cachetiming-20050414.pdf</a>
+</li>
+
+<li>
+Joseph Bonneau, Ilya Mironov; Cache-Collision Timing Attacks Against AES;
+<BR>available from<a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.165.7844">
+http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.165.7844</a>
+</li>
+
+<li>
+Dag Arne Osvik, Adi Shamir, and Eran Tromer; Cache attacks and countermeasures: the case of AES.<BR>
+<a href="http://eprint.iacr.org/2005/271.pdf">http://eprint.iacr.org/2005/271.pdf</a>
+</li>
+</ul>
+
+
+<a name="FCADemo"></a>
+<hr size="6" width="100%" color="#77dddd">
+The basic routines are used to build the simple <b>FCA demo program</b>
+for file encryption / authentication and decryption / verification (a
+dual OS program running as 16-bit EXE under DOS and as a 32-bit console
+application supporting long file names under Win32). It uses two modes,
+the (old) one was inspired by Brian Gladman's <i>encfile</i>  with 128
+bit AES-CTR mode and HMAC-SHA1-128; the second mode is EAX. The 96 bit
+salt is a truncated SHA1 hash over date, time, randseed, and TSC; keys
+and pass phrase verifier are derived from the pass phrase according to
+RFC 2898.
+<br><br>
+Since Nov. 2006 the archive contains the contributed <b>fcaes256</b>
+unit started by <b>Giorgio Tani</b> using 256 bit AES-EAX mode or
+AES-CTR and HMAC-Whirlpool-128; fcaes256 is used in Giorgio's
+<a href="http://www.peazip.org/">PeaZip</a> project.
+<b>fca256</b> is the 256 bit equivalent of FCA.
+
+<br><br>
+In Mar. 2016 <b>Giorgio Tani</b> contributed
+analogous units for the AES finalists Serpent and Twofish, they are included
+in this archive together with four test programs.
+
+<br><br>
+<font color="#cc0033"><b>Last changes:&nbsp;</b></font>
+FPC/ARM and Delphi Tokyo adjustments
+<br><br>
+
+To compile the demo programs from the sources in <a href="fca_2017-11-17.zip">fca_2017-11-17.zip</a>
+you need units from <a href="aes_2017-11-17.zip">aes_2017-11-17.zip</a>,
+<a href="misc_en.html#util">util_YYYY-MM-DD.zip</a>,
+and <a href="crchash_en.html">crc_hash_YYYY-MM-DD.zip</a>;
+the Serpent/Twofish units need the corresponding archives too.
+
+The <b>FZCA program</b> optionally compresses the data with
+<a href="misc_en.html#zlib">zlib</a> before encryption / authentication.
+<br><br>
+
+<b>Note:</b> the demo programs should only be applied to files with sizes
+less than 2 GB if compiled with Delphi or 16-bit Pascal (Delphi eof bug
+and/or 32-bit filesize function). Newer FreePascal versions with 64 bit
+filesize function <i>may</i> work for such big files.
+<br><br>
+
+
+<a name="twofish"></a>
+<br><table BORDER=0 CELLPADDING=4 WIDTH="100%" SUMMARY="" >
+<tr>
+<td ALIGN=CENTER BGCOLOR="#77dddd"><b>Twofish</b></td>
+</tr>
+</table>
+<br>
+The Twofish algorithm as an alternative to AES was implemented as a response to user requests.
+The source layout found in <a href="tf_2017-11-17.zip">tf_2017-11-17.zip</a>
+is similar to AES, there is code for a DLL and the following modes of operation are supported:
+CBC, CFB128, CTR, ECB, OFB, OMAC, and EAX. All modes allow plain and cipher text lengths that need
+not be multiples of the block length and (except OMAC/EAX) support a <i>reset</i> function that re-initializes
+the chaining variables without the (time consuming) recalculation of the round keys.
+For the ECB and CBC modes cipher text stealing is used for the last short block, CTR mode can use
+4 built-in incrementing functions or a user supplied one,
+and provides seek functions for random access reads.
+
+<br><br>
+<font color="#cc0033"><b>Last changes:&nbsp;</b></font>
+FPC/ARM and Delphi Tokyo adjustments
+
+<br><br>
+
+My implementation is compared to the same or updated libraries as used in the
+AES part, the source for the test programs is in <a href="tf_cmpsrc_2006-06-15.zip">tf_cmpsrc_2006-06-15.zip</a>.
+The times are in s for encrypting 512 MB (8000000 blocks of 64 byte) with 128-bit
+keys using a 1.8 GHz P4 with Win98.
+
+<br><br>
+<table BORDER=1 CELLSPACING=0 CELLPADDING=2 WIDTH="80%" summary="" >
+<tr>  <th align=right>Package/Compiler</th>   <th align=right> CTR</th>   <th align=right> CFB</th>   <th align=right> OFB</th>   <th align=right> ECB</th>   <th align=right> CBC</th>   <th align=right>OMAC</th> </tr>
+<tr>  <td align=right>   LibTom112/VC6</td>   <td align=right>11.9</td>   <td align=right>14.6</td>   <td align=right>14.4</td>   <td align=right>10.3</td>   <td align=right>11.2</td>   <td align=right>14.4</td> </tr>
+<tr>  <td align=right> LTC112/GCC4.0.1</td>   <td align=right>13.4</td>   <td align=right>14.9</td>   <td align=right>13.5</td>   <td align=right>12.5</td>   <td align=right>11.7</td>   <td align=right>14.2</td> </tr>
+<tr>  <td align=right>    dcpcrypt2/D6</td>   <td align=right>21.5</td>   <td align=right>25.4</td>   <td align=right>21.3</td>   <td align=right>   -</td>   <td align=right>25.7</td>   <td align=right>   -</td> </tr>
+<tr>  <td align=right>       DEC5.1/D6</td>   <td align=right>   -</td>   <td align=right>31.9</td>   <td align=right>28.7</td>   <td align=right>27.7</td>   <td align=right>29.6</td>   <td align=right>   -</td> </tr>
+<tr>  <td align=right>     StrSecII/D6</td>   <td align=right>13.0</td>   <td align=right>14.7</td>   <td align=right>13.0</td>   <td align=right>10.7</td>   <td align=right>12.1</td>   <td align=right>   -</td> </tr>
+<tr>  <td align=right>           WE/D3</td>   <td align=right>14.8</td>   <td align=right>14.0</td>   <td align=right>13.9</td>   <td align=right>13.8</td>   <td align=right>16.0</td>   <td align=right>16.3</td> </tr>
+<tr>  <td align=right>           WE/D6</td>   <td align=right>15.2</td>   <td align=right>14.0</td>   <td align=right>13.9</td>   <td align=right>13.9</td>   <td align=right>15.6</td>   <td align=right>15.0</td> </tr>
+<tr>  <td align=right>         WE/FPC2</td>   <td align=right>20.4</td>   <td align=right>20.4</td>   <td align=right>20.3</td>   <td align=right>19.5</td>   <td align=right>21.9</td>   <td align=right>20.1</td> </tr>
+<tr>  <td align=right>          WE/VPC</td>   <td align=right>17.6</td>   <td align=right>17.3</td>   <td align=right>17.6</td>   <td align=right>17.0</td>   <td align=right>22.9</td>   <td align=right>18.4</td> </tr>
+<tr>  <td align=right>          WE/BP7</td>   <td align=right>72.0</td>   <td align=right>68.5</td>   <td align=right>67.9</td>   <td align=right>61.6</td>   <td align=right>76.0</td>   <td align=right>72.2</td> </tr>
+</table>
+
+<br>
+
+<a name="blowfish"></a>
+<br><table BORDER=0 CELLPADDING=4 WIDTH="100%" SUMMARY="" >
+<tr>
+<td ALIGN=CENTER BGCOLOR="#77dddd"><b>Blowfish</b></td>
+</tr>
+</table>
+<br>
+The Blowfish source layout found in <a href="bf_2017-11-29.zip">bf_2017-11-29.zip</a>
+is similar to AES. There is code for a DLL and the following modes of operation are supported:
+CBC, CFB64, CTR, ECB,OFB,  OMAC, and EAX . All modes allow plain and cipher text lengths that need
+not be multiples of the block length (for ECB and CBC cipher text stealing is used for
+the short block).
+CTR mode can use 4 built-in incrementing functions or a user supplied one,
+and provides seek functions for random access reads.
+<br><br>
+All modes (except OMAC/EAX) support a <i>reset</i> function that re-initializes the chaining variables
+without the (time consuming) recalculation of the round keys.
+
+<br><br>
+<font color="#cc0033"><b>Last changes:&nbsp;</b></font>
+FPC/ARM and Delphi Tokyo adjustments
+<br><br>
+
+My implementation is compared to the same or updated libraries as used in the
+AES part, the source for the test programs is in <a href="bf_cmpsrc_2006-06-15.zip">bf_cmpsrc_2006-06-15.zip</a>. The
+times are in s for encrypting 512 MB (8000000 blocks of 64 byte) with 128 bit
+keys using a 1.8 GHz P4 with Win98.
+
+
+<br><br>
+<table BORDER=1 CELLSPACING=0 CELLPADDING=2 WIDTH="80%" summary="" >
+<tr>  <th align=right>Package/Compiler</th>   <th align=right> CTR</th>   <th align=right> CFB</th>   <th align=right> OFB</th>   <th align=right> ECB</th>   <th align=right> CBC</th>   <th align=right>OMAC</th> </tr>
+<tr>  <td align=right>   LibTom112/VC6</td>   <td align=right>12.0</td>   <td align=right>14.1</td>   <td align=right>13.8</td>   <td align=right>11.3</td>   <td align=right>15.6</td>   <td align=right>16.7</td> </tr>
+<tr>  <td align=right> LTC112/GCC4.0.1</td>   <td align=right>13.1</td>   <td align=right>12.8</td>   <td align=right>11.8</td>   <td align=right> 9.9</td>   <td align=right>10.5</td>   <td align=right>17.8</td> </tr>
+<tr>  <td align=right>    dcpcrypt2/D6</td>   <td align=right>21.0</td>   <td align=right>28.5</td>   <td align=right>20.8</td>   <td align=right>   -</td>   <td align=right>30.3</td>   <td align=right>   -</td> </tr>
+<tr>  <td align=right>       DEC5.1/D6</td>   <td align=right>   -</td>   <td align=right>13.7</td>   <td align=right>12.0</td>   <td align=right>12.1</td>   <td align=right>13.7</td>   <td align=right>   -</td> </tr>
+<tr>  <td align=right>     StrSecII/D6</td>   <td align=right>14.1</td>   <td align=right>15.1</td>   <td align=right>14.0</td>   <td align=right>10.9</td>   <td align=right>13.5</td>   <td align=right>   -</td> </tr>
+<tr>  <td align=right>           WE/D3</td>   <td align=right>14.0</td>   <td align=right>12.2</td>   <td align=right>10.8</td>   <td align=right>10.2</td>   <td align=right>12.4</td>   <td align=right>11.5</td> </tr>
+<tr>  <td align=right>           WE/D6</td>   <td align=right>14.1</td>   <td align=right>12.3</td>   <td align=right>10.8</td>   <td align=right>10.6</td>   <td align=right>12.4</td>   <td align=right>11.4</td> </tr>
+<tr>  <td align=right>         WE/FPC2</td>   <td align=right>18.2</td>   <td align=right>17.4</td>   <td align=right>18.8</td>   <td align=right>14.5</td>   <td align=right>16.8</td>   <td align=right>16.5</td> </tr>
+<tr>  <td align=right>          WE/VPC</td>   <td align=right>20.0</td>   <td align=right>21.0</td>   <td align=right>19.2</td>   <td align=right>19.2</td>   <td align=right>26.3</td>   <td align=right>22.6</td> </tr>
+<tr>  <td align=right>          WE/BP7</td>   <td align=right>64.8</td>   <td align=right>57.1</td>   <td align=right>57.1</td>   <td align=right>40.7</td>   <td align=right>72.8</td>   <td align=right>58.3</td> </tr>
+</table>
+<br>
+
+
+<a name="salsa20"></a>
+
+<br><table BORDER=0 CELLPADDING=4 WIDTH="100%" SUMMARY="" >
+<tr>
+<td ALIGN=CENTER BGCOLOR="#77dddd"><b>Salsa20 / XSalsa20 / ChaCha</b></td>
+</tr>
+</table>
+
+<br>
+<a href="http://cr.yp.to/snuffle.html">Salsa20</a> by D.J. Bernstein is a
+stream cipher that is included in the final
+<a href="http://www.ecrypt.eu.org/stream/portfolio.pdf">eSTREAM Portfolio</a>.
+The core of Salsa20 is a hash function with 64 bytes input and 64 bytes output,
+the input blocks consist of 128 or 256 bits of key material, the nonce or IV,
+and block numbers. The hashed output is used as a pseudo random key stream or is
+<i>xor</i>ed with the plain text to produce the cipher text.
+<br>
+
+<br>
+<font color="#cc0033"><b>Last changes:&nbsp;</b></font>
+FPC/ARM and Delphi Tokyo adjustments
+<br>
+
+<br>
+The original ECRYPT Salsa20 specification demands 20 rounds (or 10 double rounds) for the
+hash function, but D.J. Bernstein himself has formally proposed two variants with
+8 and 12 rounds; the portfolio version has 128 bit keys and 12 rounds. My defaults are:
+12 rounds for 128 bit keys and 20 rounds for 256 bit keys.
+
+<br><br>
+In the following table my implementations (program <b>t_salwe</b>, 1.8 GHz P4 with Win98) are
+compared with the reference C  and  ASM code from D.J. Bernstein. The times in s for processing 576 MB (1 Mio 576 byte blocks) are measured:
+the columns <b>kx</b> show the values for key stream generation with x rounds,
+and the <b>ex</b> columns have the corresponding encryption times (all with 128 bit keys). The reference C code
+for the key stream generation is suboptimal because it encrypts a zero stream.
+
+<br><br>
+<table BORDER=1 CELLSPACING=0 CELLPADDING=2 WIDTH="95%" summary="">
+<tr>  <th align=right>Compiler     </th>   <th align=right>  k8</th>   <th align=right> k12</th>   <th align=right>  k20</th>   <th align=right>  e8</th>   <th align=right> e12</th>  <th align=right>  e20</th>    <th align=right>Rem.</th> </tr>
+<tr>  <td align=right>ASM P4 F12   </td>   <td align=right>   -</td>   <td align=right>   -</td>   <td align=right>    -</td>   <td align=right>2.54</td>   <td align=right>3.62</td>  <td align=right> 5.57</td>    <td align=right> (1)</td> </tr>
+<tr>  <td align=right>GCC 4.3.2 -O3</td>   <td align=right>5.71</td>   <td align=right>7.36</td>   <td align=right> 9.50</td>   <td align=right>5.44</td>   <td align=right>7.03</td>  <td align=right> 9.12</td>    <td align=right> (2)</td> </tr>
+<tr>  <td align=right>VC6 SP4 /O2  </td>   <td align=right>6.65</td>   <td align=right>8.29</td>   <td align=right>11.59</td>   <td align=right>6.37</td>   <td align=right>8.07</td>  <td align=right>11.37</td>    <td align=right> (2)</td> </tr>
+<tr>  <td align=right>Delphi 3     </td>   <td align=right>3.57</td>   <td align=right>4.93</td>   <td align=right> 7.93</td>   <td align=right>6.16</td>   <td align=right>7.53</td>  <td align=right>10.23</td>    <td align=right>   -</td> </tr>
+<tr>  <td align=right>Delphi 6     </td>   <td align=right>3.57</td>   <td align=right>4.94</td>   <td align=right> 7.94</td>   <td align=right>6.25</td>   <td align=right>7.62</td>  <td align=right>10.32</td>    <td align=right>   -</td> </tr>
+<tr>  <td align=right>Delphi 10    </td>   <td align=right>3.57</td>   <td align=right>4.93</td>   <td align=right> 7.94</td>   <td align=right>6.12</td>   <td align=right>7.48</td>  <td align=right>10.21</td>    <td align=right>   -</td> </tr>
+<tr>  <td align=right>VPC 2.1.279  </td>   <td align=right>4.40</td>   <td align=right>5.77</td>   <td align=right> 8.51</td>   <td align=right>6.89</td>   <td align=right>8.25</td>  <td align=right>10.98</td>    <td align=right>   -</td> </tr>
+<tr>  <td align=right>FPC 2.2.4 -O3</td>   <td align=right>4.57</td>   <td align=right>5.93</td>   <td align=right> 8.66</td>   <td align=right>7.92</td>   <td align=right>9.33</td>  <td align=right>11.92</td>    <td align=right>   -</td> </tr>
+<tr>  <td align=right>BP7 Real     </td>   <td align=right>4.85</td>   <td align=right>6.19</td>   <td align=right> 8.88</td>   <td align=right>5.34</td>   <td align=right>6.68</td>  <td align=right> 9.37</td>    <td align=right>   -</td> </tr>
+</table>
+<br>(1) Calculated from D.J. Bernstein's cycles for 576 bytes
+<br>(2) Modified reference C code with static rounds variable
+
+<br><br>
+My source implementation in the archive <a href="salsa_2017-11-29.zip">salsa_2017-11-29.zip</a>
+uses BASM for the core hash function (PurePascal for BIT64, TP5.X uses Pascal with some inline).
+<br><br>
+Salsa20 is used as cryptographic random number generator in the <b>salsar</b> unit,
+see the  <a href="misc_en.html#prng">PRNG</a> section on the Misc. page.
+
+<br><br>
+<b>XSalsa20</b> uses 256 bit keys and 192 bit IVs, there is no separate key/IV
+setup, and packet processing functions have no user supplied context.
+
+<br><br>
+<a name="chacha"></a>
+<b>ChaCha</b> is one of D.J. Bernstein's variant of Salsa with improved diffusion
+per round (and conjectured increased resistance to cryptanalysis). My
+implementation allows 128/256 bit keys, ChaCha functions are exact
+counterparts of the Salsa functions, except that <i>chacha_xkeysetup</i>
+allows any even number of rounds > 0.
+
+Special thanks goes to <b>EddyHawk</b> for requesting the inclusion
+of ChaCha and his contributed functions, and to <b>Martok</b>
+for contributing optimized PurePascal source.
+
+<br>
+<br>
+<a name="sosemanuk"></a>
+
+<br><table BORDER=0 CELLPADDING=4 WIDTH="100%" SUMMARY="" >
+<tr>
+<td ALIGN=CENTER BGCOLOR="#77dddd"><b>Sosemanuk</b></td>
+</tr>
+</table>
+<br>
+
+<a href="http://www.ecrypt.eu.org/stream/sosemanukp3.html">Sosemanuk</a>
+by C. Berbain et al. is a stream cipher that is included in the
+final <a href="http://www.ecrypt.eu.org/stream/portfolio.pdf">eSTREAM Portfolio</a>.
+The key length is variable between 128 and 256 bits, and IVs up to 128 bit are
+supported (although my code uses  128 bit IVs). A reduced variant of the Serpent
+block cipher is used for key and IV setup. The core key stream is generated in
+80 byte blocks using (among others) an LFSR (Linear Feedback Shift Register) with ten 32 bit values and a
+FSM (Finite State Machine) with 64 bits.
+
+<br>
+<br>
+<font color="#cc0033"><b>Last changes:&nbsp;</b></font>
+FPC/ARM and Delphi Tokyo adjustments
+<br>
+
+<br>
+In the following table my Pascal implementations (program <b>t_sosewe</b>, 1.8 GHz P4 with
+Win98) are compared with the reference C code (rows <b>GCC</b> and <b>VC6</b>) from the eSTREAM
+<a href="http://www.ecrypt.eu.org/stream/p3ciphers/sosemanuk/sosemanuk_p3source.zip">archive</a>.
+
+Times and speeds for processing 800 MB (1 Mio 800 byte blocks) are measured
+for key stream generation (columns <b>k</b>) and encryption (columns <b>e</b>). The speed does not depend on the
+key length.
+
+<br><br>
+<table BORDER=1 CELLSPACING=0 CELLPADDING=2 WIDTH="80%" summary="">
+<tr>  <th align=right>Compiler     </th>   <th align=right>&nbsp;&nbsp;k [s]</th>   <th align=right>k [MB/s]</th>   <th align=right>&nbsp;&nbsp;e [s]</th>   <th align=right>e [MB/s]</th>  </tr>
+<tr>  <td align=right>GCC 4.3.2 -O3</td>   <td align=right> 7.253</td>   <td align=right> 110.3</td>   <td align=right> 10.220</td>   <td align=right> 78.3</td>  </tr>
+<tr>  <td align=right>VC6 SP4 /O2  </td>   <td align=right> 7.520</td>   <td align=right> 106.4</td>   <td align=right> 10.930</td>   <td align=right> 73.2</td>  </tr>
+<tr>  <td align=right>Delphi 3     </td>   <td align=right> 3.022</td>   <td align=right> 264.7</td>   <td align=right>  6.868</td>   <td align=right>116.5</td>  </tr>
+<tr>  <td align=right>Delphi 6     </td>   <td align=right> 3.013</td>   <td align=right> 265.5</td>   <td align=right>  6.897</td>   <td align=right>116.0</td>  </tr>
+<tr>  <td align=right>Delphi 10    </td>   <td align=right> 3.634</td>   <td align=right> 220.1</td>   <td align=right>  7.565</td>   <td align=right>105.7</td>  </tr>
+<tr>  <td align=right>VPC 2.1.279  </td>   <td align=right> 4.613</td>   <td align=right> 173.4</td>   <td align=right>  8.356</td>   <td align=right> 95.7</td>  </tr>
+<tr>  <td align=right>FPC 2.2.4 -O3</td>   <td align=right> 6.284</td>   <td align=right> 127.3</td>   <td align=right> 11.543</td>   <td align=right> 69.3</td>  </tr>
+<tr>  <td align=right>BP7 Real     </td>   <td align=right> 5.490</td>   <td align=right> 145.7</td>   <td align=right>  7.679</td>   <td align=right>104.2</td>  </tr>
+</table>
+
+<br>
+My source  in the archive
+<a href="sosemanuk_2017-11-29.zip">sosemanuk_2017-11-29.zip</a>
+is based on sosemanukfast.java from the eSTREAM submission
+for the 32 bit code and 16 bit key stream generator; for 16 bit
+key/IV setup a modification of my <a href="crypt_en.html#serpent">Serpent</a>
+code is used.
+<br><br>
+
+<a name="OtherBlockCiphers"></a>
+<br><table BORDER=0 CELLPADDING=4 WIDTH="100%" SUMMARY="" >
+<tr>
+<td ALIGN=CENTER BGCOLOR="#77dddd"><b>Other block ciphers</b></td>
+</tr>
+</table>
+<br>
+<font color="#cc0033"><b>Last changes:&nbsp;</b></font>
+FPC/ARM and Delphi Tokyo adjustments,
+GCM mode for Camellia,
+test programs for Serpent EAX and OMAC.
+<br><br>
+
+The source layout in the archives is as usual: the CBC, CFB, CTR, ECB, OFB
+modes of operation are implemented; Anubis, Camellia, Serpent, and SEED
+additionally support OMAC and EAX. CCM mode is available for Camellia.
+<ul>
+
+<li>
+<a name="anubis"></a>
+<a href="https://web.archive.org/web/20160606112246/http://www.larc.usp.br/~pbarreto/AnubisPage.html">Anubis</a>
+(designed by Vincent Rijmen and Paulo Barreto) is a 128-bit block cipher that
+uses keys of length 128 to 320 bits in steps of 32 bits. Anubis was
+a NESSIE submission which was not included in the final portfolio. My Pascal
+source implements the so called <i>tweaked</i> version with a recursive structured
+S-box.
+<br>
+Archive: <a href="anubis_2017-11-29.zip">anubis_2017-11-29.zip</a>
+<br><br>
+</li>
+
+<li>
+<a name="camellia"></a>
+<a href="http://info.isl.ntt.co.jp/crypt/eng/camellia/index.html">Camellia</a>
+is a Feistel block cipher developed jointly by NTT (Nippon Telegraph and Telephone) and Mitsubishi. It uses 128-bit input/output data
+blocks and 128, 192, or 256 bit keys. Camellia is a recommended block cipher of the
+NESSIE <a href="https://www.cosic.esat.kuleuven.be/nessie/deliverables/decision-final.pdf">portfolio</a>,
+included in ISO/IEC 18033-3, and also described in
+<a href="http://tools.ietf.org/html/rfc3713">RFC 3713</a>.
+The Feistel code and the S-Boxes are now 32 bit oriented, the encryption / decryption
+loops are unrolled, and the speed was increased (factors: 2.4 .. 2.9 for 32 bit and 1.2 .. 1.4 for 16 bit compilers).
+<br>
+Archive: <a href="camellia_2017-11-17.zip">camellia_2017-11-17.zip</a>
+<br><br>
+</li>
+
+<li>
+<a name="serpent"></a>
+<a href="http://www.cl.cam.ac.uk/~rja14/serpent.html">Serpent</a>
+(designed by Ross Anderson, Eli Biham, and Lars Knudsen) was one of
+the AES finalists; it is a 128-bit block cipher with key sizes of 128, 192, or 256 bits.
+<br>
+Archive: <a href="serpent_2017-11-17.zip">serpent_2017-11-17.zip</a>
+<br><br>
+</li>
+
+<li>
+<a name="SEED"></a>
+The SEED cipher has been developed by KISA
+(Korea Information Security Agency). It uses 128-bit input/output data
+blocks and 128-bit keys. SEED is specified in ISO/IEC 18033-3 and
+in <a href="http://tools.ietf.org/html/rfc4269">RFC 4269</a>.
+<br>
+Archive: <a href="seed_2017-11-29.zip">seed_2017-11-29.zip</a>
+<br><br>
+</li>
+
+<li>
+<a name="shacal2"></a>
+The 256-bit block cipher <a href="https://www.cosic.esat.kuleuven.be/nessie/updatedPhase2Specs/SHACAL/shacal-tweak.zip">SHACAL-2</a>
+is based on the compression function of SHA256. It supports keys sizes from 128 to 512 bits. SHACAL-2 is designed by Helena
+Handschuh and David Naccache and is the only recommended 256-bit block
+cipher of the NESSIE <a href="https://www.cosic.esat.kuleuven.be/nessie/deliverables/decision-final.pdf">portfolio</a>.
+<br>
+Archive: <a href="shacal2_2017-11-29.zip">shacal2_2017-11-29.zip</a>
+<br><br>
+</li>
+
+<li>
+<a name="skipjack"></a>
+<a href="http://csrc.nist.gov/groups/ST/toolkit/documents/skipjack/skipjack.pdf">SkipJack</a>
+is a compact 64-bit block cipher with 80-bit keys. It was
+designed by the NSA as an unbalanced Feistel network with 32 rounds; in
+1998 it was declassified and published by NIST (the specification was
+<a href="http://csrc.nist.gov/groups/ST/toolkit/documents/skipjack/clarification.pdf">clarified</a> in 2002).
+<br>
+Archive: <a href="skipjack_2017-11-29.zip">skipjack_2017-11-29.zip</a>
+<br><br>
+</li>
+
+<li>
+<a name="XTEA"></a>
+<a href="http://www.cix.co.uk/~klockstone/xtea.pdf">XTEA</a> (eXtended TEA) is another compact 64-bit block cipher with
+128-bit keys described by David Wheeler and Roger Needham.
+<br>
+Archive: <a href="xtea_2017-11-29.zip">xtea_2017-11-29.zip</a>
+</li>
+</ul>
+
+
+<a name="poly1305"></a>
+<br><table BORDER=0 CELLPADDING=4 WIDTH="100%" SUMMARY="" >
+<tr>
+<td ALIGN=CENTER BGCOLOR="#77dddd"><b>Poly1305</b></td>
+</tr>
+</table>
+
+<br>
+Poly1305-AES (designed by D. J. Bernstein) is "a state-of-the-art
+message-authentication code" suitable for a wide variety of applications; the
+key material is created using AES-128 and a nonce.
+<br>
+<br>
+The <b>general Poly1305 algorithm</b> is a one-time authenticator which takes a
+32-byte one-time key plus a message and produces a 16-byte tag. This tag is
+used to authenticate the message.
+Regardless of how the key is generated, it is partitioned into two parts,
+called "r" and "s". The pair (r,s) should be unique, and <b>must</b> be unpredictable
+for each invocation (that is why it was originally obtained by encrypting a
+nonce), while "r" <b>may</b> be constant.
+<br>
+<br>
+My Pascal code in the
+archive <a href="poly1305_2017-11-29.zip">poly1305_2017-11-29.zip</a>
+is a straight-forward translation of two variations of Andrew
+Moon's well-known poly1305-donna code (from
+<a href="https://github.com/floodyberry/poly1305-donna">Github</a>,
+distributed under MIT license or public domain):
+<ul style="margin-top:0">
+<li>
+poly_32x32 uses 32 x 32 -> 64 bit multiplication
+and is default for compilers with u/int64 data types (D4+, FPC),
+</li>
+<li>
+poly_16x16 with 16 x 16 -> 32 bit multiplication for all
+other compilers without int64.
+</li>
+<li>
+During development I also
+translated poly_8x8: it is available as a separate file,
+but not actually used (slower for all tested CPUs/compilers).
+</li>
+</ul>
+Poly1305 is standardized in <a href="http://tools.ietf.org/html/rfc7539">RFC 7539</a>
+("ChaCha20 and Poly1305 for IETF Protocols"), which also contains
+additional test vectors.
+
+
+<table BORDER=0 CELLSPACING=4 CELLPADDING=4 WIDTH="100%" summary="" >
+<tr>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="index.html">Home</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="crchash_en.html">CRC/Hash</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="crypt_en.html">Crypto</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="misc_en.html">Misc.</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="info_en.html">Info</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="links_en.html">Links</a></b></td>
+<td ALIGN=CENTER WIDTH="14%" BGCOLOR="#44DDFF"><b><a href="crypt_de.html">Deutsch</a></b></td>
+</tr>
+</table>
+
+</body>
+</html>
